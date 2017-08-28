@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.3.4'
 
+# for seed
 gem 'faker'
+
+# Facebook connect
+gem 'omniauth-facebook'
 
 gem 'devise'
 gem 'figaro'
