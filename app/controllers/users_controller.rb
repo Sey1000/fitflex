@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @bookings = @user.bookings
     @courses = Course.all
+    @studios = Studio.all
   end
 
   def edit
