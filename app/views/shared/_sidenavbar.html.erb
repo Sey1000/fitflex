@@ -10,10 +10,10 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-
+      <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Logout", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -48,16 +48,20 @@
     <% end %>
   </div>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Logout</a></li>
-      </ul>
+  <!-- Sidebar appearing on mobile only -->
+  <div class="hidden-md hidden-lg">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="user-info">
+        <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-xs" %>
+        <h1>Maren Cheon</h1>
+        <h2>maren@wagon.com</h2>
+      </div>
+      <a href="#">Profile</a>
+      <a href="#">About Us</a>
+      <a href="#">FAQ</a>
+      <a href="#">Logout</a>
     </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
   </div>
 </div>
