@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="profile-pic">
+    <%# if @user.facebook_picture_url %>
+      <%# avatar_url = @user.facebook_picture_url %>
+      <%#= image_tag avatar_url, class: "avatar-lg" %>
+    <% if @user.photo? %>
+      <%= cl_image_tag @user.photo.path, width: 400, height: 400, crop: :fill, class: "avatar-lg" %>
+    <% else %>
+      <%= image_tag "placeholder.jpg", class: "avatar-lg"%>
+    <% end %>
+  </div>
+ <%= simple_form_for (@user) do |f| %>
+  <%= f.input :photo, as: :attachinary %>
+  <%= f.submit "Update Photo", class: "btn btn-photo" %>
+  <% end %>
+</div>
