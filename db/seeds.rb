@@ -185,16 +185,22 @@ Course.all.each do |crs|
   end
 end
 
-sample_titles = [
-  "This was great", "Awesome", "Would do it again", "Okay", "Meh", 
-  "Best course ever", "You should definitely do this course!", "Too difficult",
-  "Too easy for me", "Perfect intensity, cost, everything!", "Best instructor ever",
-  "Good deal!", "Loved it!!", "Please bring this course to Frankfurt"
+review_titles = [
+  ["Too easy for me", "Too difficult", "Okay", "Meh"],
+  ["Too easy for me", "Too difficult", "Okay", "Meh"],
+  ["Too easy for me", "Too difficult", "This was great", "Awesome", 
+    "Would do it again", "Good deal!", "Loved it!!", 
+    "Please bring this course to Frankfurt"],
+  ["Best course ever", "You should definitely do this course!",
+  "Perfect intensity, cost, everything!", "Best instructor ever", "This was great", 
+  "Awesome", "Would do it again", "Good deal!", "Loved it!!", 
+  "Please bring this course to Frankfurt"]
 ]
 
 puts "Created 100 reviews"
 100.times do
-  r = Review.new(title: sample_titles.sample, content: Faker::HowIMetYourMother.quote)
+  ind = (0..3).to_a.sample
+  r = Review.new(title: review_titles[ind].sample, content: Faker::HowIMetYourMother.quote, rating: ind + 2)
   r.course = Course.all.sample
   r.user = User.all.sample
   r.save
