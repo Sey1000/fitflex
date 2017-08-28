@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20170828132159) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "title"
-    t.datetime "date"
     t.datetime "start_time"
     t.datetime "end_time"
     t.float    "cost"
