@@ -1,0 +1,10 @@
+<div class="profile-picture">
+  <% if user.facebook_picture_url %>
+    <% avatar_url = user.facebook_picture_url %>
+    <%= image_tag avatar_url, class: "avatar-lg" %>
+  <% elsif user.photo? %>
+    <%= cl_image_tag user.photo.path, width: 400, height: 400, crop: :fill, class: "avatar avatar-lg" %>
+  <% else %>
+    <%= image_tag "placeholder.jpg", class: "avatar avatar-lg" %>
+  <% end %>
+</div>

@@ -1,7 +1,11 @@
-<% bookings.each do |b| %>
-  <%= b.course.title %>
-  <%= b.course.start_time.day %>
-  <%= b.course.start_time %> <%= b.course.end_time %>
+<div class="col-xs-12 col-sm-6">
+  <div class="booking-top">
+    <div class="booking-title"><%= b.course.title %></div>
+    <div class ="booking-cost"><%= b.course.cost.round(3) %> €</div>
+  </div>
+  <p><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> </p>
+  <p><%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
+
   <%= b.course.studio.name %>
-  <%= b.course.cost %>
-<% end %>
+
+</div>
