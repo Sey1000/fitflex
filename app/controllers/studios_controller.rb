@@ -14,7 +14,7 @@ class StudiosController < ApplicationController
 
   def update
     @studio = Studio.find(params[:id])
-    œstudio.update(studios_params)
+    @studio.update(studios_params)
   end
 
   def destroy
