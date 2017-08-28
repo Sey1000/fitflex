@@ -9,8 +9,5 @@
       <%= image_tag "placeholder.jpg", class: "avatar-lg"%>
     <% end %>
   </div>
- <%= simple_form_for (@user) do |f| %>
-  <%= f.input :photo, as: :attachinary %>
-  <%= f.submit "Update Photo", class: "btn btn-photo" %>
-  <% end %>
+  <%= render 'users/photo-form', user: @user %>
 </div>

@@ -1,0 +1,6 @@
+<div class="upload-profile-pic">
+  <%= simple_form_for (user) do |f| %>
+    <%= f.input :photo, as: :attachinary %>
+    <%= f.submit "Update Photo", class: "btn btn-photo" %>
+  <% end %>
+</div>
