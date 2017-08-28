@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show #see own profile incl. bookings
     @user = User.find(params[:id])
     @bookings = @user.bookings
+    @courses = Course.all
   end
 
   def edit
