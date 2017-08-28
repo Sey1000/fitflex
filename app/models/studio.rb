@@ -1,3 +1,5 @@
 class Studio < ApplicationRecord
-  has_many :users, :courses #not yet belongs_to in users, need to add to child class?
+  has_many :users
+  has_many :courses
+  # TODO: When we add Instructors, change association
 end
