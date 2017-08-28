@@ -1,14 +1,14 @@
 .buttons{
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 60vh;
   flex-wrap: wrap;
+  font-size: 16px;
+
 }
 .round-button {
   width: 100px;
-  max-width: 100%;
   margin: auto;
 }
 .round-button:after {
@@ -30,6 +30,10 @@
   margin-top:-0.5em;
   text-align:center;
   color:white;
+}
+
+#day-button {
+  padding-top: 43%;
 }
 // padding: 50px;
 // border-radius: 50%;
