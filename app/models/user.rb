@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
   # TODO: change this line once Instructor is added
-  belongs_to :studio
+  belongs_to :studio, optional: true
 
   has_many :bookings
   has_many :reviews
