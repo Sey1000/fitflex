@@ -1,0 +1,7 @@
+<% bookings.each do |b| %>
+  <%= b.course.title %>
+  <%= b.course.start_time.day %>
+  <%= b.course.start_time %> <%= b.course.end_time %>
+  <%= b.course.studio.name %>
+  <%= b.course.cost %>
+<% end %>
