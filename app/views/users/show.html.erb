@@ -1,13 +1,35 @@
 <div class="container">
-  <div class="profile-pic">
+  <div class="profile-picture">
     <%# if @user.facebook_picture_url %>
       <%# avatar_url = @user.facebook_picture_url %>
       <%#= image_tag avatar_url, class: "avatar-lg" %>
     <% if @user.photo? %>
-      <%= cl_image_tag @user.photo.path, width: 400, height: 400, crop: :fill, class: "avatar-lg" %>
+      <%= cl_image_tag @user.photo.path, width: 400, height: 400, crop: :fill, class: "avatar avatar-lg" %>
     <% else %>
-      <%= image_tag "placeholder.jpg", class: "avatar-lg"%>
+      <%= image_tag "placeholder.jpg", class: "avatar-lg" %>
     <% end %>
   </div>
   <%= render 'users/photo-form', user: @user %>
+
+  <div class="profile-info">
+  <% if @user.first_name %>
+    <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
+    <% else %>
+    <h1><%= @user.email %> </h1>
+    <% end %>
+  </div>
+
+  <div class="profile-info-container">
+    <div class="profile-info">
+      <h2>Upcoming bookings</h2>
+      <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
+      <%= render 'shared/booking-list', bookings: upcoming_bookings%>
+        <h2>History</h2>
+        <% past_bookings = @user.bookings.select { |b| b.course.start_time - Time.now < 0 } %>
+    </div>
+  </div>
+
+  <div class="settings">
+    <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
+  </div>
 </div>
