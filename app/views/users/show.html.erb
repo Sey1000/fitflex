@@ -13,7 +13,7 @@
 
     <div class="profile-info">
       <div class="historical-bookings">
-        <h2>Upcoming bookings <i class="fa fa-angle-down"></i></h2>
+        <h2>Upcoming bookings <i class="fa fa-chevron-down"></i></h2>
         <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
         <div class="row hidden">
           <% upcoming_bookings.each do |b| %>
@@ -22,7 +22,7 @@
         </div>
         </div>
       <div class="historical-bookings">
-        <h2>History <i class="fa fa-angle-down"></i></h2>
+        <h2>History <i class="fa fa-chevron-down"></i></h2>
 
         <% past_bookings = @user.bookings.select { |b| b.course.start_time - Time.now < 0 } %>
         <div class="row hidden">
