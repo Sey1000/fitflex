@@ -26,28 +26,8 @@
   width: 110px;
   position: relative;
   padding: 0;
-
-  .star-rating-css-top {
-    color: #e7711b;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    display: block;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  }
-  .star-rating-css-bottom {
-    padding: 0;
-    display: block;
-    z-index: 0;
-  }
 }
 
-.line {
-  width: 60vw;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  border-bottom: 2px solid $pink;
-}
+
+
 
