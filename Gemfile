@@ -7,6 +7,9 @@ gem 'faker'
 # Facebook connect
 gem 'omniauth-facebook'
 
+# i18n
+gem 'rails-i18n', '5.0.3'
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'

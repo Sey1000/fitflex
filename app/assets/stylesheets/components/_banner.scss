@@ -1,11 +1,16 @@
 .banner {
+  top: 0;
+  left: 0;
+  position: fixed;
   color: white;
   height: 100vh;
+  width: 100%;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   justify-content: center;
   background-position: center top;
+  z-index: 0;
 }
 .header-home {
   margin-top: 75px;
