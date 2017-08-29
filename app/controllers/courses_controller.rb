@@ -4,7 +4,9 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @courses = Course.find(params[:id])
+    @course = Course.find(params[:id])
+    # @average_rating = average_rating
+    @date_words = date_words
   end
 
   def new
@@ -33,5 +35,17 @@ class CoursesController < ApplicationController
   private
   def courses_params
     params.require(:course).permit(:title, :date, :start_time, :end_time, :cost, :spots, :description, :category, :level, :studio_id)
+  end
+
+  def date_words
+    datetime = @course.start_time
+    if datetime.today?
+      "Today"
+    elsif datetime == Date.tomorrow
+      "Tomorrow"
+    elsif datetime < (DateTime.now + 7.day)
+      days = datetime.day - DateTime.now.day
+      "#{days} days"
+    end
   end
 end
