@@ -1,11 +1,9 @@
-.profile-picture {
+.profile-main-info {
   display:flex;
   justify-content:center;
-}
-
-.upload-profile-picture {
-  display:flex;
-  align-items:center;
+  h1 {
+  font-size: 30px;
+  }
 }
 
 .avatar {
@@ -33,14 +31,16 @@
 }
 
 .profile-info {
-
-  h1{
-  font-style: $headers-font;
-  font-size: 20px;
-  color: $dark-blue;
+  width: 80%;
+  margin: 0px auto;
+  h2 {
+    font-size: 20px;
   }
+}
 
-  p{
-    font-style: $body-font;
-  }
+.historical-bookings{
+  padding: 5px;
+  margin-top: 10px;
+  border: 1px solid $dark-blue;
+  border-radius: 5px;
 }
