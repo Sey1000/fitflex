@@ -20,7 +20,7 @@
   font-size: 16px;
   position: absolute;
   bottom: 14px;
-  left: 322px;
+  right: 10px;
   color: $dark-blue;
   font-weight: 500;
 }
@@ -60,7 +60,7 @@ h4 {
 .distance {
   position: absolute;
   bottom: 124px;
-  left: 306px;
+  right: 10px;
   color: #7b7b7b;
   font-weight: 300;
 }
@@ -72,6 +72,7 @@ h4 {
   width: 110px;
   position: relative;
   padding: 0;
+  z-index: -1;
 
   .star-rating-css-top {
     color: #e7711b;
