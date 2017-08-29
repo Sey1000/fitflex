@@ -1,3 +1,10 @@
+.historical-bookings .row {
+  :last-child {
+    .booking-list-content p {
+      border-bottom: none;
+    }
+  }
+}
 
 .booking-top {
   margin-top: 10px;

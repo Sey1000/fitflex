@@ -1,5 +1,5 @@
-<div class="booking-wrapper">
-<div class="col-xs-12">
+
+<div class="col-xs-12", id="booking-wrap">
   <div class="booking-top">
     <div class="booking-title">
       <p><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> <%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
@@ -11,5 +11,4 @@
   <div class="booking-list-content">
     <strong><p><%= b.course.title %> </strong> at <%= b.course.studio.name %></p>
   </div>
-</div>
 </div>
