@@ -8,12 +8,15 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "swiper";
 
 // Your CSS partials
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
 @import "pages/user-show";
+
+
 
 // compensating navbar height
 body {

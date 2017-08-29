@@ -1,0 +1,77 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#day-tab">Day</a></li>
+  <li><a data-toggle="tab" href="#category-tab">Category</a></li>
+  <li><a data-toggle="tab" href="#level-tab">Level</a></li>
+  <li><a data-toggle="tab" href="#distance-tab">Distance</a></li>
+</ul>
+
+<div class="chosen-categories">
+  <div class="chosen-category chosen-day">
+    <p>chosen day</p>
+  </div>
+  <div class="chosen-category chosen-category">
+    <p>chosen category</p>
+  </div>
+  <div class="chosen-category chosen-level">
+    <p>chosen level</p>
+  </div>
+  <div class="chosen-category chosen-distance">
+    <p>chosen distance</p>
+  </div>
+
+</div>
+<div class="tab-content">
+  <div id="day-tab" class="tab-pane fade in active">
+    <div class="days-container">
+      <button type="button" class="btn btn-primary", id="button-day">Today</button>
+      <button type="button" class="btn btn-primary", id="button-day">Tomorrow</button>
+      <button type="button" class="btn btn-primary", id="button-day">+7 Days</button>
+    </div>
+  </div>
+
+
+  <div id="category-tab" class="tab-pane fade">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" id="cat-1"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" id="cat-2"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" id="cat-3"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" id="cat-4"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" id="cat-5"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" id="cat-6"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" id="cat-7"><%= image_tag 'yoga-favicon.ico' %> </div>
+        </div>
+        </div>
+        </div>
+
+  <div id="level-tab" class="tab-pane fade">
+    <div class="level-container">
+      <button type="button" class="btn btn-primary", id="button-day">Beginner</button>
+      <button type="button" class="btn btn-primary", id="button-day">Intermediate</button>
+      <button type="button" class="btn btn-primary", id="button-day">Pro</button>
+    </div>
+  </div>
+  <div id="distance-tab" class="tab-pane fade">
+    <div class="distance-container">
+      <button type="button" class="btn btn-primary", id="button-day">1 km</button>
+      <button type="button" class="btn btn-primary", id="button-day">3 km</button>
+      <button type="button" class="btn btn-primary", id="button-day">5 km</button>
+      <button type="button" class="btn btn-primary", id="button-day">10 km</button>
+    </div>
+  </div>
+</div>
+
+
+<% content_for(:after_js) do %>
+<%=  javascript_tag() do %>
+
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 30,
+        freeMode: true
+    });
+<% end %>
+<% end %>
+
