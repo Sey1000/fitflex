@@ -13,7 +13,7 @@
       <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Logout", destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -65,7 +65,7 @@
       <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Logout", destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
     </div>
   <% else %>
     <div class="navbar-wagon-right hidden-md hidden-lg">
