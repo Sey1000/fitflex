@@ -1,0 +1,44 @@
+<div class="course-description">
+  <div class="duration course-icon-description">
+    <div class="category-image">
+      <%= image_tag 'clock' %>
+    </div>
+    <div class="category-description">
+      <%= ((@course.end_time - @course.start_time)/60).round %> mins
+    </div>
+  </div>
+  <div class="course-category course-icon-description">
+    <div class="category-image">
+      <% case @course.category %>
+      <% when "Yoga" || "Pilates" %>
+        <%= image_tag 'buddhist-yoga-pose' %>
+      <% when "Crossfit" %>
+        <%= image_tag 'weightlifting' %>
+      <% when "Kickboxing" || "Marterial Arts" %>
+        <%=  image_tag 'mma' %>
+      <% when "Dance" %>
+        <%= image_tag 'dancer' %>
+      <% when "HIT" %>
+        <%= image_tag 'stretch' %>
+      <% end %>
+    </div>
+    <div class="category-description">
+      <%= @course.category %>
+    </div>
+  </div>
+  <div class="course-intensity course-icon-description">
+    <div class="category-image">
+      <%= image_tag 'settings' %>
+    </div>
+    <div class="category-description">
+      <%= @course.level %>
+    </div>
+  </div>
+</div>
+
+<div class="class-description">
+  <h3> <%= @course.title %></h3>
+  <p> <%= @course.description %></p>
+</div>
+
+

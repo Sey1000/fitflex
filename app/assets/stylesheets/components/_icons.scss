@@ -1,0 +1,30 @@
+.course-description {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  background-color: white;
+}
+
+.category-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-width: 25px;
+    max-height: 20px;
+  }
+}
+
+.category-description {
+  font-size: 13px;
+}
+
+.class-description {
+  padding: 0 10px;
+  p {
+    font-size: 15px;
+    display: block;
+  }
+}
+
