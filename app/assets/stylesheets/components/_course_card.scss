@@ -1,0 +1,54 @@
+.row {
+
+}
+.card {
+  position: relative;
+  margin: 2px 5px;
+  padding: 10px 5px;
+  // box-shadow: 1px 1px 2px #a2a2a2;
+  border-bottom: 2px solid $dark-gray;
+  img {
+    display: block;
+    width: 135px;
+    height: 130px;
+    margin-left: 0px;
+    margin-right: auto;
+  }
+}
+
+.course-price {
+  font-size: 20px;
+  position: absolute;
+  bottom: 6px;
+  left: 10px;
+}
+
+h3 {
+  font-size: 17px;
+  margin-top: 12px;
+  margin-bottom: 8px;
+
+}
+p {
+  margin: 0px;
+  font-size: 10px;
+}
+.thumbnail > img {
+
+}
+.info {
+  position: absolute;
+  bottom: 12px;
+  left: 149px;
+  color: #2b6a8c;
+}
+.studio-title {
+  font-size: 15px;
+  margin-bottom: 10px;
+
+}
+h4 {
+  font-size: 15px;
+  margin: 0px;
+}
+
