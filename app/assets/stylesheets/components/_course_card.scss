@@ -6,7 +6,7 @@
   margin: 2px 5px;
   padding: 10px 5px;
   // box-shadow: 1px 1px 2px #a2a2a2;
-  border-bottom: 2px solid $dark-gray;
+  border-bottom: 1px solid #bebebe;
   img {
     display: block;
     width: 135px;
@@ -17,16 +17,18 @@
 }
 
 .course-price {
-  font-size: 20px;
+  font-size: 16px;
   position: absolute;
-  bottom: 6px;
-  left: 10px;
+  bottom: 14px;
+  left: 322px;
+  color: $dark-blue;
+  font-weight: 500;
 }
 
 h3 {
   font-size: 17px;
   margin-top: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 
 }
 p {
@@ -38,17 +40,53 @@ p {
 }
 .info {
   position: absolute;
-  bottom: 12px;
+  bottom: 14px;
   left: 149px;
   color: #2b6a8c;
 }
 .studio-title {
   font-size: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 22px;
 
 }
 h4 {
   font-size: 15px;
   margin: 0px;
+}
+.star {
+  display: inline;
+  text-decoration: none;
+}
+.distance {
+  position: absolute;
+  bottom: 124px;
+  left: 306px;
+  color: #7b7b7b;
+  font-weight: 300;
+}
+.star-ratings-css-small {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 18px;
+  height: 25px;
+  width: 110px;
+  position: relative;
+  padding: 0;
+
+  .star-rating-css-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  .star-rating-css-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
 }
 
