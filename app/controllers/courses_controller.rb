@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    raise
-    @courses = Course.all
+    @courses = filter_courses
   end
 
   def show
@@ -34,6 +33,20 @@ class CoursesController < ApplicationController
   end
 
   private
+
+  def filter_courses
+    filtered_courses = Course.all
+    case params[:search_day]
+    when 'today'
+      filtered_courses = Course.all.select { |cs| cs.start_time.to_date.today? }
+    when 'tomorrow'
+      filtered_courses = Course.all.select { |cs| (cs.start_time.to_date - Time.now.to_date).to_i == 1 }
+    when 'next_seven'
+      filtered_courses = Course.all.select { |cs| (cs.start_time.to_date - Time.now.to_date).to_i > 1 && (cs.start_time.to_date - Time.now.to_date).to_i < 8 }
+    end
+    return filtered_courses
+  end
+
   def courses_params
     params.require(:course).permit(:title, :date, :start_time, :end_time, :cost, :spots, :description, :category, :level, :studio_id)
   end
