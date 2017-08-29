@@ -60,7 +60,7 @@
       <a href="#">Profile</a>
       <a href="#">About Us</a>
       <a href="#">FAQ</a>
-      <a href="#">Logout</a>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
     </div>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
   </div>
