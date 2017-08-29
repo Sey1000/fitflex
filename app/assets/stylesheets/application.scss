@@ -15,3 +15,7 @@
 @import "pages/index";
 @import "pages/user-show";
 
+// compensating navbar height
+body {
+  padding-top: 70px;
+}

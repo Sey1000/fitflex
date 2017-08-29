@@ -1,7 +1,7 @@
 
   <%= render 'users/avatar-component', user: @user %>
 
-  <div class="profile-info">
+  <div class="profile-main-info">
   <% if @user.first_name %>
     <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
     <% else %>
@@ -11,20 +11,27 @@
 
       <%= render 'users/photo-form', user: @user %>
 
-  <div class="profile-info-container">
     <div class="profile-info">
-      <h2>Upcoming bookings</h2>
-          <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
-          <div class="row">
-            <% upcoming_bookings.each do |b| %>
-              <%= render 'shared/booking-list', b: b %>
-            <% end %>
-          </div>
-
+      <div class="historical-bookings">
+        <h2>Upcoming bookings</h2>
+        <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
+        <div class="row ">
+          <% upcoming_bookings.each do |b| %>
+            <%= render 'shared/booking-list', b: b %>
+          <% end %>
+        </div>
+      </div>
+      <div class="historical-bookings">
         <h2>History</h2>
+
         <% past_bookings = @user.bookings.select { |b| b.course.start_time - Time.now < 0 } %>
+        <div class="row ">
+          <% past_bookings.each do |b| %>
+            <%= render 'shared/booking-list', b: b %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
 
   <div class="settings">
     <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
