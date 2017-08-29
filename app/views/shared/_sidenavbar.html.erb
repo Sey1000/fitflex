@@ -1,6 +1,6 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand hidden-xs" do %>
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <p>FITFlex</p>
   <% end %>
 
@@ -13,7 +13,7 @@
       <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Logout", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -44,24 +44,34 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 
   <!-- Sidebar appearing on mobile only -->
-  <div class="hidden-md hidden-lg">
-    <div id="mySidenav" class="sidenav">
+  <% if user_signed_in? %>
+    <div class="navbar-wagon-right hidden-md hidden-lg">
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+    <div class="sidenav" id="mySidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <div class="user-info">
         <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-xs" %>
-        <h1>Maren Cheon</h1>
-        <h2>maren@wagon.com</h2>
+        <h1>user name</h1>
+        <h2>user email</h2>
       </div>
-      <a href="#">Profile</a>
-      <a href="#">About Us</a>
-      <a href="#">FAQ</a>
-      <a href="#">Logout</a>
+      <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
     </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-  </div>
+  <% else %>
+    <div class="navbar-wagon-right hidden-md hidden-lg">
+    <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    </div>
+  <% end %>
 </div>
