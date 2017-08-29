@@ -15,7 +15,7 @@
       <div class="historical-bookings">
         <h2>Upcoming bookings  <%= image_tag "down-arrow.svg", class: "icon" %></h2>
         <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
-        <div class="row hidden", id="upcoming-bookings">
+        <div class="row hidden">
           <% upcoming_bookings.each do |b| %>
             <%= render 'shared/booking-list', b: b %>
           <% end %>
@@ -31,9 +31,9 @@
           <% end %>
         </div>
       </div>
-    </div>
 
   <div class="settings">
     <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
+  </div>
   </div>
 
