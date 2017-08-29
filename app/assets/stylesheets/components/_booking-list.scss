@@ -1,13 +1,22 @@
+
 .booking-top {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 15px;
+
   .booking-title {
-    width: 200px;
+    width: 250px;
   }
  .booking-cost {
     width: 60px;
+  }
+}
+
+.booking-list-content {
+  p {
+    border-bottom: 1px solid $gray;
   }
 }
 
