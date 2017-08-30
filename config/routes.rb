@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :courses
-  post 'search_courses', to: 'courses#update_index'
+  post 'courses/search_courses', to: 'courses#update_index'
   resources :bookings, only: [:index, :show, :create, :destroy]
   resources :users, only: [:show, :edit, :update]
   resources :studios

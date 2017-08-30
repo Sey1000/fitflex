@@ -1,5 +1,3 @@
-$(".button-day").on("click", function() {
-  //   var updated_courses = $(this).text();
-  //   <%= j render 'shared/form-filters'
-  <%= j render 'shared/form-filters' %>
-});
+  $("#render_courses").html(
+    "<%= j render 'courses', courses: @update_courses %>"
+  );

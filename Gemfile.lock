@@ -173,7 +173,6 @@ GEM
       sprockets-rails (>= 2.0.0)
     rails-assets-swiper (3.4.2)
     rails-assets-underscore (1.8.3)
-
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -273,11 +272,8 @@ DEPENDENCIES
   pry-rails
   puma
   rails (= 5.0.5)
-
   rails-assets-swiper!
-
   rails-assets-underscore!
-
   rails-i18n (= 5.0.3)
   redis
   sass-rails
