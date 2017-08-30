@@ -1,0 +1,10 @@
+<div class="form-filters">
+<%= simple_form_for(@courses, remote: true) do |form| %>
+
+  <%= form.input :day %>
+  <%= form.input :category %>
+  <%= form.input :level %>
+  <%= form.input :distance %>
+
+<% end %>
+</div>

@@ -6,6 +6,21 @@
   <li class="reset-filters">Reset filters</li>
 </ul>
 
+<%# render 'reviews/form', courses: @courses %>
+<%# render 'shared/form-filters', courses: @courses %>
+
+<div class="form-filters">
+  <%= form_for "/courses/search_courses", url: "/courses/search_courses", remote: true, method: :post, html: { id: 'search_courses' } do |f| %>
+    <%= f.text_field :search_day, value: params[:search_day] %>
+    <%= f.text_field :category %>
+    <%= f.text_field :level %>
+    <%#= f.text_field :day %>
+
+    <%= f.submit %>
+  <% end %>
+</div>
+
+
 <div class="chosen-categories">
   <div class="chosen-category" id="chosen-day">
   <p>all days</p>
@@ -24,7 +39,7 @@
 <div class="tab-content">
   <div id="day-tab" class="tab-pane fade in active">
     <div class="days-container">
-      <button type="button" class="btn btn-primary button-day">Today</button>
+      <button type="button" class="btn btn-primary button-day <%= "active" if params[:search_day] == "today" %>">Today</button>
       <button type="button" class="btn btn-primary button-day">Tomorrow</button>
       <button type="button" class="btn btn-primary button-day">+7 Days</button>
     </div>
@@ -64,7 +79,14 @@
 
 
 <% content_for(:after_js) do %>
-<%=  javascript_tag() do %>
+  <script>
+  $(document).ready(function(){
+
+    $(".button-day").on("click", function(e) {
+      console.log(e);
+      $("#course_day").attr('value', $(this).text());
+      $("#search_courses").submit();
+    });
 
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
@@ -73,6 +95,9 @@
         spaceBetween: 30,
         freeMode: true
     });
-<% end %>
+
+
+  });
+  </script>
 <% end %>
 

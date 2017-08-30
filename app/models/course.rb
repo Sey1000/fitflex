@@ -17,5 +17,18 @@ class Course < ApplicationRecord
     (sum.to_f / (ratings.length)) / 5 *100
   end
 
+  def day
+    datetime = start_time
+    if datetime.today?
+      "Today"
+    elsif datetime == Date.tomorrow
+      "Tomorrow"
+    elsif datetime < (DateTime.now + 7.day)
+      days = datetime.day - DateTime.now.day
+      "#{days} days"
+    end
+  end
 
+  def day=(value)
+  end
 end

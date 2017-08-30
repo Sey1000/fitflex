@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def index
     @courses = filter_courses
+    # update_index
   end
 
   def show
@@ -30,6 +31,20 @@ class CoursesController < ApplicationController
 
   def destroy
     @destroy = Course.find(params[:id]).destroy
+  end
+
+  def update_index
+    day = params[:search_day]
+    category = params[:category]
+    level = params[:level]
+
+    @courses = filter_courses
+
+
+    respond_to do |format|
+      format.html { redirect_to courses_path }
+      format.js
+    end
   end
 
   private
