@@ -1,0 +1,113 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#day-tab">Day</a></li>
+  <li><a data-toggle="tab" href="#category-tab">Category</a></li>
+  <li><a data-toggle="tab" href="#level-tab">Level</a></li>
+  <li><a data-toggle="tab" href="#distance-tab">Distance</a></li>
+  <li class="reset-filters">Reset filters</li>
+</ul>
+
+<%# render 'reviews/form', courses: @courses %>
+<%# render 'shared/form-filters', courses: @courses %>
+
+<div class="form-filters">
+  <%= form_for :search_courses, url: "/courses/search_courses", remote: true, method: :post, html: { id: 'search_courses' } do |f| %>
+    <%= f.text_field :day, value: params[:search_day], class: "hidden"%>
+    <%= f.text_field :category, class: "hidden" %>
+    <%= f.text_field :level, class: "hidden" %>
+    <%#= f.text_field :day %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+
+<div class="chosen-categories">
+  <div class="chosen-category" id="chosen-day">
+  <p>all days</p>
+  </div>
+  <div class="chosen-category" id="chosen-category">
+    <p>all categories</p>
+  </div>
+  <div class="chosen-category" id="chosen-level">
+    <p>all levels</p>
+  </div>
+  <div class="chosen-category" id="chosen-distance">
+    <p>any distance</p>
+  </div>
+
+</div>
+<div class="tab-content">
+  <div id="day-tab" class="tab-pane fade in active">
+    <div class="days-container">
+      <button type="button" class="btn btn-primary button-day <%= "active" if params[:search_day] == "today" %>" data-day="today">Today</button>
+      <button type="button" class="btn btn-primary button-day" data-day="tomorrow">Tomorrow</button>
+      <button type="button" class="btn btn-primary button-day" data-day="next_seven">+7 Days</button>
+    </div>
+  </div>
+
+
+  <div id="category-tab" class="tab-pane fade">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide button-category" data-category="Yoga"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide button-category" data-category="Crossfit"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide button-category" data-category="Kickboxing"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide button-category" data-category="Dance"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide button-category" data-category="Pilates"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide button-category" data-category="HIIT"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide button-category" data-category="Martial Arts"><%= image_tag 'yoga-favicon.ico' %> </div>
+        </div>
+        </div>
+        </div>
+
+  <div id="level-tab" class="tab-pane fade">
+    <div class="level-container">
+      <button type="button" class="btn btn-primary button-level" data-level="Beginner">Beginner</button>
+      <button type="button" class="btn btn-primary button-level" data-level="Intermediate">Intermediate</button>
+      <button type="button" class="btn btn-primary button-level" data-level="Advanced">Advanced</button>
+    </div>
+  </div>
+  <div id="distance-tab" class="tab-pane fade">
+    <div class="distance-container">
+      <button type="button" class="btn btn-primary button-distance">1 km</button>
+      <button type="button" class="btn btn-primary button-distance">3 km</button>
+      <button type="button" class="btn btn-primary button-distance">5 km</button>
+      <button type="button" class="btn btn-primary button-distance">10 km</button>
+    </div>
+  </div>
+</div>
+
+
+<% content_for(:after_js) do %>
+  <script>
+  $(document).ready(function(){
+
+    $(".button-day").on("click", function(e) {
+      $("#search_courses_day").attr('value', $(this).attr('data-day'));
+      $("#search_courses").submit();
+    });
+
+    $(".button-level").on("click", function(){
+      $("#search_courses_level").attr('value', $(this).attr('data-level'));
+      $("#search_courses").submit();
+    });
+
+    $(".button-category").on("click", function(){
+      console.log($(".button-category"));
+      $("#search_courses_category").attr('value', $(this).attr('data-category'));
+      $("#search_courses").submit();
+    });
+
+
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 30,
+        freeMode: true
+    });
+
+
+  });
+  </script>
+<% end %>
+

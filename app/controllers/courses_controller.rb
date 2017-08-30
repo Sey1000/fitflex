@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def index
-    @courses = filter_courses
+    @courses = filter_courses(params[:search_day])
+    # update_index
   end
 
   def show
@@ -42,8 +43,35 @@ class CoursesController < ApplicationController
     @destroy = Course.find(params[:id]).destroy
   end
 
+  def update_index
+    day = filter_params[:day]
+    category = filter_params[:category]
+    level = filter_params[:level]
+
+    @update_courses = filter_courses(day)
+    # unless level.empty?
+    #   @update_courses = @update_courses.where(level: level)
+    # end
+
+    if level.present? && category.empty?
+      @update_courses = @update_courses.where(level: level)
+    elsif level.empty? && category.present?
+      @update_courses = @update_courses.where(category: category)
+    elsif level.present? && category.present?
+      @update_courses = @update_courses.where({category: category, level: level})
+    else
+      @update_courses = filter_courses(day)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to courses_path }
+      format.js
+    end
+  end
+
   private
 
+# Google Map
   require 'open-uri'
 
   def distance_api_call(la, lo)
@@ -56,15 +84,17 @@ class CoursesController < ApplicationController
 
   end
 
-  def filter_courses
+# Filter Courses
+  def filter_courses(day)
+
     filtered_courses = Course.all
-    case params[:search_day]
+    case day
     when 'today'
-      filtered_courses = Course.all.select { |cs| cs.start_time.to_date.today? }
+      filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{Time.now.end_of_day}'")
     when 'tomorrow'
-      filtered_courses = Course.all.select { |cs| (cs.start_time.to_date - Time.now.to_date).to_i == 1 }
+      filtered_courses = Course.where("start_time > '#{Time.now.end_of_day}' AND start_time < '#{DateTime.tomorrow.end_of_day}'")
     when 'next_seven'
-      filtered_courses = Course.all.select { |cs| (cs.start_time.to_date - Time.now.to_date).to_i > 1 && (cs.start_time.to_date - Time.now.to_date).to_i < 8 }
+      filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
     return filtered_courses
   end
@@ -73,11 +103,15 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:title, :date, :start_time, :end_time, :cost, :spots, :description, :category, :level, :studio_id)
   end
 
+  def filter_params
+    params.require(:search_courses).permit(:day, :category, :level)
+  end
+
   def date_words
     datetime = @course.start_time
     if datetime.today?
       "Today"
-    elsif datetime == Date.tomorrow
+    elsif datetime.to_date == Date.tomorrow
       "Tomorrow"
     elsif datetime < (DateTime.now + 7.day)
       days = datetime.day - DateTime.now.day
@@ -91,3 +125,11 @@ class CoursesController < ApplicationController
     end
   end
 end
+
+
+
+
+
+
+
+

@@ -8,13 +8,16 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "swiper";
 
 // Your CSS partials
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
 
+
+
 // compensating navbar height
 body {
-  padding-top: 70px;
+  padding-top: 50px;
 }
