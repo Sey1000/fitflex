@@ -1,6 +1,6 @@
 
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12">
+<div class="row ">
+  <div class="col-xs-12 cards">
     <div class="card">
       <img src="http://www.studio89fitness.com/images/background/6.jpg" alt="studio">
 
@@ -24,7 +24,7 @@
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
         </div>
-        <p>
+        <p class="course-times">
           <% if course.start_time.to_date == Date.today %>
             Today
           <% elsif course.start_time.to_date == (Date.today + 1) %>
@@ -32,7 +32,7 @@
           <% else %>
             <%= course.start_time.strftime('%A, %b %d') %>
           <% end %>
-          <p>
+          <p class="course-times">
             <%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
           </p>
         </p>

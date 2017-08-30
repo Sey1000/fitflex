@@ -6,6 +6,11 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @studios = Studio.where.not(latitude: nil, longitude: nil).where(id: @course.studio_id)
+    @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
+      marker.lat studio.latitude
+      marker.lng studio.longitude
+    end
     # @average_rating = average_rating
     @date_words = date_words
   end
