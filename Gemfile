@@ -18,6 +18,14 @@ gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
 
+#Google maps
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
 # User avatar
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'

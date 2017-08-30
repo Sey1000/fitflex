@@ -15,5 +15,8 @@
   </div>
   <div class="booking-list-content">
     <p><strong><%= b.course.title %></strong><br><span class="course-where"><%= b.course.studio.name %></span></p>
+    <% if old %>
+      <div class="review-me"><i class="fa fa-pencil-square-o"></i></div>
+    <% end %>
   </div>
 </div>
