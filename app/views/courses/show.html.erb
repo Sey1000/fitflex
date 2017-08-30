@@ -12,4 +12,6 @@
 <%= render 'shared/course_descriptions_icons' %>
 <%= render 'shared/reviews' %>
 
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|" + URI.encode(@course.studio.address) %>
+<img src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|Herzbergstraße%2087-89,%2010365%20Berlin">
 
