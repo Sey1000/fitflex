@@ -60,7 +60,7 @@ class CoursesController < ApplicationController
     datetime = @course.start_time
     if datetime.today?
       "Today"
-    elsif datetime == Date.tomorrow
+    elsif datetime.to_date == Date.tomorrow
       "Tomorrow"
     elsif datetime < (DateTime.now + 7.day)
       days = datetime.day - DateTime.now.day
@@ -74,3 +74,11 @@ class CoursesController < ApplicationController
     end
   end
 end
+
+
+
+
+
+
+
+
