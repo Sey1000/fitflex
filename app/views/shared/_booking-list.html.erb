@@ -1,14 +1,22 @@
 
-<div class="col-xs-12", id="booking-wrap">
+<div class="col-xs-12 booking-wrap">
   <div class="booking-top">
     <div class="booking-title">
-      <p><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> <%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
-      </div>
+    <p class="booking-time-span"><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> <%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
+    </div>
     <div class ="booking-cost">
-      <p><%= b.course.cost.round(3) %> €</p>
+      <% cost_amount = b.course.cost %>
+      <% if cost_amount.to_i - cost_amount == 0 %>
+      <p><%= cost_amount.to_i %> €</p>
+      <% else %>
+      <p><%= cost_amount.round(3) %> €</p>
+      <% end %>
     </div>
   </div>
   <div class="booking-list-content">
-    <strong><p><%= b.course.title %> </strong> at <%= b.course.studio.name %></p>
+    <p><strong><%= b.course.title %></strong><br><span class="course-where"><%= b.course.studio.name %></span></p>
+    <% if old %>
+      <div class="review-me"><i class="fa fa-pencil-square-o"></i></div>
+    <% end %>
   </div>
 </div>
