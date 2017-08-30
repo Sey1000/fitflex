@@ -16,3 +16,13 @@
   border: none;
   box-shadow: none;
 }
+
+.review-error-message {
+  width: 100%;
+  background-color: $red;
+  color: white;
+}
+
+.review-star {
+  color: #E7711B;
+}
