@@ -3,20 +3,21 @@
   <li><a data-toggle="tab" href="#category-tab">Category</a></li>
   <li><a data-toggle="tab" href="#level-tab">Level</a></li>
   <li><a data-toggle="tab" href="#distance-tab">Distance</a></li>
+  <li class="reset-filters">Reset filters</li>
 </ul>
 
 <div class="chosen-categories">
   <div class="chosen-category" id="chosen-day">
-  <p></p>
+  <p>all days</p>
   </div>
   <div class="chosen-category" id="chosen-category">
-    <p>chosen category</p>
+    <p>all categories</p>
   </div>
   <div class="chosen-category" id="chosen-level">
-    <p>chosen level</p>
+    <p>all levels</p>
   </div>
   <div class="chosen-category" id="chosen-distance">
-    <p>chosen distance</p>
+    <p>any distance</p>
   </div>
 
 </div>
@@ -33,30 +34,30 @@
   <div id="category-tab" class="tab-pane fade">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" id="cat-1"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide" id="cat-2"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide" id="cat-3"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide" id="cat-4"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide" id="cat-5"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide" id="cat-6"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide" id="cat-7"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
         </div>
         </div>
         </div>
 
   <div id="level-tab" class="tab-pane fade">
     <div class="level-container">
-      <button type="button" class="btn btn-primary", id="button-day">Beginner</button>
-      <button type="button" class="btn btn-primary", id="button-day">Intermediate</button>
-      <button type="button" class="btn btn-primary", id="button-day">Pro</button>
+      <button type="button" class="btn btn-primary button-level">Beginner</button>
+      <button type="button" class="btn btn-primary button-level">Intermediate</button>
+      <button type="button" class="btn btn-primary button-level">Pro</button>
     </div>
   </div>
   <div id="distance-tab" class="tab-pane fade">
     <div class="distance-container">
-      <button type="button" class="btn btn-primary", id="button-day">1 km</button>
-      <button type="button" class="btn btn-primary", id="button-day">3 km</button>
-      <button type="button" class="btn btn-primary", id="button-day">5 km</button>
-      <button type="button" class="btn btn-primary", id="button-day">10 km</button>
+      <button type="button" class="btn btn-primary button-distance">1 km</button>
+      <button type="button" class="btn btn-primary button-distance">3 km</button>
+      <button type="button" class="btn btn-primary button-distance">5 km</button>
+      <button type="button" class="btn btn-primary button-distance">10 km</button>
     </div>
   </div>
 </div>
