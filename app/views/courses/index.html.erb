@@ -1,8 +1,9 @@
-<% @courses.each do |cs| %>
-  <%= link_to course_path(cs), class: 'card' do %>
-    <%= render 'shared/course_card', course: cs %>
-  <% end %>
-<% end %>
+<%= render 'shared/filter-search' %>
+
+<div id="render_courses">
+  <%= render 'courses', courses: @courses %>
+</div>
+
 
 
 

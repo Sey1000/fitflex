@@ -69,7 +69,8 @@ course_hash = {
   "Creative Pilates" => "Pilates",
   "Kickboxing just for you" => "Kickboxing",
   "Taekwondo" => "Martial Arts",
-  "Hotty hot hot Iron" => "HIT"
+  "Hotty hot hot Iron" => "HIIT"
+
 }
 
 course_levels = ["Beginner", "Beginner", "Intermediate", "Intermediate", "Advanced"]

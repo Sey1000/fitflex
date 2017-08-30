@@ -6,4 +6,5 @@
 //= require underscore
 //= require gmaps/google
 //= require attachinary
+//= require swiper
 //= require_tree .
