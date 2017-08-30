@@ -30,6 +30,7 @@
       opacity: 0.8;
     }
   }
+  position: relative;
 }
 
 .booking-time-span {
@@ -38,4 +39,12 @@
 
 .course-where {
   opacity: 0.6;
+}
+
+.review-me {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  font-size: 20px;
+  color: $red;
 }
