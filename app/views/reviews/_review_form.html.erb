@@ -1,0 +1,8 @@
+<div class="container review-form">
+  <%= simple_form_for [@course, @review] do |f| %>
+    <%= f.input :rating, as: :integer, input_html: { value: 5, min: 1, max: 5 } %>
+    <%= f.input :title %>
+    <%= f.input :content, input_html: { rows: 3 } %>
+    <%= f.submit "Submit Review", class: "review-submit-button" %>
+  <% end %>  
+</div>
