@@ -22,8 +22,8 @@ $(document).ready(function(){
   });
 
   // Reset all filters
-  $(".reset-filters").on("click", function() {
-    $("#chosen-day").text("all days");
+  $(".button-reset").on("click", function() {
+    $("#chosen-day").text("any day");
     $("#chosen-category").text("all categories");
     $("#chosen-level").text("all levels");
     $("#chosen-distance").text("any distance");

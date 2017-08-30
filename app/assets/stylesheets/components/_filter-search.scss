@@ -1,9 +1,21 @@
+.filter-container {
+  display:flex;
+  justify-content: space-between;
+}
+
 .tab-content {
   height: 50px;
 }
 
-.reset-filters {
+.reset-filters p{
+  font-size: 14px;
+  border: 1px solid $dark-gray;
+  padding: 3px;
+  border-radius: 3px;
 
+  &:hover{
+  background-color: rgba(250,250,250,0.5);
+  }
 }
 
 .days-container {
