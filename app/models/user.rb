@@ -5,8 +5,8 @@ class User < ApplicationRecord
   # TODO: change this line once Instructor is added
   belongs_to :studio, optional: true
 
-  has_many :bookings
-  has_many :reviews
+  has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :courses, through: :bookings
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, 
