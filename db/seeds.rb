@@ -2,7 +2,7 @@ require 'faker'
 
 puts "Start seeding.."
 
-# First clear database 
+# First clear database
 Review.destroy_all
 Booking.destroy_all
 Course.destroy_all
@@ -12,8 +12,8 @@ Studio.destroy_all
 # Seed 10 Studios
 puts "Created 10 Studios"
 studio_names = [
-  "Bodystreet", "Fitbox", "Urban Gladiator", "Medical Fitness Academy", 
-  "McFit", "Ladyline Loft", "Westhaften Studios", "Nautilus Fitnesscenter", 
+  "Bodystreet", "Fitbox", "Urban Gladiator", "Medical Fitness Academy",
+  "McFit", "Ladyline Loft", "Westhaften Studios", "Nautilus Fitnesscenter",
   "Zumba Fitness Berlin Tempelhof", "Fitco Fitness"
 ]
 studio_descriptions = Faker::Lorem.paragraphs(10)
@@ -62,14 +62,14 @@ end
 
 puts "Created 26 Courses. To get correct course dates, make sure to seed before demo"
 course_hash = {
-  "Yoga with Alvaro" => "Yoga", 
-  "Lean Pole Dancing" => "Dance", 
-  "Crossfit for life" => "Crossfit", 
+  "Yoga with Alvaro" => "Yoga",
+  "Lean Pole Dancing" => "Dance",
+  "Crossfit for life" => "Crossfit",
   "Zumba" => "Dance",
-  "Creative Pilates" => "Pilates", 
-  "Kickboxing just for you" => "Kickboxing", 
+  "Creative Pilates" => "Pilates",
+  "Kickboxing just for you" => "Kickboxing",
   "Taekwondo" => "Martial Arts",
-  "Hotty hot hot Iron" => "HOT"
+  "Hotty hot hot Iron" => "HIIT"
 }
 
 course_levels = ["Beginner", "Beginner", "Intermediate", "Intermediate", "Advanced"]
@@ -87,7 +87,7 @@ end
 
 # tomorrow
 course_hash.each do |title, category|
-  4.times do 
+  4.times do
     st = random_today.sample + 1.day
     cour = Course.new(title: title, category: category, start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: Faker::Lorem.paragraph(1), level: course_levels.sample)
     cour.studio = Studio.all.sample
@@ -136,12 +136,12 @@ end
 review_titles = [
   ["Too easy for me", "Too difficult", "Okay", "Meh"],
   ["Too easy for me", "Too difficult", "Okay", "Meh"],
-  ["Too easy for me", "Too difficult", "This was great", "Awesome", 
-    "Would do it again", "Good deal!", "Loved it!!", 
+  ["Too easy for me", "Too difficult", "This was great", "Awesome",
+    "Would do it again", "Good deal!", "Loved it!!",
     "Please bring this course to Frankfurt"],
     ["Best course ever", "You should definitely do this course!",
-      "Perfect intensity, cost, everything!", "Best instructor ever", "This was great", 
-      "Awesome", "Would do it again", "Good deal!", "Loved it!!", 
+      "Perfect intensity, cost, everything!", "Best instructor ever", "This was great",
+      "Awesome", "Would do it again", "Good deal!", "Loved it!!",
       "Please bring this course to Frankfurt"]
     ]
 

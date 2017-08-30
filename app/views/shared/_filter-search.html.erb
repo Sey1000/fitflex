@@ -49,22 +49,22 @@
   <div id="category-tab" class="tab-pane fade">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
-            <div class="swiper-slide"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" data-category="Yoga"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" data-category="Crossfit"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" data-category="Kickboxing"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" data-category="Dance"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" data-category="Pilates"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" data-category="HIIT"><%= image_tag 'yoga-favicon.ico' %> </div>
+            <div class="swiper-slide" data-category="Martial Arts"><%= image_tag 'yoga-favicon.ico' %> </div>
         </div>
         </div>
         </div>
 
   <div id="level-tab" class="tab-pane fade">
     <div class="level-container">
-      <button type="button" class="btn btn-primary button-level">Beginner</button>
-      <button type="button" class="btn btn-primary button-level">Intermediate</button>
-      <button type="button" class="btn btn-primary button-level">Pro</button>
+      <button type="button" class="btn btn-primary button-level" data-level="Beginner">Beginner</button>
+      <button type="button" class="btn btn-primary button-level" data-level="Intermediate">Intermediate</button>
+      <button type="button" class="btn btn-primary button-level" data-level="Advanced">Advanced</button>
     </div>
   </div>
   <div id="distance-tab" class="tab-pane fade">
@@ -88,7 +88,7 @@
     });
 
     $(".button-level").on("click", function(){
-      $("#search_courses_level").attr('value', $(this).text());
+      $("#search_courses_level").attr('value', $(this).attr('data-level'));
       $("#search_courses").submit();
     });
 
