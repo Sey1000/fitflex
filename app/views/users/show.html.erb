@@ -9,7 +9,6 @@
     <% end %>
   </div>
 
-      <%= render 'users/photo-form', user: @user %>
 
     <div class="profile-info">
       <div class="historical-bookings">
@@ -32,8 +31,8 @@
         </div>
       </div>
 
-  <div class="settings">
+    <%= link_to edit_user_registration_path, class: "setting-link" do %>
     <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
-  </div>
+    <% end %>
   </div>
 
