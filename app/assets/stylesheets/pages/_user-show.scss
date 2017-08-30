@@ -1,3 +1,7 @@
+// * {
+//   border: 1px solid yellow;
+// }
+
 .profile-main-info {
   display:flex;
   justify-content:center;
@@ -39,9 +43,22 @@
 }
 
 .historical-bookings{
-  padding: 5px;
+  padding: 0 10px 10px 10px;
   margin-top: 10px;
   border: 1px solid $dark-blue;
   border-radius: 5px;
+  &:hover {
+    background-color: rgba(200, 200, 200, 0.5);
+  }
+  p {
+    font-size: 1em;
+  }
+}
+
+.setting-link {
+  h2 {
+    margin: 0;
+    margin-top: 15px;
+  }
 }
 

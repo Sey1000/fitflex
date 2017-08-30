@@ -114,14 +114,24 @@ course_hash.each do |title, category|
 end
 
 puts "Created a bunch of bookings"
-Course.all.each do |crs|
-  (1..4).to_a.sample.times do
+
+User.all.each do |usr|
+  (1..7).to_a.sample.times do
     b = Booking.new
-    b.user = User.all.sample
-    b.course = crs
+    b.user = usr
+    b.course = Course.all.sample
     b.save
   end
 end
+
+# Course.all.each do |crs|
+#   (1..4).to_a.sample.times do
+#     b = Booking.new
+#     b.user = User.all.sample
+#     b.course = crs
+#     b.save
+#   end
+# end
 
 review_titles = [
   ["Too easy for me", "Too difficult", "Okay", "Meh"],

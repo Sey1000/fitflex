@@ -1,14 +1,14 @@
 <div class="container banner" style="background-image: url('<%= cl_image_path("tisyxhi8uquqkwfqokzh") %>')">
-    <h3>Fine your next course</h3>
+    <h3>Find your next course</h3>
   <div class="buttons-container">
     <%= link_to courses_path(search_day: 'today') do %>
       <div class="search-day-button"><h5>Today</h5></div>
     <% end %>
     <%= link_to courses_path(search_day: 'tomorrow') do %>
       <div class="search-day-button button-top-bottom-margin"><h5>Tomorrow</h5></div>
-    <% end %>    
+    <% end %>
     <%= link_to courses_path(search_day: 'next_seven') do %>
-      <div class="search-day-button"><h5>7 days</h5></div>    
+      <div class="search-day-button"><h5>7 days</h5></div>
     <% end %>
   </div>
 </div>

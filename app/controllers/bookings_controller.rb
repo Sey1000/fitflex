@@ -7,10 +7,6 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-  # def new
-  # booking submit button is in course#who view
-  # end
-
   def create
     @booking = Booking.new(bookings_params)
     @booking.save

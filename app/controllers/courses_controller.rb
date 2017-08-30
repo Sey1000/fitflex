@@ -74,7 +74,13 @@ class CoursesController < ApplicationController
       "Tomorrow"
     elsif datetime < (DateTime.now + 7.day)
       days = datetime.day - DateTime.now.day
-      "#{days} days"
+      if days == -1
+        "Yesterday"
+      elsif days < 0
+        "#{-days} days ago"
+      else
+        "#{days} days"
+      end
     end
   end
 end

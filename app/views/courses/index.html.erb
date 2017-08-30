@@ -1,6 +1,10 @@
 <%= render 'shared/filter-search' %>
-<%= render 'shared/course_card' %>
-<%= render 'shared/course_card' %>
-<%= render 'shared/course_card' %>
-<%= render 'shared/course_card' %>
-<%= render 'shared/course_card' %>
+
+<% @courses.each do |cs| %>
+  <%= link_to course_path(cs), class: 'card' do %>
+    <%= render 'shared/course_card', course: cs %>
+  <% end %>
+<% end %>
+
+
+
