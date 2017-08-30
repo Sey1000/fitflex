@@ -8,7 +8,7 @@ $(document).ready(function(){
 
   // Pick a category
   $(".swiper-slide").on("click", function() {
-    $("#chosen-category").html($(this).html());
+    $("#chosen-category").html($(this).attr('data-category'));
   });
 
   // Pick a level

@@ -44,8 +44,18 @@ class CoursesController < ApplicationController
     level = filter_params[:level]
 
     @update_courses = filter_courses(day)
-    unless level.empty?
+    # unless level.empty?
+    #   @update_courses = @update_courses.where(level: level)
+    # end
+
+    if level.present? && category.empty?
       @update_courses = @update_courses.where(level: level)
+    elsif level.empty? && category.present?
+      @update_courses = @update_courses.where(category: category)
+    elsif level.present? && category.present?
+      @update_courses = @update_courses.where({category: category, level: level})
+    else
+      @update_courses = filter_courses(day)
     end
 
     respond_to do |format|
@@ -81,7 +91,7 @@ class CoursesController < ApplicationController
     datetime = @course.start_time
     if datetime.today?
       "Today"
-    elsif datetime == Date.tomorrow
+    elsif datetime.to_date == Date.tomorrow
       "Tomorrow"
     elsif datetime < (DateTime.now + 7.day)
       days = datetime.day - DateTime.now.day
@@ -95,3 +105,11 @@ class CoursesController < ApplicationController
     end
   end
 end
+
+
+
+
+
+
+
+
