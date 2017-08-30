@@ -10,11 +10,15 @@
   <div class="course-category course-icon-description">
     <div class="category-image">
       <% case @course.category %>
-      <% when "Yoga" || "Pilates" %>
+      <% when "Yoga" %>
+        <%= image_tag 'buddhist-yoga-pose' %>
+        <% when "Pilates" %>
         <%= image_tag 'buddhist-yoga-pose' %>
       <% when "Crossfit" %>
         <%= image_tag 'weightlifting' %>
-      <% when "Kickboxing" || "Marterial Arts" %>
+      <% when "Kickboxing" %>
+        <%=  image_tag 'mma' %>
+        <% when "Martial Arts" %>
         <%=  image_tag 'mma' %>
       <% when "Dance" %>
         <%= image_tag 'dancer' %>

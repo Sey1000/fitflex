@@ -3,7 +3,7 @@
 }
 .card {
   position: relative;
-  margin: 2px 5px;
+  margin: -12px 5px;
   padding: 10px 5px;
   // box-shadow: 1px 1px 2px #a2a2a2;
   border-bottom: 1px solid #bebebe;
@@ -33,7 +33,7 @@ h3 {
 }
 p {
   margin: 0px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .thumbnail > img {
 
@@ -59,7 +59,7 @@ h4 {
 }
 .distance {
   position: absolute;
-  bottom: 124px;
+  bottom: 49px;
   right: 10px;
   color: #7b7b7b;
   font-weight: 300;
