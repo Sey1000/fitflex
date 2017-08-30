@@ -1,14 +1,19 @@
 
 <div class="row">
-  <div class="col-sm-1 col-md-12">
+  <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="card">
       <img src="http://www.studio89fitness.com/images/background/6.jpg" alt="studio">
+
       <h4 class="distance">3.5 km</h4>
-      <p class="course-price">45€</p>
+      <p class="course-price">
+      <%= course.cost %>€
+      </p>
       <div class="info">
-        <h3 class="course-title">Crossfit Beginner II</h3>
+        <h3 class="course-title">
+          <%= course.title %>
+        </h3>
         <div class="studio-title">
-          <h4>Studio 89</h4>
+          <h4><%= course.studio.name %></h4>
         </div>
         <div class="star-ratings-css-small">
           <div class="star-rating-css-top" style = "width: 100%;">
@@ -18,7 +23,18 @@
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
         </div>
-        <p>Sept. 12th, 8:00am - 9:00am</p>
+        <p>
+          <% if course.start_time.to_date == Date.today %>
+            Today
+          <% elsif course.start_time.to_date == (Date.today + 1) %>
+            Tomorrow
+          <% else %>
+            <%= course.start_time.strftime('%A, %b %d') %>
+          <% end %>
+          <p>
+            <%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
+          </p>
+        </p>
       </div>
     </div>
   </div>
