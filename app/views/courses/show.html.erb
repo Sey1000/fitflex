@@ -3,7 +3,7 @@
   <%= render 'shared/stars' %>
 </div>
 <div class="blue-banner" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%); height: 5vh;">
-  <%= @date_words %>  <%= @course.start_time.strftime ("%I %P") %>
+  <%= @date_words %>  <%= @course.start_time.strftime ("%l:%M %P") %>
   <div class="prices">
     <%= @course.cost%><i class="fa fa-euro"></i>
   </div>
@@ -12,6 +12,6 @@
 <%= render 'shared/course_descriptions_icons' %>
 <%= render 'shared/reviews' %>
 
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|" + URI.encode(@course.studio.address) %>
-<img src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|Herzbergstraße%2087-89,%2010365%20Berlin">
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&key=#{ENV['GOOGLE_API_SERVER_KEY']}&maptype=roadmap&markers=color:red|@course.studio.address"  %>
+
 
