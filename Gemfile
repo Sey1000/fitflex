@@ -19,7 +19,8 @@ gem 'rails', '5.0.5'
 gem 'redis'
 
 #Google maps
-gem "coffee-rails"
+gem "geocoder"
+# gem "coffee-rails"
 gem "gmaps4rails"
 
 source 'https://rails-assets.org' do
