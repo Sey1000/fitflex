@@ -7,7 +7,8 @@
 
 }
 .review-content {
-  min-width: 100px;
+  max-width: 65%;
+  flex-grow: 1;
 }
 
 .review-rating {

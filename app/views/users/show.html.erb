@@ -9,7 +9,6 @@
     <% end %>
   </div>
 
-      <%= render 'users/photo-form', user: @user %>
 
     <div class="profile-info">
       <div class="historical-bookings">
@@ -17,7 +16,7 @@
         <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
         <div class="row hidden">
           <% upcoming_bookings.each do |b| %>
-            <%= render 'shared/booking-list', b: b %>
+            <%= render 'shared/booking-list', b: b, old: false %>
           <% end %>
         </div>
         </div>
@@ -27,13 +26,13 @@
         <% past_bookings = @user.bookings.select { |b| b.course.start_time - Time.now < 0 } %>
         <div class="row hidden">
           <% past_bookings.each do |b| %>
-            <%= render 'shared/booking-list', b: b %>
+            <%= render 'shared/booking-list', b: b, old: true %>
           <% end %>
         </div>
       </div>
 
-  <div class="settings">
+    <%= link_to edit_user_registration_path, class: "setting-link" do %>
     <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
-  </div>
+    <% end %>
   </div>
 
