@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Add Icon next to the title. Feel free to change the icon -->
-    <%= favicon_link_tag 'yoga-favicon.ico' %>
-    <!-- Add 'Fitflex as title, unless title is specified' -->
-    <title>
-      <% if content_for?(:title) %>
-        <%= yield(:title) %>
-      <% else %>
-        Fitflex
-      <% end %>
-    </title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-  </head>
-  <body>
-    <%= render 'shared/sidenavbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= cloudinary_js_config %>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Add Icon next to the title. Feel free to change the icon -->
+  <%= favicon_link_tag 'yoga-favicon.ico' %>
+  <!-- Add 'Fitflex as title, unless title is specified' -->
+  <title>
+    <% if content_for?(:title) %>
+    <%= yield(:title) %>
+    <% else %>
+    Fitflex
+    <% end %>
+  </title>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <%= render 'shared/sidenavbar' %>
+  <%= render 'shared/flashes' %>
+  <%= yield %>
+
+  <%= javascript_include_tag "application" %>
+
+  <%= cloudinary_js_config %>
+  <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+
+  <%= yield(:after_js) %>
+</body>
 </html>

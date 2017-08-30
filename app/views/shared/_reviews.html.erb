@@ -1,4 +1,4 @@
-<div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%);height: 35vh;">
+<div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%);">
   <h3>Reviews</h3>
   <% @course.reviews.each do |review| %>
     <div class="review">
@@ -20,7 +20,6 @@
         <% (5- review.rating).times do %>
           <i class="fa fa-star-o"></i>
         <% end %>
-
       </div>
     </div>
   <% end %>

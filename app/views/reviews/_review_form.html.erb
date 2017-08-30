@@ -1,0 +1,21 @@
+<div class="container review-form">
+  <%= simple_form_for [@course, @review] do |f| %>
+    <% if @review.errors.any? %>
+      <ul class="list-unstyled review-error-message">
+        <li class="text-center"><i class="fa fa-exclamation-circle"></i> Course <%= @review.errors[:course][0] %></li>
+      </ul>
+    <% end %>
+    <label class="control-label">Rating</label>
+    <div class="review-star-container">
+      <i class="fa fa-star-o fa-2x review-star" data-rating="1"></i>
+      <i class="fa fa-star-o fa-2x review-star" data-rating="2"></i>
+      <i class="fa fa-star-o fa-2x review-star" data-rating="3"></i>
+      <i class="fa fa-star-o fa-2x review-star" data-rating="4"></i>
+      <i class="fa fa-star-o fa-2x review-star" data-rating="5"></i>      
+    </div>
+    <%= f.input :rating, as: :hidden, input_html: { id: "hidden-review-rating" } %>
+    <%= f.input :title %>
+    <%= f.input :content, input_html: { rows: 3 } %>
+    <%= f.submit "Submit Review", class: "review-submit-button" %>
+  <% end %>  
+</div>
