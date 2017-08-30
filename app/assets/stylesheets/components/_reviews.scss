@@ -1,0 +1,16 @@
+.review {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+  font-size: 15px;
+  color: black;
+
+}
+.review-content {
+  min-width: 100px;
+}
+
+.review-rating {
+  display: flex;
+  font-size: 9px;
+}

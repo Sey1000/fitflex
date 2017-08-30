@@ -14,7 +14,7 @@ class Course < ApplicationRecord
       ratings << r.rating
       sum += r.rating
     end
-    ((sum/(ratings.length)).to_f)/5 *100
+    (sum.to_f / (ratings.length)) / 5 *100
   end
 
 
