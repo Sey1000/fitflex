@@ -53,10 +53,10 @@
   <!-- Sidebar appearing on mobile only -->
   <% if user_signed_in? %>
     <div class="navbar-wagon-right hidden-md hidden-lg">
-      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+      <i class="fa fa-bars" style="cursor:pointer" onclick="openNav()"></i>
     </div>
     <div class="sidenav" id="mySidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <i class="fa fa-times closebtn" onclick="closeNav()"></i>
       <div class="user-info">
         <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-xs" %>
         <h1>user name</h1>
