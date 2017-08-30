@@ -44,8 +44,18 @@ class CoursesController < ApplicationController
     level = filter_params[:level]
 
     @update_courses = filter_courses(day)
-    unless level.empty?
+    # unless level.empty?
+    #   @update_courses = @update_courses.where(level: level)
+    # end
+
+    if level.present? && category.empty?
       @update_courses = @update_courses.where(level: level)
+    elsif level.empty? && category.present?
+      @update_courses = @update_courses.where(category: category)
+    elsif level.present? && category.present?
+      @update_courses = @update_courses.where({category: category, level: level})
+    else
+      @update_courses = filter_courses(day)
     end
 
     respond_to do |format|
