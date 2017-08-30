@@ -20,4 +20,12 @@ $(document).ready(function(){
   $(".button-distance").on("click", function() {
     $("#chosen-distance").html($(this).text());
   });
+
+  // Reset all filters
+  $(".reset-filters").on("click", function() {
+    $("#chosen-day").text("all days");
+    $("#chosen-category").text("all categories");
+    $("#chosen-level").text("all levels");
+    $("#chosen-distance").text("any distance");
+  });
 });
