@@ -5,11 +5,16 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @user = current_user
     @studios = Studio.where.not(latitude: nil, longitude: nil).where(id: @course.studio_id)
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
       marker.lat studio.latitude
       marker.lng studio.longitude
     end
+    la = Geocoder.search('85.214.132.117').first.latitude
+    lo = Geocoder.search('85.214.132.117').first.longitude
+    @json = distance_api_call(la,lo)
+    @request = request.location
     # @average_rating = average_rating
     @date_words = date_words
   end
@@ -38,6 +43,18 @@ class CoursesController < ApplicationController
   end
 
   private
+
+  require 'open-uri'
+
+  def distance_api_call(la, lo)
+   url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{la},#{lo}&destinations=#{URI.encode(@course.studio.address)}"
+   form = open(url).read
+   return JSON.parse(form)
+  end
+
+  def distance_from_api(json)
+
+  end
 
   def filter_courses
     filtered_courses = Course.all
