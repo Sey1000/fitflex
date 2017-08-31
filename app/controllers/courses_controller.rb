@@ -6,10 +6,10 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @user = current_user
+    #@user = current_user
 
-    la = Geocoder.search('85.214.132.117').first.latitude
-    lo = Geocoder.search('85.214.132.117').first.longitude
+    la = location.latitude
+    lo = location.longitude
     @json_distance = distance_api_call(la,lo)
     @request = request.location
     @json_driving = duration_api_call(la,lo,"driving")
@@ -96,6 +96,14 @@ class CoursesController < ApplicationController
   def duration_api_call(la,lo,mode)
     url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{la},#{lo}&destinations=#{URI.encode(@course.studio.address)}&mode=#{mode}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
     json_parsing_duration(url)
+  end
+
+  def location
+    if request.location.ip == "127.0.0.1"
+      Geocoder.search('85.214.132.117').first
+    else
+      request.location
+    end
   end
 
 
