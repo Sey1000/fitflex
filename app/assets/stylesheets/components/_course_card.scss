@@ -6,7 +6,7 @@
   padding: 0 !important;
   margin: 0 !important;
 }
-#render_courses > :nth-child(even) .course-color {
+#render_courses > :nth-child(odd) .course-color {
   background-color: white;
 }
 .course-card {
