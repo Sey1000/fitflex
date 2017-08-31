@@ -14,7 +14,6 @@
         </h3>
         <div class="studio-title">
           <h4><%= course.studio.name %></h4>
-          <p><%= course.level %> / <%= course.category %></p>
         </div>
         <div class="star-ratings-css-small">
           <div class="star-rating-css-top" style = "width: 100%;">
@@ -36,6 +35,7 @@
             <%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
           </p>
         </p>
+        <!-- <p class="level"><%= course.level %> </p> -->
       </div>
     </div>
   </div>

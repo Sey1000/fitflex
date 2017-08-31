@@ -19,7 +19,7 @@
 .course-price {
   font-size: 16px;
   position: absolute;
-  bottom: 14px;
+  bottom: 9px;
   right: 10px;
   color: $dark-blue;
   font-weight: 500;
@@ -40,14 +40,13 @@
 }
 .info {
   position: absolute;
-  bottom: 14px;
+  bottom: 0px;
   left: 149px;
   color: #2b6a8c;
+  height: 96%;
 }
 .studio-title {
   font-size: 15px;
-  margin-bottom: 22px;
-
 }
 h4 {
   font-size: 15px;
@@ -59,17 +58,19 @@ h4 {
 }
 .distance {
   position: absolute;
-  bottom: 49px;
+  bottom: 56px;
   right: 10px;
   color: #7b7b7b;
   font-weight: 300;
+  font-size: 13px;
+
 }
 .star-ratings-css-small {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
   font-size: 18px;
   height: 25px;
-  width: 110px;
+  width: 90px;
   position: relative;
   padding: 0;
   z-index: -1;
@@ -89,5 +90,10 @@ h4 {
     display: block;
     z-index: 0;
   }
+}
+.level {
+  font-size: 12px;
+  margin-bottom: 0px;
+  margin: 0px 0 -0.5px;
 }
 
