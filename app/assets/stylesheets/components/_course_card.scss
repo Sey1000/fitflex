@@ -16,11 +16,17 @@
   // box-shadow: 1px 1px 2px #a2a2a2;
   border-bottom: 1px solid #bebebe;
   .studio-picture{
-    img {
-    display: block;
+    // display: block;
     width: 125px;
     height: 125px;
-    }
+    background: gray;
+    background-size: cover;
+    flex: 0 0 auto;
+    // img {
+    // display: block;
+    // width: 125px;
+    // height: 125px;
+    // }
   }
 }
 
@@ -90,34 +96,30 @@
 }
 
 .star-ratings-css-small {
-  unicode-bidi: bidi-override;
-  color: #c5c5c5;
+  color: #e9a30a;
   font-size: 18px;
   height: 25px;
-  width: 90px;
+  width: 103px;
   position: relative;
   padding: 0;
   z-index: -1;
-
-  .star-rating-css-top {
-    color: #e7711b;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    display: block;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  }
-  .star-rating-css-bottom {
-    padding: 0;
-    display: block;
-    z-index: 0;
-  }
 }
+
+.star-ratings-css-medium {
+  color: #e9a30a;
+  font-size: 25px;
+  height: 25px;
+  position: relative;
+  padding: 0;
+  z-index: 0;
+}
+
 .level {
   font-size: 12px;
   margin-bottom: 0px;
   margin: 0px 0 -0.5px;
 }
+// .fa {
+//   color: #ebc307;
+// }
 

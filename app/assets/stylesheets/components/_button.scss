@@ -27,10 +27,28 @@
   width: 20px;
 }
 
-#button-day {
-  width: 28%;
+.button-day {
+  padding: 10px 15px;
+  border: 2px solid white;
+  margin: 0px auto;
+  background-color: rgba(200, 200, 200,0.1);
+  &:hover{
+  background-color: rgba(250,250,250,0.5);
+  }
+
 }
 
+.button-category {
+
+}
+
+.button-level {
+
+}
+
+.button-distance {
+
+}
 
 
 

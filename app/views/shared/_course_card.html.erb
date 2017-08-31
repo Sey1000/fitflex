@@ -1,10 +1,9 @@
 <div class="row-course">
     <div class="col-xs-12 no-padding">
       <div class="course-card">
-        <div class="studio-picture">
-          <img src="http://www.studio89fitness.com/images/background/6.jpg" alt="studio">
+        <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.cld_id %>');">
+          <!-- <img src="http://www.studio89fitness.com/images/background/6.jpg" alt="studio"> -->
         </div>
-        </p>
         <div class="info">
         <div class="spots">
           <%= course.spots - course.bookings.length %> spots left!
@@ -14,6 +13,7 @@
           </div>
           <p class="course-price">
             <%= course.cost.round %>€
+          </p>
           <h3 class="course-title">
             <%= course.title %>
           </h3>
@@ -21,12 +21,7 @@
             <h4 class="studio-card-title"><%= course.studio.name %></h4>
           </div>
           <div class="star-ratings-css-small">
-            <div class="star-rating-css-top" style = "width: 100%;">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-            </div>
-            <div class="star-rating-css-bottom">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-            </div>
+            <%= render 'shared/stars', course: course %>
           </div>
           <p class="course-times">
             <% if course.start_time.to_date == Date.today %>

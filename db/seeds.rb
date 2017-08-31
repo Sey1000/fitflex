@@ -26,7 +26,7 @@ studio_hash = {
 }
 
 studio_hash.each do |st_name, st_info|
-  Studio.create(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone])
+  Studio.create(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id])
 end
 
 # Seed Users that DON'T belong to studios (regular customers)
@@ -64,13 +64,13 @@ end
 puts "Created Courses. To get correct course dates, make sure to seed before demo"
 course_hash = {
   "Yoga with Alvaro" => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
-  "Lean Pole Dancing" => { category: "Dance", description: "You will increase your upper body strength and improve your cardio with each move, plus learn the true Diva routine containing 15 new moves." },
+  "Learn Pole Dancing" => { category: "Dance", description: "You will increase your upper body strength and improve your cardio with each move, plus learn the true Diva routine containing 15 new moves." },
   "Crossfit for life" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
   "Zumba" => { category: "Dance", description: "Learn how to blend specific Zumba moves and body sculpting techniques using maraca-like Zumba Toning Sticks for an intense strength-training experience." },
   "Creative Pilates" => { category: "Pilates", description: "High-energy and dynamic class which integrates elements of Pilates, Dance, cardio, strength training and stretching. No dance experience required!" },
   "Kickboxing just for you" => { category: "Kickboxing", description: "Come ready to sweat like crazy, build a rock solid core, and burn hundreds of calories." },
   "Taekwondo" => { category: "Martial Arts", description: "Taekwondo emphasizes a sense of morality, humility, and a respect for one's opponent. Practitioners can improve both their physical ability and mental strength." },
-  "Interval Trainng" => { category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions." }
+  "Interval Training" => { category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions." }
 }
 
 course_levels = ["Beginner", "Beginner", "Intermediate", "Intermediate", "Advanced"]
