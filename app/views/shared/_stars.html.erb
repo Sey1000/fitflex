@@ -11,42 +11,72 @@
 
 <!-- Implementing font awesome stars -->
 <% avg = course.average_rating %>
-<% if avg == 5 %>
+<% if avg >= 4.8 && avg <= 5 %>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
-<% elsif avg >= 4 && avg < 5%>
+<% elsif avg >= 4.3 && avg < 4.8 %>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-half-o"></i>
+<% elsif avg >= 3.8 && avg < 4.3 %>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star-o"></i>
-<% elsif avg >= 3 && avg < 4 %>
+<% elsif avg >= 3.3 && avg < 3.8 %>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-half-o"></i>
+  <i class="fa fa-star-o"></i>
+<% elsif avg >= 2.8 && avg < 3.3 %>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star-o"></i>
   <i class="fa fa-star-o"></i>
-<% elsif avg >= 2 && avg < 3 %>
+<% elsif avg >= 2.3 && avg < 2.8 %>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-half-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+<% elsif avg >= 1.8 && avg < 2.3 %>
   <i class="fa fa-star"></i>
   <i class="fa fa-star"></i>
   <i class="fa fa-star-o"></i>
   <i class="fa fa-star-o"></i>
   <i class="fa fa-star-o"></i>
-<% elsif avg >= 1 && avg < 2 %>
+<% elsif avg >= 1.3 && avg < 1.8 %>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-half-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+<% elsif avg >= 0.8 && avg < 1.3 %>
   <i class="fa fa-star"></i>
   <i class="fa fa-star-o"></i>
   <i class="fa fa-star-o"></i>
   <i class="fa fa-star-o"></i>
   <i class="fa fa-star-o"></i>
+<% elsif avg < 0.8 %>
+  <i class="fa fa-star-half-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+
 <% else %>
   <p> No Reviews </p>
 <% end %>
 
 
-<!-- <i class="fa fa-star-half-o" aria-hidden="true"></i> -->
 
 
 
