@@ -1,10 +1,10 @@
 <div class="row-course">
-    <div class="col-xs-12 no-padding">
+    <div class="col-xs-12 no-padding course-color">
       <div class="course-card">
         <div class="studio-picture">
           <img src="http://www.studio89fitness.com/images/background/6.jpg" alt="studio">
         </div>
-        </p>
+
         <div class="info">
         <div class="spots">
           <%= course.spots - course.bookings.length %> spots left!
@@ -12,11 +12,8 @@
           <div class="distance">
             <i class="fa fa-map-marker"></i>  3.5 km
           </div>
-          <p class="course-price">
-            <%= course.cost.round %>€
-          <h3 class="course-title">
-            <%= course.title %>
-          </h3>
+          <p class="course-price"> <%= course.cost.round %>€ </p>
+          <h3 class="course-title"> <%= course.title %> </h3>
           <div class="studio-title">
             <h4><%= course.studio.name %></h4>
           </div>

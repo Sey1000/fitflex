@@ -2,18 +2,17 @@
 //   padding: 0;
 // }
 
-
 .no-padding {
   padding: 0 !important;
   margin: 0 !important;
 }
+#render_courses > :nth-child(even) .course-color {
+  background-color: white;
+}
 .course-card {
-  // position: relative;
   display: flex;
-
   margin: 0px 7px;
   padding: 10px 5px;
-  // box-shadow: 1px 1px 2px #a2a2a2;
   border-bottom: 1px solid #bebebe;
   .studio-picture{
     img {
