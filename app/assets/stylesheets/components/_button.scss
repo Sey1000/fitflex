@@ -43,13 +43,16 @@
 }
 
 .button-category {
+
   width: 40px;
   img {
   height: 35px;
   width: 35px;
   }
   padding: 5px;
-
+  img {
+  background-color: none;
+  }
 }
 
 .button-level {
@@ -84,6 +87,11 @@
 
 }
 
+.button-back {
+  text-decoration: none;
+  color:white;
+  font-size: 17px;
+}
 
 
 // .round-button {

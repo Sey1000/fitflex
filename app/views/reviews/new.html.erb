@@ -1,20 +1,11 @@
-<!-- Eventually render course description partial -->
-<!-- It's manually done for now to avoid conflicts -->
 
-<div class="course-banner" style="background-image: url('<%= image_path 'crossfit' %>');">
-  <h3><%= @course.title %></h3>
-  <%= render 'shared/stars' %>
-</div>
-<div class="blue-banner" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%); height: 5vh;">
-  <%= @date_words %>  <%= @course.start_time.strftime ("%l:%M %P") %>
-  <div class="prices">
-    <% cost_amount = @course.cost %>
-    <% if cost_amount - cost_amount.to_i == 0 %>
-      <%= cost_amount.to_i %><i class="fa fa-euro"></i>
-    <% else %>
-      <%= @course.cost%><i class="fa fa-euro"></i>
-    <% end %>
+<div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.cld_id %>');">
+  <h3 class="course-show-title"><%= @course.title %></h3>
+  <div class="star-ratings-css-medium">
+    <%= render 'shared/stars', course: @course %>
   </div>
 </div>
+<%= render 'shared/time-cost-banner' %>
 <%= render 'shared/course_descriptions_icons' %>
+
 <%= render 'reviews/review_form' %>

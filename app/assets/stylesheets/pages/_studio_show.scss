@@ -1,0 +1,13 @@
+.studio-description {
+  margin: 0 10px;
+  text-align: justify;
+}
+.instructors {
+  display: flex;
+  justify-content: space-around;
+  .instr{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
