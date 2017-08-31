@@ -1,0 +1,10 @@
+<div class="form-filters">
+
+  <%= form_for :search_courses, url: "/courses/search_courses", remote: true, method: :post, html: { id: 'search_courses' } do |f| %>
+    <% f.text_field :day, value: params[:search_day]%>
+    <% f.text_field :category %>
+    <% f.text_field :level %>
+    <%#= f.text_field :day %>
+    <% f.submit %>
+  <% end %>
+</div>
