@@ -27,7 +27,7 @@
             <% else %>
               <%= course.start_time.strftime('%A, %b %d') %>
             <% end %>
-              <%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
+              <br><%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
           </div>
           <!-- <p class="level"><%= course.level %> </p> -->
         </div>
