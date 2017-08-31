@@ -10,10 +10,16 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(bookings_params)
     if @booking.save
-      redirect_to user_path(current_user)
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user) }
+        format.js
+      end
     else
       @course = Course.find(bookings_params[:course_id])
-      render 'courses/show'
+      respond_to do |format|
+        format.html { render 'courses/show' }
+        format.js
+      end
     end
   end
 

@@ -7,9 +7,9 @@
     <div class="modal-content">
       <div class="modal-header text-center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+        <h4 class="modal-title booking-modal-title" id="myModalLabel">Confirm</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body booking-modal-body">
         <%= course.title %><br>
         <%= date_words %>  <%= course.start_time.strftime ("%l:%M %P") %><br>
         <%= course.studio.address %>
@@ -21,9 +21,9 @@
             <%= course.cost%> <i class="fa fa-euro"></i>
           <% end %>
         </div>
-        <%= simple_form_for(Booking.new) do |f| %>
-            <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
-            <%= f.input :course_id, as: :hidden, input_html: { value: course.id } %>
+        <%= simple_form_for(Booking.new, remote: true) do |f| %>
+          <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+          <%= f.input :course_id, as: :hidden, input_html: { value: course.id } %>
           <div class="text-center">
             <%= f.submit "Confirm", class: "btn btn-danger" %>
           </div>
