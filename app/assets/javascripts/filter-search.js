@@ -27,5 +27,6 @@ $(document).ready(function(){
     $("#chosen-category").html("");
     $("#chosen-level").html("");
     $("#chosen-distance").html("");
+    $(".chosen-filters").html('<h4>Add more filters</h4>')
   });
 });
