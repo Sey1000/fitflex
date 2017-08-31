@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def index
-    @courses = filter_courses(params[:search_day])
+    courses_by_day = filter_courses(params[:search_day])
+    @courses = available_courses(courses_by_day)
     # update_index
   end
 
@@ -112,6 +113,10 @@ class CoursesController < ApplicationController
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
     return filtered_courses
+  end
+
+  def available_courses(courses)
+    courses.reject { |course| course.bookings.length == course.spots }
   end
 
   def courses_params
