@@ -10,31 +10,27 @@ User.destroy_all
 Studio.destroy_all
 
 # Seed 10 Studios
-puts "Created 10 Studios"
-studio_names = [
-  "Bodystreet", "Fitbox", "Urban Gladiator", "Medical Fitness Academy",
-  "McFit", "Ladyline Loft", "Westhaften Studios", "Nautilus Fitnesscenter",
-  "Zumba Fitness Berlin Tempelhof", "Fitco Fitness"
-]
-studio_descriptions = Faker::Lorem.paragraphs(10)
-studio_addresses = [
-  "Charlottenstr. 79, 10117 Berlin", "Rudi-Dutschke-Straße 1, 10969 Berlin",
-  "Wilhelmstraße 14, 10963 Berlin", "Kleiststraße 3-6, 10787 Berlin",
-  "Tauentzienstraße 8, 10789 Berlin", "Stromstraße 39, 10551 Berlin",
-  "Turmstraße 57, 10551 Berlin", "Manteuffelstraße 65, 12103 Berlin",
-  "Viktoriastraße 10-18, 12105 Berlin", "Herzbergstraße 87-89, 10365 Berlin"
-]
-studio_phone_numbers = [
-  "030 33846280", "030 98322747", "0176 55131262", "030 21913071", "030 25794520",
-  "030 77906990", "030 3959521", "030 75702377", "0176 84016146", "030 55263303"
-]
+puts "Created Studios"
 
-(0..9).to_a.each do |ind|
-  Studio.create(name: studio_names[ind], description: studio_descriptions[ind], address: studio_addresses[ind], telephone: studio_phone_numbers[ind])
+studio_hash = {
+  "Bodystreet" => { address: "Charlottenstr. 79, 10117 Berlin", telephone: "030 33846280", cld_id: "jnmth8rsvmvcbhi0hokx" },
+  "Fitbox" => { address: "Rudi-Dutschke-Straße 1, 10969 Berlin", telephone: "030 98322747", cld_id: "hzgzwqyvcjxocjxrty4v" },
+  "Urban Gladiator" => { address: "Wilhelmstraße 14, 10963 Berlin", telephone: "0176 55131262", cld_id: "sloh6uufvv8tvyqa8jwf" },
+  "Medical Fitness Academy" => { address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "gg69jatbm9zaegcdzafb" },
+  "McFit" => { address: "Tauentzienstraße 8, 10789 Berlin", telephone: "030 25794520", cld_id: "tkzjagesfqt24rzkp1ib" },
+  "Ladyline Loft" => { address: "Stromstraße 39, 10551 Berlin", telephone: "030 77906990", cld_id: "hdspljxylbtwbgcuaxab" },
+  "Westhaften Studios" => { address: "Turmstraße 57, 10551 Berlin", telephone: "030 3959521", cld_id: "am3jqwown9tkbeshaian" },
+  "Nautilus Fitnesscenter" => { address: "Manteuffelstraße 65, 12103 Berlin", telephone: "030 75702377", cld_id: "mwughpj2aqebnfheppf9" },
+  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre" },
+  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs" }
+}
+
+studio_hash.each do |st_name, st_info|
+  Studio.create(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone])
 end
 
 # Seed Users that DON'T belong to studios (regular customers)
-puts "Created 20 Users"
+puts "Created Users"
 
 user_emails = [
   "kris@wagon.com", "maren@wagon.com", "sey@wagon.com", "nhung@wagon.com",
@@ -46,6 +42,11 @@ user_emails = [
 
 user_emails[0..10].each do |em|
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456')
+end
+
+# more users with fake infos
+30.times do
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456')
 end
 
 # Some users without names
@@ -60,17 +61,16 @@ user_emails[16..19].each do |em|
   u.save
 end
 
-puts "Created 26 Courses. To get correct course dates, make sure to seed before demo"
+puts "Created Courses. To get correct course dates, make sure to seed before demo"
 course_hash = {
-  "Yoga with Alvaro" => "Yoga",
-  "Lean Pole Dancing" => "Dance",
-  "Crossfit for life" => "Crossfit",
-  "Zumba" => "Dance",
-  "Creative Pilates" => "Pilates",
-  "Kickboxing just for you" => "Kickboxing",
-  "Taekwondo" => "Martial Arts",
-  "Hotty hot hot Iron" => "HIIT"
-
+  "Yoga with Alvaro" => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
+  "Lean Pole Dancing" => { category: "Dance", description: "You will increase your upper body strength and improve your cardio with each move, plus learn the true Diva routine containing 15 new moves." },
+  "Crossfit for life" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
+  "Zumba" => { category: "Dance", description: "Learn how to blend specific Zumba moves and body sculpting techniques using maraca-like Zumba Toning Sticks for an intense strength-training experience." },
+  "Creative Pilates" => { category: "Pilates", description: "High-energy and dynamic class which integrates elements of Pilates, Dance, cardio, strength training and stretching. No dance experience required!" },
+  "Kickboxing just for you" => { category: "Kickboxing", description: "Come ready to sweat like crazy, build a rock solid core, and burn hundreds of calories." },
+  "Taekwondo" => { category: "Martial Arts", description: "Taekwondo emphasizes a sense of morality, humility, and a respect for one's opponent. Practitioners can improve both their physical ability and mental strength." },
+  "Interval Trainng" => { category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions." }
 }
 
 course_levels = ["Beginner", "Beginner", "Intermediate", "Intermediate", "Advanced"]
@@ -79,37 +79,35 @@ random_today = [t + (8..15).to_a.sample.hour, t + (19..21).to_a.sample.hour]
 random_length = [1, 1, 1, 1, 1.5, 1.5, 2]
 
 # today
-course_hash.each do |title, category|
+course_hash.each do |title, info|
   st = random_today.sample
-  cour = Course.new(title: title, category: category, start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: Faker::Lorem.paragraph(1), level: course_levels.sample)
+  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
   cour.studio = Studio.all.sample
   cour.save
 end
 
 # tomorrow
-course_hash.each do |title, category|
-  4.times do
+course_hash.each do |title, info|
+  2.times do
     st = random_today.sample + 1.day
-    cour = Course.new(title: title, category: category, start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: Faker::Lorem.paragraph(1), level: course_levels.sample)
+    cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
     cour.studio = Studio.all.sample
     cour.save
   end
 end
 
 # next 7 days
-course_hash.each do |title, category|
-  2.times do
-    st = random_today.sample + (2..7).to_a.sample.day
-    cour = Course.new(title: title, category: category, start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: Faker::Lorem.paragraph(1), level: course_levels.sample)
-    cour.studio = Studio.all.sample
-    cour.save
-  end
+course_hash.each do |title, info|
+  st = random_today.sample + (2..7).to_a.sample.day
+  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+  cour.studio = Studio.all.sample
+  cour.save
 end
 
 # old courses
-course_hash.each do |title, category|
+course_hash.each do |title, info|
   st = random_today.sample - (1..7).to_a.sample.day
-  cour = Course.new(title: title, category: category, start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: Faker::Lorem.paragraph(1), level: course_levels.sample)
+  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
   cour.studio = Studio.all.sample
   cour.save
 end
@@ -125,34 +123,35 @@ User.all.each do |usr|
   end
 end
 
-# Course.all.each do |crs|
-#   (1..4).to_a.sample.times do
-#     b = Booking.new
-#     b.user = User.all.sample
-#     b.course = crs
-#     b.save
-#   end
-# end
-
 review_titles = [
-  ["Too easy for me", "Too difficult", "Okay", "Meh"],
   ["Too easy for me", "Too difficult", "Okay", "Meh"],
   ["Too easy for me", "Too difficult", "This was great", "Awesome",
     "Would do it again", "Good deal!", "Loved it!!",
     "Please bring this course to Frankfurt"],
-    ["Best course ever", "You should definitely do this course!",
+  ["Best course ever", "You should definitely do this course!",
       "Perfect intensity, cost, everything!", "Best instructor ever", "This was great",
       "Awesome", "Would do it again", "Good deal!", "Loved it!!",
       "Please bring this course to Frankfurt"]
-    ]
+]
 
-    puts "Created 100 reviews"
-    100.times do
-      ind = (0..3).to_a.sample
-      r = Review.new(title: review_titles[ind].sample, content: Faker::HowIMetYourMother.quote, rating: ind + 2)
-      r.course = Course.all.sample
-      r.user = User.all.sample
-      r.save
-    end
+puts "Created reviews"
 
-    puts "Seeding complete"
+Course.all.each do |cs|
+  (1..5).to_a.sample.times do
+    ind = (0..2).to_a.sample
+    r = Review.new(title: review_titles[ind].sample, content: Faker::HowIMetYourMother.quote, rating: ind + 3)
+    r.course = cs
+    r.user = User.all.sample
+    r.save
+  end
+end
+
+# 100.times do
+#   ind = (0..2).to_a.sample
+#   r = Review.new(title: review_titles[ind].sample, content: Faker::HowIMetYourMother.quote, rating: ind + 3)
+#   r.course = Course.all.sample
+#   r.user = User.all.sample
+#   r.save
+# end
+
+puts "Seeding complete"
