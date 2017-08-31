@@ -4,5 +4,3 @@ $(document).ready(function() {
       $(this).next(".row").toggleClass("hidden");
     });
 });
-
-// is this working -- sey??
