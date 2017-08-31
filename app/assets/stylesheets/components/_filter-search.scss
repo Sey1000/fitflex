@@ -16,7 +16,7 @@
 .chosen-filters-container {
   display:flex;
   justify-content: space-between;
-  margin: 10px auto;
+  margin: 5px;
 }
 
 .chosen-filters {
@@ -25,7 +25,6 @@
   font-size: 10px;
   height: 30px;
   display: flex;
-  padding: 5px 10px;
   width: 100%;
   margin-right: 0px !important;
   position:relative;
@@ -35,6 +34,10 @@
     border: 1px solid $dark-gray;
     border-radius: 10px;
   }
+}
+
+#category-tab {
+  margin-bottom: 5px;
 }
 
 .swiper-wrapper {

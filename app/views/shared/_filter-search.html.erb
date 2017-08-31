@@ -15,16 +15,13 @@
 <div class="chosen-filters-container">
   <div class="chosen-filters">
     <div class="chosen-category" id="chosen-day">
-    <p>any day</p>
+    <p> <%= params[:search_day].capitalize %> </p>
     </div>
     <div class="chosen-category" id="chosen-category">
-      <p>all categories</p>
     </div>
     <div class="chosen-category" id="chosen-level">
-      <p>all levels</p>
     </div>
     <div class="chosen-category" id="chosen-distance">
-      <p>any distance</p>
     </div>
   </div>
   <div class="refresh-button" data-day="next_seven" data-level="" data-category="any category" data-distance="any distance">
@@ -46,43 +43,43 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide button-category" data-category="Yoga">
-              <%= image_tag 'yoga-favicon.ico' %>
+              <%= image_tag 'buddhist-yoga-pose' %>
               <div class="category-text">
                 <p>Yoga</p>
               </div>
             </div>
             <div class="swiper-slide button-category" data-category="Crossfit">
-              <%= image_tag 'yoga-favicon.ico' %>
+              <%= image_tag 'weightlifting' %>
               <div class="category-text">
                 <p>Crossfit</p>
               </div>
             </div>
             <div class="swiper-slide button-category" data-category="Kickboxing">
-              <%= image_tag 'yoga-favicon.ico' %>
+              <%= image_tag 'mma' %>
               <div class="category-text">
                 <p>Kickboxing</p>
               </div>
             </div>
             <div class="swiper-slide button-category" data-category="Dance">
-              <%= image_tag 'yoga-favicon.ico' %>
+              <%= image_tag 'dancer' %>
               <div class="category-text">
                 <p>Dance</p>
               </div>
             </div>
             <div class="swiper-slide button-category" data-category="Pilates">
-              <%= image_tag 'yoga-favicon.ico' %>
+              <%= image_tag 'buddhist-yoga-pose' %>
               <div class="category-text">
                 <p>Pilates</p>
               </div>
             </div>
             <div class="swiper-slide button-category" data-category="HIIT">
-              <%= image_tag 'yoga-favicon.ico' %>
+              <%= image_tag 'stretch' %>
               <div class="category-text">
                 <p>HIIT</p>
               </div>
             </div>
             <div class="swiper-slide button-category" data-category="Martial Arts">
-              <%= image_tag 'yoga-favicon.ico' %>
+              <%= image_tag 'mma' %>
               <div class="category-text">
                 <p>Martial Arts</p>
               </div>
