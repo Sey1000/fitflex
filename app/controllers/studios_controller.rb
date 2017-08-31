@@ -1,4 +1,8 @@
 class StudiosController < ApplicationController
+  def show
+    @studio = Studio.find(params[:id])
+  end
+
   def new
     @studio = Studio.new
   end
