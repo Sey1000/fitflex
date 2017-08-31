@@ -5,9 +5,12 @@
 }
 
 .tab-content {
-  height: 50px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  height: 70px;
+  margin: 5px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .days-container {
@@ -25,12 +28,15 @@
   display:flex;
   justify-content: flex-start;
   vertical-align: middle;
-  font-size: 10px;
+  font-size: 11px;
   height: 30px;
   display: flex;
   width: 100%;
   position:relative;
   margin-top: 5px;
+  .chosen-item {
+    background-color: rgba(255,255,255,0.7);
+  }
   p {
     top: 50%;
     margin-right: 5px;
@@ -42,6 +48,7 @@
 
 #category-tab {
   margin-bottom: 5px;
+  height: 80px;
 }
 
 .swiper-wrapper {
@@ -88,6 +95,28 @@
   margin: 0px;
 }
 
+.filter-wrapper {
+  background-color: $dark-blue;
+}
+.nav-tabs {
+  a {
+  font-size: 17px;
+  color: white;
+  }
+  display: flex;
+  justify-content: space-around;
+}
+.nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: white;
+  background-color: transparent;
+  border: transparent;
+  border-bottom-color: transparent;
+  font-weight: 600;
+  font-size: 19px;
+}
+.nav-tabs > li > a:hover {
+  border: transparent;
+}
 
 
 
