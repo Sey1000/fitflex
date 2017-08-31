@@ -15,7 +15,9 @@
 <div class="chosen-filters-container">
   <div class="chosen-filters">
     <div class="chosen-category" id="chosen-day">
-    <p class="chosen-item">x    <%= params[:search_day].capitalize %> </p>
+    <% if params[:search_day] %>
+      <p class="chosen-item">x    <%= params[:search_day].capitalize %> </p>
+    <% end %>
     </div>
     <div class="chosen-category" id="chosen-category">
     </div>
