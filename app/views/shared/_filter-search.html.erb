@@ -9,16 +9,8 @@
 </div>
 <%# render 'reviews/form', courses: @courses %>
 <%# render 'shared/form-filters', courses: @courses %>
-<div class="form-filters">
-  <%= form_for :search_courses, url: "/courses/search_courses", remote: true, method: :post, html: { id: 'search_courses' } do |f| %>
-    <% f.text_field :day, value: params[:search_day]%>
-    <% f.text_field :category %>
-    <% f.text_field :level %>
-    <%#= f.text_field :day %>
-    <% f.submit %>
-  <% end %>
-</div>
-<%# render 'shared/form_filters' %>
+
+<%= render 'shared/form_filters' %>
 
 <div class="chosen-filters-container">
   <div class="chosen-filters">
@@ -35,8 +27,8 @@
       <p>any distance</p>
     </div>
   </div>
-  <div class="refresh-button">
-    <i class="fa fa-refresh" id="refresh-button" data-day="next_seven" data-level="" data-category="any category" data-distance="any distance" aria-hidden="true"></i>
+  <div class="refresh-button" data-day="next_seven" data-level="" data-category="any category" data-distance="any distance">
+    <i class="fa fa-refresh" aria-hidden="true"></i>
   </div>
 </div>
 

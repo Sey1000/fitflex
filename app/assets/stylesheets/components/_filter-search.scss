@@ -16,6 +16,7 @@
 .chosen-filters-container {
   display:flex;
   justify-content: space-between;
+  margin: 10px auto;
 }
 
 .chosen-filters {
@@ -30,7 +31,7 @@
   position:relative;
   p {
     margin-right: 5px;
-    padding: 2px 5px 2px 17px;
+    padding: 2px 5px 2px 12px;
     border: 1px solid $dark-gray;
     border-radius: 10px;
   }
@@ -79,13 +80,6 @@
   padding: 0px;
   margin: 0px;
 }
-
-#refresh-button {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-
 
 
 
