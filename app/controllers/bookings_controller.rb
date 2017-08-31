@@ -9,7 +9,18 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(bookings_params)
-    @booking.save
+    if @booking.save
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user) }
+        format.js
+      end
+    else
+      @course = Course.find(bookings_params[:course_id])
+      respond_to do |format|
+        format.html { render 'courses/show' }
+        format.js
+      end
+    end
   end
 
   def destroy
