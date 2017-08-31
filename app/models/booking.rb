@@ -4,11 +4,5 @@ class Booking < ApplicationRecord
 
   validates :course, uniqueness: { scope: :user, message: "is already booked by user" }
 
-  before_validation :check_booking_count
-
-  private
-
-  def check_booking_count
-    
-  end
+  validates_with BookingCountValidator
 end
