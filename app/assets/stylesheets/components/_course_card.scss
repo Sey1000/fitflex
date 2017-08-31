@@ -8,28 +8,61 @@
   margin: 0 !important;
 }
 .course-card {
-  position: relative;
-  margin: 0px;
+  // position: relative;
+  display: flex;
+
+  margin: 0px 7px;
   padding: 10px 5px;
   // box-shadow: 1px 1px 2px #a2a2a2;
   border-bottom: 1px solid #bebebe;
-  img {
+  .studio-picture{
+    img {
     display: block;
     width: 125px;
     height: 125px;
-    margin-left: 0px;
-    margin-right: auto;
+    }
   }
 }
 
-.course-price {
-  font-size: 16px;
-  position: absolute;
-  bottom: 9px;
-  right: 10px;
-  color: $dark-blue;
-  font-weight: 500;
+.info {
+  flex: 1 0 auto;
+  bottom: 0px;
+  color: #2b6a8c;
+  height: 125px;
+  padding: 0 10px;
+  position: relative;
+  .spots {
+    position: absolute;
+    bottom: 22px;
+    right: 5px;
+    color: #7b7b7b;
+    font-weight: 300;
+    font-size: 13px;
+    .fa {
+      font-size: 12px;
+    }
+  }
+  .distance {
+    .fa {
+      font-size: 12px;
+    }
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #7b7b7b;
+    font-weight: 300;
+    font-size: 13px;
+  }
+  .course-price {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 16px;
+    color: $dark-blue;
+    font-weight: 500;
+  }
 }
+
 
 .course-title {
   font-size: 17px;
@@ -39,20 +72,13 @@
 }
 .course-times {
   margin: 0px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .thumbnail > img {
 
 }
-.info {
-  position: absolute;
-  bottom: 0px;
-  left: 149px;
-  color: #2b6a8c;
-  height: 96%;
-}
 .studio-title {
-  font-size: 15px;
+  font-size: 12px;
 }
 h4 {
   font-size: 15px;
@@ -62,15 +88,7 @@ h4 {
   display: inline;
   text-decoration: none;
 }
-.distance {
-  position: absolute;
-  bottom: 56px;
-  right: 10px;
-  color: #7b7b7b;
-  font-weight: 300;
-  font-size: 13px;
 
-}
 .star-ratings-css-small {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
