@@ -16,11 +16,17 @@
   // box-shadow: 1px 1px 2px #a2a2a2;
   border-bottom: 1px solid #bebebe;
   .studio-picture{
-    img {
-    display: block;
+    // display: block;
     width: 125px;
     height: 125px;
-    }
+    background: gray;
+    background-size: cover;
+    flex: 0 0 auto;
+    // img {
+    // display: block;
+    // width: 125px;
+    // height: 125px;
+    // }
   }
 }
 
