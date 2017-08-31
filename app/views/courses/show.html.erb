@@ -20,11 +20,11 @@
 </div>
 
 <%= render 'shared/course_descriptions_icons' %>
+  <div id="room_for_error">
   <% if @booking && @booking.errors.any? %>
-    <ul class="list-unstyled review-error-message">
-      <li class="text-center"><i class="fa fa-exclamation-circle"></i> Course <%= @booking.errors[:course][0] %></li>
-    </ul>
+    <%= render 'bookings/booking_error_message' %>
   <% end %>
+  </div>
 <%= render 'shared/reviews' %>
 
 <div class="room-for-button">
