@@ -127,7 +127,7 @@ class CoursesController < ApplicationController
   end
 
   def filter_params
-    params.require(:search_courses).permit(:day, :category, :level)
+    params.require(:search_courses).permit(:day, :category, :level, :distance)
   end
 
   def date_words

@@ -1,38 +1,43 @@
-
+<div class="body-profile" style="background: linear-gradient(-180deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%);">
   <%= render 'users/avatar-component', user: @user %>
 
-  <div class="profile-main-info">
-  <% if @user.first_name %>
-    <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
-    <% else %>
-    <h1><%= @user.email %> </h1>
-    <% end %>
-  </div>
+  <div class="col-xs-12 no-padding">
+    <div class="profile-main-info">
+    <% if @user.first_name %>
+      <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
+      <% else %>
+      <h1><%= @user.email %> </h1>
+      <% end %>
+    </div>
 
 
-    <div class="profile-info">
-      <div class="historical-bookings">
-        <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
-        <h2>Upcoming bookings (<%= upcoming_bookings.count %>) <i class="fa fa-chevron-down"></i></h2>
+      <div class="profile-info">
+        <div class="historical-bookings">
+          <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
+          <h2>Upcoming bookings (<%= upcoming_bookings.count %>)</h2>
+          <i class="fa fa-chevron-down"></i>
+        </div>
         <div class="row hidden">
-          <% upcoming_bookings.each do |b| %>
-            <%= render 'shared/booking-list', b: b, old: false %>
-          <% end %>
+            <% upcoming_bookings.each do |b| %>
+              <%= render 'shared/booking-list', b: b, old: false %>
+            <% end %>
         </div>
-        </div>
-      <div class="historical-bookings">
-        <% past_bookings = @user.bookings.select { |b| b.course.start_time - Time.now < 0 } %>
-        <h2>History (<%= past_bookings.count %>) <i class="fa fa-chevron-down"></i></h2>
 
+        <div class="historical-bookings">
+          <% past_bookings = @user.bookings.select { |b| b.course.start_time - Time.now < 0 } %>
+          <h2>History (<%= past_bookings.count %>)</h2>
+          <i class="fa fa-chevron-down"></i>
+        </div>
         <div class="row hidden">
-          <% past_bookings.each do |b| %>
-            <%= render 'shared/booking-list', b: b, old: true %>
-          <% end %>
+            <% past_bookings.each do |b| %>
+              <%= render 'shared/booking-list', b: b, old: true %>
+            <% end %>
         </div>
-      </div>
 
-    <%= link_to edit_user_registration_path, class: "setting-link" do %>
-    <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
-    <% end %>
+          <%= link_to edit_user_registration_path, class: "setting-link" do %>
+          <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
+          <% end %>
+    </div>
   </div>
+</div>
 
