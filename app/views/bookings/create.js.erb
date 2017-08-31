@@ -1,0 +1,7 @@
+<% if @booking.errors.any? %>
+	$('#bookingModal').modal('hide')
+	$('#room_for_error').html("<%= j render 'bookings/booking_error_message' %>")
+<% else %>
+	$('.booking-modal-title').text("Thank you!")
+	$('.booking-modal-body').html("<%= j render 'bookings/booking_confirm_message' %>")
+<% end %>

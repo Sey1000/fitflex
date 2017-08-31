@@ -1,0 +1,23 @@
+.room-for-button {
+  padding-bottom: 60px;
+}
+
+.new-booking-button {
+  width: 100vw;
+  height: 60px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $red;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h3 {
+    margin: 0;
+    color: white;
+    font-weight: lighter;
+  }
+}
