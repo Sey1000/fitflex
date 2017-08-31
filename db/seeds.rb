@@ -26,7 +26,7 @@ studio_hash = {
 }
 
 studio_hash.each do |st_name, st_info|
-  Studio.create(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone])
+  Studio.create(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id])
 end
 
 # Seed Users that DON'T belong to studios (regular customers)
