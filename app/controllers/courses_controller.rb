@@ -7,16 +7,22 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @user = current_user
+
+    la = Geocoder.search('85.214.132.117').first.latitude
+    lo = Geocoder.search('85.214.132.117').first.longitude
+    @json_distance = distance_api_call(la,lo)
+    @request = request.location
+    @json_driving = duration_api_call(la,lo,"driving")
+    @json_walking = duration_api_call(la,lo,"walking")
+    @json_bicycle = duration_api_call(la,lo,"bicycling")
+    @json_transit = duration_api_call(la,lo,"transit")
     @studios = Studio.where.not(latitude: nil, longitude: nil).where(id: @course.studio_id)
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
       marker.lat studio.latitude
       marker.lng studio.longitude
+      marker.infowindow render_to_string(partial: "/courses/map_box", locals: { studio: studio })
     end
-    la = Geocoder.search('85.214.132.117').first.latitude
-    lo = Geocoder.search('85.214.132.117').first.longitude
-    @json = distance_api_call(la,lo)
-    @request = request.location
-    # @average_rating = average_rating
+
     @date_words = date_words
   end
 
@@ -77,12 +83,21 @@ class CoursesController < ApplicationController
   def distance_api_call(la, lo)
    url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{la},#{lo}&destinations=#{URI.encode(@course.studio.address)}"
    form = open(url).read
-   return JSON.parse(form)
+   json =  JSON.parse(form)
+   json["rows"][0]["elements"][0]["distance"]["text"]
   end
 
-  def distance_from_api(json)
-
+  def json_parsing_duration(url)
+    form = open(url).read
+    json = JSON.parse(form)
+    json["rows"][0]["elements"][0]["duration"]["text"]
   end
+
+  def duration_api_call(la,lo,mode)
+    url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{la},#{lo}&destinations=#{URI.encode(@course.studio.address)}&mode=#{mode}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+    json_parsing_duration(url)
+  end
+
 
 # Filter Courses
   def filter_courses(day)
