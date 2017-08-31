@@ -1,16 +1,22 @@
 // .cards {
 //   padding: 0;
 // }
-.card {
+
+
+.no-padding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.course-card {
   position: relative;
-  margin: -12px 5px;
+  margin: 0px;
   padding: 10px 5px;
   // box-shadow: 1px 1px 2px #a2a2a2;
   border-bottom: 1px solid #bebebe;
   img {
     display: block;
-    width: 135px;
-    height: 130px;
+    width: 125px;
+    height: 125px;
     margin-left: 0px;
     margin-right: auto;
   }
