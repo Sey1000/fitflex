@@ -1,11 +1,9 @@
+<div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.cld_id %>');">
 
-
-
-<div class="course-banner" style="background-image: url('<%= image_path 'crossfit' %>');">
-
-
-  <h3><%= @course.title %></h3>
-  <%= render 'shared/stars' %>
+  <h3 class="course-show-title"><%= @course.title %></h3>
+  <div class="star-ratings-css-medium">
+    <%= render 'shared/stars', course: @course %>
+  </div>
 </div>
 <div class="blue-banner" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%); height: 5vh;">
   <%= @date_words %> - <%= @course.start_time.strftime ("%l:%M %P") %>
