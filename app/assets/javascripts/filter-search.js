@@ -8,7 +8,7 @@ $(document).ready(function(){
 
   // Pick a category
   $(".swiper-slide").on("click", function() {
-    $("#chosen-category").html($(this).html());
+    $("#chosen-category").html($(this).attr('data-category'));
   });
 
   // Pick a level
@@ -22,8 +22,8 @@ $(document).ready(function(){
   });
 
   // Reset all filters
-  $(".reset-filters").on("click", function() {
-    $("#chosen-day").text("all days");
+  $(".button-reset").on("click", function() {
+    $("#chosen-day").text("any day");
     $("#chosen-category").text("all categories");
     $("#chosen-level").text("all levels");
     $("#chosen-distance").text("any distance");
