@@ -11,13 +11,17 @@
   background: rgba(255,255,255,0.1);
   transition: all 0.3s ease;
   height: 50px;
-  padding: 0px 30px;
+  padding: 10px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   top: 0;
   position: fixed !important;
   z-index: 1;
+  .fa-bars {
+    font-size: 23px;
+    color: $medium-gray;
+  }
 }
 
 /* Logo */
@@ -34,6 +38,12 @@
 
 /* Right section */
 .navbar-wagon-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-wagon-left {
   display: flex;
   align-items: center;
   justify-content: space-between;
