@@ -1,12 +1,52 @@
-<div class="stars">
+<!-- <div class="stars">
   <div class="star-ratings-css">
-    <div class="star-rating-css-top" style = "width: <%= @course.average_rating.to_f %>%;">
+     <div class="star-rating-css-top" style = "width: <%= course.average_rating.to_f %>%;">
       <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
     </div>
     <div class="star-rating-css-bottom">
       <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
     </div>
   </div>
-</div>
+</div> -->
+
+<!-- Implementing font awesome stars -->
+<% avg = course.average_rating %>
+<% if avg == 5 %>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+<% elsif avg >= 4 && avg < 5%>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-o"></i>
+<% elsif avg >= 3 && avg < 4 %>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+<% elsif avg >= 2 && avg < 3 %>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+<% elsif avg >= 1 && avg < 2 %>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+  <i class="fa fa-star-o"></i>
+<% else %>
+  <p> No Reviews </p>
+<% end %>
+
+
+<!-- <i class="fa fa-star-half-o" aria-hidden="true"></i> -->
+
 
 
