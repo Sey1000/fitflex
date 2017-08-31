@@ -1,0 +1,99 @@
+<div class="navbar-wagon navbar-wagon-solid">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand hidden-xs hidden-sm" do %>
+    <h1 id="logo-heading-h1">FITFlex</h1>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <% if user_signed_in? %>
+
+      <!-- Links when logged in -->
+      <%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+      <!-- Avatar with dropdown menu -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <% if current_user.facebook_picture_url %>
+            <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% elsif current_user.photo? %>
+            <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <%= image_tag image_path("placeholder.jpg"), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-home"></i>  <%= t(".about_us", default: "About Us") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-home"></i>  <%= t(".faq", default: "FAQ") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <!-- Login link (when logged out) -->
+    <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+  </div>
+
+  <!-- Sidebar appearing on mobile only -->
+  <% if user_signed_in? %>
+    <div class="navbar-wagon-right hidden-md hidden-lg">
+      <i class="fa fa-bars" style="cursor:pointer" onclick="openNav()"></i>
+    </div>
+    <div class="sidenav" id="mySidenav">
+      <i class="fa fa-times closebtn" onclick="closeNav()"></i>
+      <div class="user-info">
+        <% if current_user.facebook_picture_url %>
+          <%= image_tag current_user.facebook_picture_url, class: "avatar-xs dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% elsif current_user.photo? %>
+          <%= cl_image_tag current_user.photo.path, class: "avatar-xs dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% else %>
+          <%= image_tag image_path("placeholder.jpg"), class: "avatar-xs dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% end %>
+        <h1> <%= current_user.first_name %> <%= current_user.last_name %></h1>
+        <h2> <%= current_user.email %> </h2>
+      </div>
+      <div class="user-nav">
+        <div class="user-nav-links">
+          <%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "About Us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+        </div>
+        <div class="nav-social-media">
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+    <%= link_to root_path, class: "navbar-wagon-brand hidden-md hidden-lg" do %>
+    <h1 id="logo-heading-h1">FITFlex</h1>
+  <% end %>
+  <% else %>
+    <div class="navbar-wagon-right hidden-md hidden-lg">
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    </div>
+    <h1 id="logo-heading-h1">FITFlex</h1>
+  <% end %>
+</div>

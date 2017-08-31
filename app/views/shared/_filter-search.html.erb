@@ -15,7 +15,7 @@
 <div class="chosen-filters-container">
   <div class="chosen-filters">
     <div class="chosen-category" id="chosen-day">
-    <p> <%= params[:search_day].capitalize %> </p>
+    <p class="chosen-item">x    <%= params[:search_day].capitalize %> </p>
     </div>
     <div class="chosen-category" id="chosen-category">
     </div>
@@ -24,17 +24,17 @@
     <div class="chosen-category" id="chosen-distance">
     </div>
   </div>
-  <div class="refresh-button" data-day="next_seven" data-level="" data-category="any category" data-distance="any distance">
+  <div class="refresh-button" data-day="next_seven" data-level="" data-category="" data-distance="">
     <i class="fa fa-refresh" aria-hidden="true"></i>
   </div>
 </div>
 
-<div class="tab-content">
-  <div id="day-tab" class="tab-pane fade in active">
+<div class="tab-content hidden">
+  <div id="day-tab" class="tab-pane fade active in">
     <div class="days-container">
-      <button type="button" class="btn btn-primary button-day <%= "active" if params[:search_day] == "today" %>" data-day="today"><p>Today</p></button>
-      <button type="button" class="btn btn-primary button-day" data-day="tomorrow"><p>Tomorrow</p></button>
-      <button type="button" class="btn btn-primary button-day" data-day="next_seven"><p>+7 Days</p></button>
+      <button type="button" class="button-day <%= "active" if params[:search_day] == "today" %>" data-day="today"><p>Today</p></button>
+      <button type="button" class="button-day" data-day="tomorrow"><p>Tomorrow</p></button>
+      <button type="button" class="button-day" data-day="next_seven"><p>+7 Days</p></button>
     </div>
   </div>
 
@@ -90,17 +90,17 @@
 
   <div id="level-tab" class="tab-pane fade">
     <div class="level-container">
-      <button type="button" class="btn btn-primary button-level" data-level="Beginner"><p>Beginner</p></button>
-      <button type="button" class="btn btn-primary button-level" data-level="Intermediate"><p>Intermediate</p></button>
-      <button type="button" class="btn btn-primary button-level" data-level="Advanced"><p>Advanced</p></button>
+      <button type="button" class="btn button-level" data-level="Beginner"><p>Beginner</p></button>
+      <button type="button" class="btn button-level" data-level="Intermediate"><p>Intermediate</p></button>
+      <button type="button" class="btn button-level" data-level="Advanced"><p>Advanced</p></button>
     </div>
   </div>
   <div id="distance-tab" class="tab-pane fade">
     <div class="distance-container">
-      <button type="button" class="btn btn-primary button-distance"><p>1 km</p></button>
-      <button type="button" class="btn btn-primary button-distance"><p>3 km</p></button>
-      <button type="button" class="btn btn-primary button-distance"><p>5 km</p></button>
-      <button type="button" class="btn btn-primary button-distance"><p>10 km</p></button>
+      <button type="button" class="btn button-distance"><p>1 km</p></button>
+      <button type="button" class="btn button-distance"><p>3 km</p></button>
+      <button type="button" class="btn button-distance"><p>5 km</p></button>
+      <button type="button" class="btn button-distance"><p>10 km</p></button>
     </div>
   </div>
 </div>
@@ -112,7 +112,6 @@
 
     $(".button-day").on("click", function(e) {
       $("#search_courses_day").attr('value', $(this).attr('data-day'));
-      console.log("h")
       $("#search_courses").submit();
     });
 
@@ -122,14 +121,35 @@
     });
 
     $(".button-category").on("click", function(){
-      console.log($(".button-category"));
       $("#search_courses_category").attr('value', $(this).attr('data-category'));
+      $("#search_courses").submit();
+    });
+
+    $("#chosen-day").on("click", function() {
+      $("#search_courses_day").attr('value', "next_seven");
+      $("#search_courses").submit();
+    });
+
+    $("#chosen-category").on("click", function() {
+      $("#search_courses_category").attr('value', "");
+      $("#search_courses").submit();
+    });
+
+    $("#chosen-level").on("click", function() {
+      $("#search_courses_level").attr('value', "");
+      $("#search_courses").submit();
+    });
+
+    $("#chosen-distance").on("click", function() {
+      $("#search_crouses_distance").attr('value', "");
       $("#search_courses").submit();
     });
 
     $(".refresh-button").on("click", function() {
       $("#search_courses_day").attr('value', $(this).attr('data-day'));
+      $("#search_courses_category").attr('value', $(this).attr('data-category'));
       $("#search_courses_level").attr('value', $(this).attr('data-level'));
+      $("#search_crouses_distance").attr('value', $(this).attr('data-distance'));
       $("#search_courses").submit();
     });
 

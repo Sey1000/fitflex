@@ -5,16 +5,17 @@
 .course-banner{
   padding-left: 5%;
   height: 20vh;
+  background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
-  p {
+  .course-banner-title {
     color: white;
-    font-weight: 300;
+    // font-weight: 300;
   }
 }
 
-.blue-banner{
+.blue-banner {
   display: flex;
   justify-content: space-between;
   align-items: center;
