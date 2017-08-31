@@ -11,21 +11,27 @@ Studio.destroy_all
 
 # Seed 10 Studios
 puts "Created 10 Studios"
+
+studio_hash = {
+  "Bodystreet" => ["Charlottenstr. 79, 10117 Berlin", "030 33846280"]
+  "Fitbox" => ["Rudi-Dutschke-Straße 1, 10969 Berlin", "030 98322747"]
+  "Urban Gladiator" => ["Wilhelmstraße 14, 10963 Berlin", "0176 55131262"]
+  "Medical Fitness Academy" => ["Kleiststraße 3-6, 10787 Berlin", "030 21913071"]
+  "McFit" => ["Tauentzienstraße 8, 10789 Berlin"]
+}
+
 studio_names = [
-  "Bodystreet", "Fitbox", "Urban Gladiator", "Medical Fitness Academy",
-  "McFit", "Ladyline Loft", "Westhaften Studios", "Nautilus Fitnesscenter",
+  "Ladyline Loft", "Westhaften Studios", "Nautilus Fitnesscenter",
   "Zumba Fitness Berlin Tempelhof", "Fitco Fitness"
 ]
 studio_descriptions = Faker::Lorem.paragraphs(10)
 studio_addresses = [
-  "Charlottenstr. 79, 10117 Berlin", "Rudi-Dutschke-Straße 1, 10969 Berlin",
-  "Wilhelmstraße 14, 10963 Berlin", "Kleiststraße 3-6, 10787 Berlin",
-  "Tauentzienstraße 8, 10789 Berlin", "Stromstraße 39, 10551 Berlin",
+  "Stromstraße 39, 10551 Berlin",
   "Turmstraße 57, 10551 Berlin", "Manteuffelstraße 65, 12103 Berlin",
   "Viktoriastraße 10-18, 12105 Berlin", "Herzbergstraße 87-89, 10365 Berlin"
 ]
 studio_phone_numbers = [
-  "030 33846280", "030 98322747", "0176 55131262", "030 21913071", "030 25794520",
+  "030 25794520",
   "030 77906990", "030 3959521", "030 75702377", "0176 84016146", "030 55263303"
 ]
 
