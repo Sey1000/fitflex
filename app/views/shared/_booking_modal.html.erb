@@ -31,7 +31,7 @@
         <%= simple_form_for(Booking.new, remote: true) do |f| %>
           <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
           <%= f.input :course_id, as: :hidden, input_html: { value: course.id } %>
-          <div class="text-center">
+          <div class="text-center confirm-button-margin">
             <%= f.submit "Confirm", class: "btn btn-danger" %>
           </div>
         <% end %>
