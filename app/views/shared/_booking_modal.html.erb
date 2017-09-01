@@ -25,7 +25,7 @@
           <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
           <%= f.input :course_id, as: :hidden, input_html: { value: course.id } %>
           <div class="text-center">
-            <%= f.submit "Confirm", class: "btn btn-danger" %>
+            <%= f.submit "Confirm", class: "btn btn-confirm" %>
           </div>
         <% end %>
       </div>
