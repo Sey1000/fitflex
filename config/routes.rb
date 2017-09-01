@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   post 'courses/search_courses', to: 'courses#update_index'
-
+  get 'about',       to: 'pages#about'
   resources :courses do
     resources :reviews, only: [:new, :create]
   end
