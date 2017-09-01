@@ -7,18 +7,56 @@
 }
 .review {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px 0px;
   font-size: 15px;
   color: black;
+  width:10px;
 
 }
 .review-content {
-  max-width: 65%;
+  max-width: 10%;
   flex-grow: 1;
 }
 
 .review-rating {
   display: flex;
   font-size: 9px;
+}
+
+.swiper-container-reviews {
+  width: 20%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+}
+
+.swiper-slide-reviews {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  font-size: 18px;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide-active {
+  width: 10px;
+}
+
+.swiper-arrows {
+  display:flex;
+  justify-content: space-between;
 }

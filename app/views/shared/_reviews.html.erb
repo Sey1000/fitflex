@@ -1,26 +1,53 @@
-<div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%);">
-  <h3>Reviews</h3>
-  <% @course.reviews.each do |review| %>
-    <div class="review">
-      <div class="user-review-image">
-        <%= image_tag 'placeholder', class: 'avatar-xs' %>
-      </div>
-      <div class="review-content">
-        <div class="user_name_review">
-          <%= review.user.first_name %> <%= review.user.last_name %>
+
+
+    <div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%);">
+      <h3>Reviews</h3>
+            <div class="swiper-container">
+
+        <div class="swiper-wrapper">
+      <% @course.reviews.each_with_index do |review| %>
+
+        <div class="swiper-slide review">
+          <div class="user-review-image">
+            <%= image_tag 'placeholder', class: 'avatar-xs' %>
+          </div>
+          <div class="review-content">
+            <div class="user_name_review">
+              <%= review.user.first_name %> <%= review.user.last_name %>
+            </div>
+            <div class="review_title">
+              <%= review.title %>
+            </div>
+          </div>
+          <div class="review-rating">
+            <% review.rating.times do %>
+              <i class="fa fa-star"></i>
+            <% end %>
+            <% (5- review.rating).times do %>
+              <i class="fa fa-star-o"></i>
+            <% end %>
+          </div>
         </div>
-        <div class="review_title">
-          <%= review.title %>
-        </div>
-      </div>
-      <div class="review-rating">
-        <% review.rating.times do %>
-          <i class="fa fa-star"></i>
-        <% end %>
-        <% (5- review.rating).times do %>
-          <i class="fa fa-star-o"></i>
-        <% end %>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+    <div class="swiper-arrows">
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 200,
+        loop: true
+    });
+    </script>
+<% end %>
+
