@@ -103,7 +103,9 @@
   </div>
   <div id="distance-tab" class="tab-pane fade">
     <div class="distance-container">
+    <p>0 km</p>
       <input class="slide" type="range" min="0" max="10" id="distance-slider">
+      <p>10 km</p>
       <!-- <button type="button" class="btn button-distance" data-distance= [0..1]><p>1 km</p></button> -->
       <!-- <button type="button" class="btn button-distance" data-distance="3"><p>3 km</p></button>
       <button type="button" class="btn button-distance" data-distance="5"><p>5 km</p></button>
@@ -134,7 +136,7 @@
     });
 
     $("#distance-slider").change(function(){
-      $("#search_courses_category").attr('value', $(this).val());
+      $("#slider-distance-form").attr('value', $(this).val());
       $("#search_courses").submit();
     });
 

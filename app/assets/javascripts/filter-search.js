@@ -3,7 +3,6 @@ $(document).ready(function(){
   // Pick a day
   $(".filter-container").on("click", "li", function() {
     // if ($(".filter-container").hasClass("active")) {
-      console.log("toggle");
       if( $(this).hasClass("active") ) {
         $(".tab-content").toggleClass("hidden");
       }
