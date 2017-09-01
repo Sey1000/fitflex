@@ -1,3 +1,4 @@
+
 <div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%);">
   <h3>Reviews</h3>
   <div class="swiper-container">
@@ -26,16 +27,12 @@
         </div>
       <% end %>
     </div>
-    <div class="swiper-arrows">
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
   </div>
 </div>
 
 <% content_for(:after_js) do %>
   <script>
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.swiper-container-reviews', {
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
