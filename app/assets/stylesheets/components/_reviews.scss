@@ -7,6 +7,7 @@
   padding-left: 50px;
   color: white;
 }
+
 .review {
   padding: 10px 0px;
   font-size: 15px;
@@ -14,6 +15,7 @@
   width:10px;
 
 }
+
 .review-content {
   max-width: 60%;
   flex-grow: 1;
@@ -27,7 +29,6 @@
 }
 
 .inner-review {
-
   display: flex;
   justify-content: space-between;
   width: 70%;
@@ -38,6 +39,7 @@
   }
   &:nth-child(even) {
     padding-top: 10px;
+    padding-bottom: 15px;
   }
   &:last-child {
     border-bottom: none;
@@ -53,7 +55,7 @@
   font-weight: 500;
 }
 
-.sw-ar {
+.sw-pa {
+  bottom: 0 !important;
   filter: grayscale(100%) brightness(2);
-
 }
