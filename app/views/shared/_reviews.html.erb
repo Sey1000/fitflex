@@ -4,8 +4,8 @@
       <h3>Reviews</h3>
             <div class="swiper-container">
 
-<div class="swiper-wrapper">
-      <% @course.reviews.each do |review| %>
+        <div class="swiper-wrapper">
+      <% @course.reviews.each_with_index do |review| %>
 
         <div class="swiper-slide review">
           <div class="user-review-image">
@@ -30,8 +30,10 @@
         </div>
       <% end %>
     </div>
-            <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+    <div class="swiper-arrows">
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
   </div>
 </div>
 
