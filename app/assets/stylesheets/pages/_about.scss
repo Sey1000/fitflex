@@ -1,0 +1,57 @@
+// .connect-icons {
+//   color: black;
+// }
+.fitflex-address {
+  padding: 20px;
+  font-size: 14px;
+  color: black;
+
+}
+
+.underline {
+  text-transform: uppercase;
+  color: black;
+  border-bottom: 3px solid black;
+  font-weight: 700;
+}
+.about-header {
+  text-align: center;
+  .header-description {
+    color: black;
+    padding-top: 10px;
+  }
+}
+.about-image {
+  width: 100%;
+}
+.about-card {
+  background-color: white;
+  margin: 15px;
+  p {
+    padding: 20px;
+  }
+}
+.about-wrapper {
+  background: linear-gradient(-225deg, $dark-blue 0%, $pink 80%);
+  background-attachment: fixed;
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  .about-container {
+    margin: 0 30px;
+  }
+}
+
+.team-card{
+  padding-top: 20px;
+  .team-image {
+    width: 100%;
+  }
+  p {
+    padding: 10px;
+    background-color: black;
+    text-align: center;
+    color: white;
+  }
+}
+
+

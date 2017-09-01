@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
     @courses
   end
+
+  def about
+  end
 end

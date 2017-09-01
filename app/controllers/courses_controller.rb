@@ -1,22 +1,23 @@
 class CoursesController < ApplicationController
   def index
-    @courses = filter_courses(params[:search_day])
+    courses_by_day = filter_courses(params[:search_day])
+    @courses = available_courses(courses_by_day)
     # update_index
   end
 
   def show
     @course = Course.find(params[:id])
-    @user = current_user
+    #@user = current_user
 
-    la = Geocoder.search('85.214.132.117').first.latitude
-    lo = Geocoder.search('85.214.132.117').first.longitude
+    la = location.latitude
+    lo = location.longitude
     @json_distance = distance_api_call(la,lo)
     @request = request.location
     @json_driving = duration_api_call(la,lo,"driving")
     @json_walking = duration_api_call(la,lo,"walking")
     @json_bicycle = duration_api_call(la,lo,"bicycling")
     @json_transit = duration_api_call(la,lo,"transit")
-    @studios = Studio.where.not(latitude: nil, longitude: nil).where(id: @course.studio_id)
+    @studio = Studio.where.not(latitude: nil, longitude: nil).where(id: @course.studio_id)
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
       marker.lat studio.latitude
       marker.lng studio.longitude
@@ -98,6 +99,14 @@ class CoursesController < ApplicationController
     json_parsing_duration(url)
   end
 
+  def location
+    if request.location.ip == "127.0.0.1"
+      Geocoder.search('85.214.132.117').first
+    else
+      request.location
+    end
+  end
+
 
 # Filter Courses
   def filter_courses(day)
@@ -112,6 +121,10 @@ class CoursesController < ApplicationController
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
     return filtered_courses
+  end
+
+  def available_courses(courses)
+    courses.reject { |course| course.bookings.length == course.spots }
   end
 
   def courses_params

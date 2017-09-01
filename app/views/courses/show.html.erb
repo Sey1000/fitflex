@@ -1,5 +1,7 @@
 <div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.cld_id %>');">
-
+<%= link_to courses_path, {class: "button-back"} do %>
+  <i class="fa fa-angle-left"></i>
+<% end %>
   <h3 class="course-show-title"><%= @course.title %></h3>
   <div class="star-ratings-css-medium">
     <%= render 'shared/stars', course: @course %>

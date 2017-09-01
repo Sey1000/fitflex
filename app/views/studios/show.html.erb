@@ -1,0 +1,27 @@
+<%= cl_image_tag @studio.cld_id, class: "studio-image-show" %>
+<div class="studio-description">
+<h3><%= @studio.name %></h3>
+<p><%= @studio.description %></p>
+<h6>Our Instructors</h6>
+<div class="instructors">
+  <div class="instr">
+  <%= image_tag 'placeholder', class: "avatar-xs" %>
+  <p>Alvaro</p>
+  </div>
+  <div class="instr">
+  <%= image_tag 'placeholder', class: "avatar-xs" %>
+  <p>Nhung</p>
+  </div>
+  <div class="instr">
+  <%= image_tag 'placeholder', class: "avatar-xs" %>
+  <p>Sey</p>
+  </div>
+</div>
+<h6>Studio Address</h6>
+<p class="studio-address"><%= @studio.address %></p>
+<p class="studio-address"> <i class="fa fa-phone"></i><%= @studio.telephone %></p>
+
+</div>
+
+
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=375x150&sensor=false&key=#{ENV['GOOGLE_API_SERVER_KEY']}&maptype=roadmap&markers=color:red|@studio.address"  %>
