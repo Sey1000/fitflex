@@ -32,7 +32,8 @@
   }
 }
 .about-wrapper {
-  background: linear-gradient(-225deg, $dark-blue 0%, $pink 80%);
+  background-color: rgba(43, 106, 140,0.8);
+  // background: linear-gradient(-225deg, rgba(43, 106, 140,0.8) 0%, rgba(255, 96, 107, 0.8) 80%);
   background-attachment: fixed;
   background-size: 100vw;
   background-repeat: no-repeat;
