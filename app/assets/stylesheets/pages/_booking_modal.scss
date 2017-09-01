@@ -4,6 +4,11 @@
   top: 16px;
 }
 
+.btn-confirm {
+  background-color: $darker-pink;
+  color: white;
+}
+
 .center-modal-box {
   top: 35vh;
 }
@@ -11,13 +16,17 @@
 .booking-checked {
   color: green;
 }
+
 .confirmation-address {
   font-size: 12px;
 }
+
 .confirmation-date {
   font-size: 14px;
   margin-top: 10px;
 }
+
 .confirm-button-margin {
   margin-top: 17px;
 }
+

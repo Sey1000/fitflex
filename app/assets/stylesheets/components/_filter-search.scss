@@ -1,6 +1,6 @@
 .filter-container {
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 13px;
 }
 
@@ -21,7 +21,13 @@
 .chosen-filters-container {
   display:flex;
   justify-content: space-between;
-  margin: 5px;
+  align-items: center;
+  margin: 0px;
+  padding: 4px 4px 0px 4px;
+  .fa {
+    padding-right: 4px;
+    color: $light-gray;
+  }
 }
 
 .chosen-filters {
@@ -35,7 +41,11 @@
   position:relative;
   margin-top: 5px;
   .chosen-item {
-    background-color: rgba(255,255,255,0.7);
+    // background-color: rgba(255,255,255,0.7);
+    background-color: rgba(222,83,121,0.8);
+    color: white;
+    border: 1px solid $pink;
+    height: 20px;
   }
   p {
     top: 50%;
@@ -51,17 +61,17 @@
   height: 80px;
 }
 
-.swiper-wrapper-filter {
+.swiper-wrapper {
   height: 30px;
 }
 
-.swiper-container-filter {
+.swiper-container {
   width: 100%;
   margin: 3px auto;
   height: 60px;
 }
 
-.swiper-slide-filter {
+.swiper-slide {
   width: 70px;
   margin-left: 7px;
   text-align: center;
@@ -99,23 +109,30 @@
   background-color: $dark-blue;
 }
 .nav-tabs {
+  background-color: transparent !important;
+  border: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+  // border-bottom-color: rgba(255,255,255,0.6);
   a {
   font-size: 17px;
   color: white;
+  background-color: transparent !important;
   }
   display: flex;
   justify-content: space-around;
 }
-.nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+.nav-tabs > li.active, .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: white;
-  background-color: transparent;
+  background-color: transparent !important;
+  border: none !important;
   border: transparent;
   border-bottom-color: transparent;
   font-weight: 600;
   font-size: 19px;
 }
-.nav-tabs > li > a:hover {
-  border: transparent;
+.nav-tabs > li > a {
+  border: none !important;
+  padding: 2px 4vw;
 }
 
 

@@ -3,20 +3,29 @@
 // }
 
 .course-reviews{
-  padding: 1px 20px 10px 20px;
+  // padding: 1px 20px 10px 20px;
 }
+
+// .review-wrapper {
+//   width: 50vw;
+// }
+
 .review {
-  display: flex;
-  justify-content: space-around;
+  // display: flex;
+  // justify-content: space-around;
   padding: 10px 0px;
   font-size: 15px;
   color: black;
-  width:10px;
-
+  width: 100%;
 }
+
 .review-content {
   max-width: 10%;
   flex-grow: 1;
+}
+
+.user-review-image {
+  flex: 0 0 auto;
 }
 
 .review-rating {
@@ -25,18 +34,14 @@
 }
 
 .swiper-container-reviews {
-  width: 20%;
+  width: 100%;
   height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 50px;
 }
 
 .swiper-slide-reviews {
-  width: 50%;
-  height: 100%;
   text-align: center;
   font-size: 18px;
+  background: #fff;
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,11 +57,3 @@
   align-items: center;
 }
 
-.swiper-slide-active {
-  width: 10px;
-}
-
-.swiper-arrows {
-  display:flex;
-  justify-content: space-between;
-}
