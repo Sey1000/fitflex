@@ -1,13 +1,10 @@
 
-
-    <div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%);">
-      <h3>Reviews</h3>
-            <div class="swiper-container-reviews">
-
-        <div class="swiper-wrapper">
+<div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%);">
+  <h3>Reviews</h3>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
       <% @course.reviews.each_with_index do |review| %>
-
-        <div class="swiper-slide-reviews">
+        <div class="swiper-slide review">
           <div class="user-review-image">
             <%= image_tag 'placeholder', class: 'avatar-xs' %>
           </div>

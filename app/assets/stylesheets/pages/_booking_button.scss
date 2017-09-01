@@ -5,11 +5,12 @@
 .new-booking-button {
   width: 100vw;
   height: 60px;
+  z-index: 2;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $red;
+  background-color: $darker-pink;
   border: none;
   box-shadow: none;
   display: flex;
