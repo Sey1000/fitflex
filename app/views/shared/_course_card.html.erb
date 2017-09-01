@@ -9,7 +9,7 @@
             <%= course.spots - course.bookings.length %> spots left!
           </div>
           <div class="distance">
-            <i class="fa fa-map-marker"></i> 3.5 km
+            <i class="fa fa-map-marker"></i> <%= course.studio.distance %> km
           </div>
           <p class="course-price"> <%= course.cost.round %>€ </p>
           <h3 class="course-title"> <%= course.title %> </h3>
