@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    courses_by_day = filter_courses(params[:search_day])
+    courses_by_day = filter_courses(params[:search_day], 10)
     @courses = available_courses(courses_by_day)
     # update_index
   end
@@ -57,11 +57,9 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
+    distance = filter_params[:distance]
 
-    @update_courses = filter_courses(day)
-    # unless level.empty?
-    #   @update_courses = @update_courses.where(level: level)
-    # end
+    @update_courses = filter_courses(day, distance)
 
     if level.present? && category.empty?
       @update_courses = @update_courses.where(level: level)
@@ -70,7 +68,7 @@ class CoursesController < ApplicationController
     elsif level.present? && category.present?
       @update_courses = @update_courses.where({category: category, level: level})
     else
-      @update_courses = filter_courses(day)
+      @update_courses = filter_courses(day, distance)
     end
 
     respond_to do |format|
@@ -112,9 +110,9 @@ class CoursesController < ApplicationController
 
 
 # Filter Courses
-  def filter_courses(day)
+  def filter_courses(day, d)
 
-    filtered_courses = Course.all
+    filtered_courses = Course.all.select { |course| course.distance.to_i < 10 }
     case day
     when 'today'
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{Time.now.end_of_day}'")

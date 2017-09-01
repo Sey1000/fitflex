@@ -17,6 +17,10 @@ class Course < ApplicationRecord
     (sum.to_f / (ratings.length))
   end
 
+  def distance
+    self.studio.distance
+  end
+
   # def day
   #   datetime = start_time
   #   if datetime.today?
