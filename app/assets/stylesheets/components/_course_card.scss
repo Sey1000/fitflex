@@ -8,6 +8,7 @@
 }
 #render_courses > :nth-child(odd) .course-color {
   background-color: white;
+  z-index: -1;
 }
 .course-card {
   display: flex;
