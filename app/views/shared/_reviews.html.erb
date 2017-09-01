@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-
-
-<div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(47, 76, 155,0.6) 50%);">
-  <h3>Reviews</h3>
+<div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%);">
+  <h4 class="review-header">Reviews</h4>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <% @course.reviews.each_slice(2) do |a|%>
@@ -10,11 +7,11 @@
         <% a.each_with_index do |review_a, i| %>
         <div class="inner-review">
           <div class="user-review-image">
-            <%= image_tag 'placeholder', class: 'avatar-xs' %>
+            <%= image_tag 'placeholder', class: 'avatar-xxs' %>
           </div>
           <div class="review-content">
             <div class="user_name_review">
-              <%= review_a.user.first_name %> <%= review_a.user.last_name %>
+              <%= review_a.user.first_name %>
             </div>
             <div class="review_title">
               <%= review_a.title %>
@@ -34,11 +31,11 @@
       </div>
       <% end %>
     </div>
-    <div class="swiper-arrows">
+    <div class="swiper-arrows sw-ar">
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
-    <div class="swiper-pagination"></div>
+    <!-- <div class="swiper-pagination"></div> -->
   </div>
 </div>
 
