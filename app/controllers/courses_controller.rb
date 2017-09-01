@@ -17,8 +17,8 @@ class CoursesController < ApplicationController
     @json_walking = duration_api_call(la,lo,"walking")
     @json_bicycle = duration_api_call(la,lo,"bicycling")
     @json_transit = duration_api_call(la,lo,"transit")
-    @studio = Studio.where.not(latitude: nil, longitude: nil).where(id: @course.studio_id)
-    @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
+    @studio = @course.studio
+    @hash = Gmaps4rails.build_markers(@studio) do |studio, marker|
       marker.lat studio.latitude
       marker.lng studio.longitude
       marker.infowindow render_to_string(partial: "/courses/map_box", locals: { studio: studio })
