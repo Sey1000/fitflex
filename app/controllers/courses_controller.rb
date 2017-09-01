@@ -9,8 +9,11 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     #@user = current_user
 
-    la = location.latitude
-    lo = location.longitude
+    # la = location.latitude
+    # lo = location.longitude
+    # Le Wagon Latitude and Longitude
+    la = 52.506913
+    lo = 13.391425
     @json_distance = distance_api_call(la,lo)
     @request = request.location
     @json_driving = duration_api_call(la,lo,"driving")
