@@ -13,7 +13,7 @@
   display: flex;
   margin: 0px 7px;
   padding: 10px 5px;
-  border-bottom: 1px solid #bebebe;
+  // border-bottom: 1px solid #bebebe;
   .studio-picture{
     // display: block;
     width: 125px;
@@ -63,7 +63,7 @@
     top: 5px;
     right: 5px;
     font-size: 16px;
-    color: $dark-blue;
+    color: black;
     font-weight: 500;
   }
 }
@@ -73,11 +73,11 @@
   font-size: 17px;
   margin-top: 12px;
   margin-bottom: 6px;
-
 }
 .course-times {
   margin: 0px;
   font-size: 14px;
+  color: black;
 }
 .thumbnail > img {
 
