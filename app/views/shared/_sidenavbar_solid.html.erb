@@ -22,7 +22,7 @@
           <% elsif current_user.photo? %>
             <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
-            <%= image_tag image_path("placeholder.jpg"), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= cl_image_tag('twjchiqlm70j8zjkvk4l'), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
@@ -69,7 +69,7 @@
         <% elsif current_user.photo? %>
           <%= cl_image_tag current_user.photo.path, class: "avatar-xs dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <% else %>
-          <%= image_tag image_path("placeholder.jpg"), class: "avatar-xs dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag ('twjchiqlm70j8zjkvk4l'), class: "avatar-xs dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <% end %>
         <h1> <%= current_user.first_name %> <%= current_user.last_name %></h1>
         <h2> <%= current_user.email %> </h2>
