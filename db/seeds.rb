@@ -51,7 +51,7 @@ end
 
 # Some users without names
 user_emails[11..15].each do |em|
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456')
+  User.create(email: em, password: '123456', password_confirmation: '123456')
 end
 
 # Some users belong to studio
@@ -60,6 +60,8 @@ user_emails[16..19].each do |em|
   u.studio = Studio.first
   u.save
 end
+
+demo_user = User.create(first_name: "Kris", last_name: "Espinosa", email: "demo@wagon.com", password: '123456', password_confirmation: '123456')
 
 puts "Created Courses. To get correct course dates, make sure to seed before demo"
 course_hash = {
@@ -111,6 +113,11 @@ course_hash.each do |title, info|
   cour.studio = Studio.all.sample
   cour.save
 end
+
+demo_booking = Booking.new
+demo_booking.user = demo_user
+demo_booking.course = Course.last
+demo_booking.save
 
 puts "Created a bunch of bookings"
 
