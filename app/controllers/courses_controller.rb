@@ -57,7 +57,7 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
-    distance = filter_params[:distance].to_i
+    distance = filter_params[:distance].to_i || 10
 
     @update_courses = filter_courses(day, distance)
 
@@ -111,6 +111,7 @@ class CoursesController < ApplicationController
 
 # Filter Courses
   def filter_courses(day, d)
+
     case day
     when 'today'
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{Time.now.end_of_day}'")
@@ -119,7 +120,7 @@ class CoursesController < ApplicationController
     when 'next_seven'
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
-    return filtered_courses.select { |course| course.distance < d } if filtered_courses
+    return filtered_courses.joins(:studio).where("studios.distance < #{d}")
   end
 
   def available_courses(courses)

@@ -40,11 +40,18 @@ $(document).ready(function(){
   });
 
   // Pick a distance
-  $(".button-distance").on("click", function() {
-    $("#chosen-distance").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
+
+  $("#distance-slider").change(function(){
+    $("#chosen-distance").html("<p class='chosen-item'>x    " + $(this).val() + " km" + "</p>");
     $(".chosen-filters-container").removeClass("hidden");
-    $(".tab-content").toggleClass("hidden");
   });
+
+  $("#distance-slider").slider({
+    formatter: function(value) {
+      return value;
+    }
+  });
+
 
   // Reset all filters
   $(".refresh-button").on("click", function() {

@@ -5,7 +5,6 @@ class Course < ApplicationRecord
   has_many :users, through: :bookings
 
 
-
   def average_rating
     reviews= self.reviews
     ratings =[]
@@ -15,10 +14,6 @@ class Course < ApplicationRecord
       sum += r.rating
     end
     (sum.to_f / (ratings.length))
-  end
-
-  def distance
-    self.studio.distance
   end
 
   # def day
