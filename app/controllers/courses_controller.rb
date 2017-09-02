@@ -57,6 +57,7 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
+    cost = filter_params[:cost]
 
     @update_courses = filter_courses(day)
     # unless level.empty?
@@ -135,7 +136,7 @@ class CoursesController < ApplicationController
   end
 
   def filter_params
-    params.require(:search_courses).permit(:day, :category, :level, :distance)
+    params.require(:search_courses).permit(:day, :category, :level, :distance, :cost)
   end
 
   def date_words
