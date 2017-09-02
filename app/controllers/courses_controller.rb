@@ -120,11 +120,11 @@ class CoursesController < ApplicationController
     when 'next_seven'
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
-    return filtered_courses.joins(:studio).where("studios.distance < #{d}")
+    return filtered_courses.joins(:studio).where("studios.distance < #{d}") if filtered_courses
   end
 
   def available_courses(courses)
-    courses.reject { |course| course.bookings.length == course.spots }
+    courses.reject { |course| course.bookings.length == course.spots } if courses
   end
 
   def courses_params
