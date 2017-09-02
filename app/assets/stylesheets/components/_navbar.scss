@@ -32,7 +32,8 @@
 }
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 25px;
+  opacity: 0.7;
 }
 
 /* User Avatar */
@@ -100,4 +101,7 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+.logo_fitflex {
+
 }

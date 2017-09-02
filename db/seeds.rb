@@ -90,7 +90,7 @@ end
 
 # tomorrow
 course_hash.each do |title, info|
-  2.times do
+  (3..5).to_a.sample.times do
     st = random_today.sample + 1.day
     cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
     cour.studio = Studio.all.sample
