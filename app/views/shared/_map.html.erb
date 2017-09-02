@@ -7,6 +7,9 @@
   </div>
   <div class="studio-map-info">
     <p class="studio-address"> <%= @json_distance%> away</p>
+    <p class="studio-address">
+<%= link_to "Get directions", "https://maps.google.com?saddr=#{@la.to_s},#{@lo.to_s}&daddr=#{URI.encode(@course.studio.address)}&mode=bicycling&key=#{ENV['GOOGLE_API_SERVER_KEY']}", class: "studio-address" %>
+</p>
   </div>
 </div>
 <% end %>
