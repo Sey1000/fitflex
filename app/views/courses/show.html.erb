@@ -1,5 +1,5 @@
 <div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.cld_id %>');">
-  <%= link_to courses_path, {class: "button-back"} do %>
+  <%= link_to :back, {class: "button-back"} do %>
     <i class="fa fa-chevron-circle-left"></i>
   <% end %>
   <h3 class="course-show-title text-center"><%= @course.title %></h3>
