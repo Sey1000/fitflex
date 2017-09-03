@@ -1,24 +1,14 @@
 $(document).ready(function(){
 
-
-  // if (
-  //   console.log('h')
-  //   $(".chosen-filters-container").addClass("hidden");
-  // }
-
   // Pick a day
   $(".filter-container").on("click", "li", function() {
     // if ($(".filter-container").hasClass("active")) {
-      console.log("toggle");
       if( $(this).hasClass("active") ) {
         $(".tab-content").toggleClass("hidden");
       }
       else {
         $(".tab-content").removeClass("hidden");
       }
-    // else
-      // $(".")
-    // }
   });
 
   $(".button-day").on("click", function() {
@@ -28,9 +18,6 @@ $(document).ready(function(){
   });
 
   // Pick a category
-  // $(".filter-container li:nth-child(2)").on("click", function() {
-  //   $(".tab-content").toggleClass("hidden", "slow");
-  // });
   $(".swiper-slide").on("click", function() {
     $("#chosen-category").html("<p class='chosen-item'>x    " + $(this).find(".category-text").text() + "</p>");
     $(".chosen-filters-container").removeClass("hidden");
@@ -46,9 +33,6 @@ $(document).ready(function(){
   });
 
   // Pick a level
-  // $(".filter-container li:nth-child(3)").on("click", function() {
-  //   $(".tab-content").toggleClass("hidden", "slow");
-  // });
   $(".button-level").on("click", function() {
     $("#chosen-level").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
     $(".chosen-filters-container").removeClass("hidden");
@@ -56,14 +40,18 @@ $(document).ready(function(){
   });
 
   // Pick a distance
-  // $(".filter-container li:nth-child(4)").on("click", function() {
-  //   $(".tab-content").toggleClass("hidden", "slow");
-  // });
-  $(".button-distance").on("click", function() {
-    $("#chosen-distance").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
+
+  $("#distance-slider").change(function(){
+    $("#chosen-distance").html("<p class='chosen-item'>x    " + $(this).val() + " km" + "</p>");
     $(".chosen-filters-container").removeClass("hidden");
-    $(".tab-content").toggleClass("hidden");
   });
+
+  $("#distance-slider").slider({
+    formatter: function(value) {
+      return value;
+    }
+  });
+
 
   // Reset all filters
   $(".refresh-button").on("click", function() {

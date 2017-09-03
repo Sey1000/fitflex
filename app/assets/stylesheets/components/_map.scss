@@ -1,4 +1,4 @@
-.studio-address-map {
+ .studio-address-map {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -8,6 +8,9 @@
 }
 .studio-address{
   font-size: 13px;
+  text-decoration: none;
+  color: black;
+
 }
 .walker {
   width: 13px;

@@ -135,6 +135,23 @@
   padding: 2px 4vw;
 }
 
+.distance-container {
+  display:flex;
+  align-items: center;
+  p {
+    color: white;
+    width: 100px;
+    margin: 10px 10px;
+  }
+}
+
+.tooltip-arrow {
+  opacity: 0.7;
+}
+.tooltip-inner {
+  opacity: 0.7;
+}
+
 
 
 

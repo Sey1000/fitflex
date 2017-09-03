@@ -5,7 +5,6 @@ class Course < ApplicationRecord
   has_many :users, through: :bookings
 
 
-
   def average_rating
     reviews= self.reviews
     ratings =[]
