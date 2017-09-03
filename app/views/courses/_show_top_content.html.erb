@@ -1,0 +1,30 @@
+<!-- This File is for Reveiws#new to render the top section of courses#show view -->
+
+<!-- Course Title banner -->
+<div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.cld_id %>');">
+  
+  <%= link_to :back, {class: "button-back"} do %>
+    <i class="fa fa-chevron-circle-left"></i>
+  <% end %>
+
+  <h3 class="course-show-title text-center"><%= course.title %></h3>
+  
+  <div class="star-ratings-css-medium text-center">
+    <%= render 'shared/stars', course: course %>
+  </div>
+</div>
+
+<!-- Time & Cost -->
+<div class="blue-banner" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%); height: 5vh;">
+  <%= @date_words %> - <%= @course.start_time.strftime ("%l:%M %P") %>
+  <div class="prices">
+    <% cost_amount = @course.cost %>
+    <% if cost_amount - cost_amount.to_i == 0 %>
+    <%= cost_amount.to_i %> <i class="fa fa-euro"></i>
+    <% else %>
+    <%= @course.cost%> <i class="fa fa-euro"></i>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'courses/course_description_icons' %>
