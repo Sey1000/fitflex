@@ -49,53 +49,53 @@
 
 
   <div id="category-tab" class="tab-pane fade">
-      <div class="swiper-container s1-container">
-        <div class="swiper-wrapper s1-wrapper">
-            <div class="swiper-slide button-category s1-slide" data-category="Yoga">
-              <%= cl_image_tag 'buddhist-yoga-pose_mgof1t' %>
-              <div class="category-text">
-                <p>Yoga</p>
-              </div>
-            </div>
-            <div class="swiper-slide button-category s1-slide" data-category="Crossfit">
-              <%= cl_image_tag 'weightlifting_xt40om' %>
-              <div class="category-text">
-                <p>Crossfit</p>
-              </div>
-            </div>
-            <div class="swiper-slide button-category s1-slide" data-category="Kickboxing">
-              <%= cl_image_tag 'mma_ocfpf0' %>
-              <div class="category-text">
-                <p>Kickboxing</p>
-              </div>
-            </div>
-            <div class="swiper-slide button-category s1-slide" data-category="Dance">
-              <%= cl_image_tag 'dancer_yncg7a' %>
-              <div class="category-text">
-                <p>Dance</p>
-              </div>
-            </div>
-            <div class="swiper-slide button-category s1-slide" data-category="Pilates">
-              <%= cl_image_tag 'buddhist-yoga-pose_mgof1t' %>
-              <div class="category-text">
-                <p>Pilates</p>
-              </div>
-            </div>
-            <div class="swiper-slide button-category s1-slide" data-category="HIIT">
-              <%= cl_image_tag 'stretch_ee1nkk' %>
-              <div class="category-text">
-                <p>HIIT</p>
-              </div>
-            </div>
-            <div class="swiper-slide button-category s1-slide" data-category="Martial Arts">
-              <%= cl_image_tag 'mma_ocfpf0' %>
-              <div class="category-text">
-                <p>Martial Arts</p>
-              </div>
-            </div>
+    <div class="swiper-container s1-container">
+      <div class="swiper-wrapper s1-wrapper">
+        <div class="swiper-slide button-category s1-slide" data-category="Yoga">
+          <%= cl_image_tag 'buddhist-yoga-pose_mgof1t' %>
+          <div class="category-text">
+            <p>Yoga</p>
+          </div>
         </div>
+        <div class="swiper-slide button-category s1-slide" data-category="Crossfit">
+          <%= cl_image_tag 'weightlifting_xt40om' %>
+          <div class="category-text">
+            <p>Crossfit</p>
+          </div>
         </div>
+        <div class="swiper-slide button-category s1-slide" data-category="Kickboxing">
+          <%= cl_image_tag 'mma_ocfpf0' %>
+          <div class="category-text">
+            <p>Kickboxing</p>
+          </div>
         </div>
+        <div class="swiper-slide button-category s1-slide" data-category="Dance">
+          <%= cl_image_tag 'dancer_yncg7a' %>
+          <div class="category-text">
+            <p>Dance</p>
+          </div>
+        </div>
+        <div class="swiper-slide button-category s1-slide" data-category="Pilates">
+          <%= cl_image_tag 'buddhist-yoga-pose_mgof1t' %>
+          <div class="category-text">
+            <p>Pilates</p>
+          </div>
+        </div>
+        <div class="swiper-slide button-category s1-slide" data-category="HIIT">
+          <%= cl_image_tag 'stretch_ee1nkk' %>
+          <div class="category-text">
+            <p>HIIT</p>
+          </div>
+        </div>
+        <div class="swiper-slide button-category s1-slide" data-category="Martial Arts">
+          <%= cl_image_tag 'mma_ocfpf0' %>
+          <div class="category-text">
+            <p>Martial Arts</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="level-tab" class="tab-pane fade">
     <div class="level-container">
@@ -114,8 +114,8 @@
   </div>
    <div id="cost-tab" class="tab-pane fade">
     <div class="cost-container">
-      <button type="button" class="btn button-cost"><p>1 km</p></button>
-      <button type="button" class="btn button-cost"><p>3 km</p></button>
+      <button type="button" class="btn button-cost" data-cost="10"><p>10</p></button>
+      <button type="button" class="btn button-cost" data-cost="7"><p>7</p></button>
     </div>
   </div>
 </div>
@@ -162,6 +162,17 @@
       $("#search_courses").submit();
     });
 
+    $("#chosen-cost").on("click", function() {
+      $("#search_crouses_cost").attr('value', "");
+      $("#search_courses").submit();
+    });
+
+
+    $(".button-cost").on("click", function(){
+      $("#search_courses_category").attr('value', $(this).attr('data-cost'));
+      $("#search_courses").submit();
+    });
+
     $(".refresh-button").on("click", function() {
       $("#search_courses_day").attr('value', $(this).attr('data-day'));
       $("#search_courses_category").attr('value', $(this).attr('data-category'));
@@ -171,11 +182,7 @@
       $("#search_courses").submit();
     });
 
-
-    $("#chosen-cost").on("click", function() {
-      $("#search_crouses_cost").attr('value', "");
-      $("#search_courses").submit();
-    });
+    // my trial code
 
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',

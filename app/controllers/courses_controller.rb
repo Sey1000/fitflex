@@ -70,6 +70,8 @@ class CoursesController < ApplicationController
       @update_courses = @update_courses.where(category: category)
     elsif level.present? && category.present?
       @update_courses = @update_courses.where({category: category, level: level})
+    elsif cost.present?
+      @update_courses = @update_courses.where(cost: cost.to_i)
     else
       @update_courses = filter_courses(day)
     end
