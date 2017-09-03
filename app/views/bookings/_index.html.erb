@@ -1,9 +1,11 @@
+<!-- This file is a partial (hence the underscore in the title) rendered in Users#show view -->
 
 <div class="col-xs-12 booking-wrap">
   <div class="booking-top">
     <div class="booking-title">
-    <p class="booking-time-span"><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> <%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
+      <p class="booking-time-span"><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> <%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
     </div>
+
     <div class ="booking-cost">
       <% cost_amount = b.course.cost %>
       <% if cost_amount.to_i - cost_amount == 0 %>
@@ -13,6 +15,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="booking-list-content">
     <p><strong><%= b.course.title %></strong> | <span class="course-where"><%= b.course.studio.name %></span></p>
     <% if old %>

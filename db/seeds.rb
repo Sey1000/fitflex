@@ -65,9 +65,13 @@ demo_user = User.create(first_name: "Kris", last_name: "Espinosa", email: "demo@
 
 puts "Created Courses. To get correct course dates, make sure to seed before demo"
 course_hash = {
+  "New life Yoga" => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
   "Yoga with Alvaro" => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
+  "Body and Mind"  => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
   "Learn Pole Dancing" => { category: "Dance", description: "You will increase your upper body strength and improve your cardio with each move, plus learn the true Diva routine containing 15 new moves." },
   "Crossfit for life" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
+  "Adaptive Training" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
+  "Competitors" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
   "Zumba" => { category: "Dance", description: "Learn how to blend specific Zumba moves and body sculpting techniques using maraca-like Zumba Toning Sticks for an intense strength-training experience." },
   "Creative Pilates" => { category: "Pilates", description: "High-energy and dynamic class which integrates elements of Pilates, Dance, cardio, strength training and stretching. No dance experience required!" },
   "Kickboxing just for you" => { category: "Kickboxing", description: "Come ready to sweat like crazy, build a rock solid core, and burn hundreds of calories." },
@@ -89,8 +93,8 @@ course_hash.each do |title, info|
 end
 
 # tomorrow
-course_hash.each do |title, info|
-  (3..5).to_a.sample.times do
+(3..5).to_a.sample.times do
+  course_hash.each do |title, info|
     st = random_today.sample + 1.day
     cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, cost: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
     cour.studio = Studio.all.sample

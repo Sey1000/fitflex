@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    courses_by_day = filter_courses(params[:search_day])
+    courses_by_day = filter_courses(params[:search_day], 10)
     @courses = available_courses(courses_by_day)
     # update_index
   end
@@ -57,12 +57,11 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
-    cost = filter_params[:cost]
+    cost = filter_params[:cost].to_i
+    distance = filter_params[:distance].to_i || 10
 
-    @update_courses = filter_courses(day)
-    # unless level.empty?
-    #   @update_courses = @update_courses.where(level: level)
-    # end
+
+    @update_courses = filter_courses(day, distance)
 
     if level.present? && category.empty?
       @update_courses = @update_courses.where(level: level)
@@ -71,9 +70,9 @@ class CoursesController < ApplicationController
     elsif level.present? && category.present?
       @update_courses = @update_courses.where({category: category, level: level})
     elsif cost.present?
-      @update_courses = @update_courses.where(cost: cost.to_i)
+      @update_courses = @update_courses.where(cost: cost)
     else
-      @update_courses = filter_courses(day)
+      @update_courses = filter_courses(day, distance)
     end
 
     respond_to do |format|
@@ -115,9 +114,8 @@ class CoursesController < ApplicationController
 
 
 # Filter Courses
-  def filter_courses(day)
+  def filter_courses(day, d)
 
-    filtered_courses = Course.all
     case day
     when 'today'
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{Time.now.end_of_day}'")
@@ -126,11 +124,11 @@ class CoursesController < ApplicationController
     when 'next_seven'
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
-    return filtered_courses
+    return filtered_courses.joins(:studio).where("studios.distance < #{d}") if filtered_courses
   end
 
   def available_courses(courses)
-    courses.reject { |course| course.bookings.length == course.spots }
+    courses.reject { |course| course.bookings.length == course.spots } if courses
   end
 
   def courses_params

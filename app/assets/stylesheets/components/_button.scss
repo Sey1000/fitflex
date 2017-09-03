@@ -1,40 +1,9 @@
-.round-buttons {
-  border: 2px solid white;
-  text-align: center;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(200, 200, 200,0.1);
-  &:hover{
-    background-color: rgba(250,250,250,0.5);
-  }
-}
-.small-button{
-  margin: 15px 0;
-  width: 100px;
-  height: 100px;
-  font-size: 16px;
-}
-
-.large-button {
-  font-size: 25px;
-  width: 200px;
-  height: 200px;
-}
-
-.icon {
-  width: 20px;
-}
-
-.button-day {
-  height: 49px;
-  margin: 0 8px;
-  padding: 5px 15px;
+// Added a class for DRY
+.button-search-options {
   border: 1px solid rgba(255, 255, 255,0.5);
   background-color: rgba(255, 255, 255,0.5);
   border-radius: 3px;
-  &:hover{
+  &:hover {
     background-color: rgba(250,250,250,0.5);
   }
   p {
@@ -42,9 +11,13 @@
   }
 }
 
-.button-category {
+.button-day {
+  height: 49px;
+  margin: 0 8px;
+  padding: 5px 15px;
+}
 
-  width: 40px;
+.button-category {
   img {
     height: 35px;
     width: 35px;
@@ -59,14 +32,7 @@
   height: 49px;
   margin: 0 5px;
   padding: 5px 10px;
-  border: 1px solid rgba(255, 255, 255,0.5);
-  background-color: rgba(255, 255, 255,0.5);
-  border-radius: 3px;
-  &:hover{
-    background-color: rgba(250,250,250,0.5);
-  }
   p {
-    margin: 0;
     font-size: 16px;
   }
 }
@@ -74,14 +40,7 @@
 .button-distance {
   margin: 0 5px;
   padding: 5px 10px;
-  border: 1px solid rgba(255, 255, 255,0.5);
-  background-color: rgba(255, 255, 255,0.5);
-  border-radius: 3px;
-  &:hover{
-    background-color: rgba(250,250,250,0.5);
-  }
   p {
-    margin: 0;
     font-size: 19px;
   }
 
@@ -96,45 +55,28 @@
   opacity: 0.6;
 }
 
+// Home buttons
+.home-buttons-container {
+  display: flex;
+  flex-direction: column;
+}
 
-// .round-button {
-//   width: 100px;
-//   margin: auto;
-// }
-// .round-button:after {
-//   content: "";
-//   display: block;
-//   width: 100%;
-//   height: 0;
-//   padding-bottom: 100%;
-//   border-radius: 50%;
-//   border: 1px solid $pink;
-//   background-color: rgba(255, 96, 107, 0.1);
-// }
+.search-day-button {
+  border: 2px solid white;
+  width: 30vw;
+  max-width: 110px;
+  height: 30vw;
+  max-height: 110px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(200, 200, 200,0.2);
+  &:hover{
+    background-color: rgba(250,250,250,0.5);
+  }
+}
 
-// .round-button div {
-//   float:left;
-//   width:100%;
-//   padding-top:50%;
-//   line-height:1em;
-//   margin-top:-0.5em;
-//   text-align:center;
-//   color:white;
-// }
-
-// #day-button {
-//   padding-top: 43%;
-// }
-// padding: 50px;
-// border-radius: 50%;
-// border: 1px solid $pink;
-// background-color: rgba(255, 96, 107, 0.1);
-// width: 40px;
-// height: 40px;
-// margin: auto;
-// }
-// *{
-//   border: 1px solid red;
-// }
-
-
+.button-top-bottom-margin {
+  margin: 20px 0;
+}

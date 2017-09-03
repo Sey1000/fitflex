@@ -4,8 +4,6 @@ class Course < ApplicationRecord
   has_many :bookings
   has_many :users, through: :bookings
 
-
-
   def average_rating
     reviews= self.reviews
     ratings =[]
@@ -16,19 +14,4 @@ class Course < ApplicationRecord
     end
     (sum.to_f / (ratings.length))
   end
-
-  # def day
-  #   datetime = start_time
-  #   if datetime.today?
-  #     "Today"
-  #   elsif datetime == Date.tomorrow
-  #     "Tomorrow"
-  #   elsif datetime < (DateTime.now + 7.day)
-  #     days = datetime.day - DateTime.now.day
-  #     "#{days} days"
-  #   end
-  # end
-
-  # def day=(value)
-  # end
 end
