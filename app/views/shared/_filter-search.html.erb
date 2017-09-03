@@ -12,7 +12,7 @@
 <%# render 'reviews/form', courses: @courses %>
 <%# render 'shared/form-filters', courses: @courses %>
 
-<%= render 'shared/form_filters' %>
+<%= render 'shared/form_filters'  %>
 
 <div class="chosen-filters-container">
   <div class="chosen-filters">
@@ -103,13 +103,17 @@
   </div>
   <div id="distance-tab" class="tab-pane fade">
     <div class="distance-container">
-      <button type="button" class="btn button-distance"><p>1 km</p></button>
-      <button type="button" class="btn button-distance"><p>3 km</p></button>
-      <button type="button" class="btn button-distance"><p>5 km</p></button>
-      <button type="button" class="btn button-distance"><p>10 km</p></button>
+    <p>0 km</p>
+      <!-- <input id="distance-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="14"/> -->
+
+      <input type="text" class="slider" id="distance-slider" value="10" data-slider-min="0" data-slider-max="10" data-slider-step="0.5" data-slider-selection="after" data-slider-tooltip="show">
+      <p>10 km</p>
+      <!-- <button type="button" class="btn button-distance" data-distance= [0..1]><p>1 km</p></button> -->
+      <!-- <button type="button" class="btn button-distance" data-distance="3"><p>3 km</p></button>
+      <button type="button" class="btn button-distance" data-distance="5"><p>5 km</p></button>
+      <button type="button" class="btn button-distance" data-distance="10"><p>10 km</p></button> -->
     </div>
   </div>
-</div>
 
 
 </div>
@@ -123,13 +127,18 @@
       $("#search_courses").submit();
     });
 
+    $(".button-category").on("click", function(){
+      $("#search_courses_category").attr('value', $(this).attr('data-category'));
+      $("#search_courses").submit();
+    });
+
     $(".button-level").on("click", function(){
       $("#search_courses_level").attr('value', $(this).attr('data-level'));
       $("#search_courses").submit();
     });
 
-    $(".button-category").on("click", function(){
-      $("#search_courses_category").attr('value', $(this).attr('data-category'));
+    $("#distance-slider").change(function(){
+      $("#slider-distance-form").attr('value', $(this).val());
       $("#search_courses").submit();
     });
 
