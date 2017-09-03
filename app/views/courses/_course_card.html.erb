@@ -2,7 +2,6 @@
     <div class="col-xs-12 course-cards-container course-color">
       <div class="course-card">
         <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.cld_id %>');">
-          <!-- <img src="http://www.studio89fitness.com/images/background/6.jpg" alt="studio"> -->
         </div>
         <div class="info">
           <div class="spots">
@@ -27,7 +26,8 @@
             <% else %>
               <%= course.start_time.strftime('%A, %b %d') %>
             <% end %>
-              <br><%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
+            <br>
+            <%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
           </div>
           <!-- <p class="level"><%= course.level %> </p> -->
         </div>

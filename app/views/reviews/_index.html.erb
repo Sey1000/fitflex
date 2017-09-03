@@ -1,0 +1,57 @@
+<!-- This file is a partial for rendering in Courses#show, hence the underscore in the title -->
+
+<div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%);">
+  <h4 class="review-header">Reviews</h4>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @course.reviews.each_slice(2) do |a|%>
+        <div class="swiper-slide review">
+          <% a.each_with_index do |review_a, i| %>
+            <div class="inner-review">
+              <div class="user-review-image">
+                <%= image_tag 'placeholder', class: 'avatar-xxs' %>
+              </div>
+              <div class="review-content">
+                <div class="user_name_review">
+                  <%= review_a.user.first_name %>
+                </div>
+                <div class="review_title">
+                  <%= review_a.title %>
+                </div>
+              </div>
+              <div class="review-rating">
+                <% review_a.rating.times do %>
+                <i class="fa fa-star"></i>
+                <% end %>
+                <% (5- review_a.rating).times do %>
+                <i class="fa fa-star-o"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="swiper-arrows">
+      <div class="swiper-button-next swiper-button-white"></div>
+      <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+    <div class="swiper-pagination sw-pa"></div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+    slidesPerView: 1,
+    paginationClickable: true,
+    spaceBetween: 200,
+    loop: true
+  });
+</script>
+<% end %>
+

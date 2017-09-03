@@ -1,7 +1,7 @@
 <div class="profile-main-info">
   <% if user.facebook_picture_url %>
-    <% avatar_url = user.facebook_picture_url %>
-    <%= image_tag avatar_url, class: "avatar-lg" %>
+    <% avatar_url = user.facebook_picture_url.split("?")[0] + "?type=large" %>
+    <div class="avatar-lg facebook-avatar-background" style="background-image: url('<%= avatar_url %>')"></div>
   <% elsif user.photo? %>
     <%= cl_image_tag user.photo.path, width: 400, height: 400, crop: :fill, class: "avatar avatar-lg" %>
   <% else %>

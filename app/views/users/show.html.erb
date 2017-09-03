@@ -1,5 +1,5 @@
 <div class="body-profile" style="background: linear-gradient(0deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%);">
-  <%= render 'users/avatar-component', user: @user %>
+  <%= render 'users/profile_avatar', user: @user %>
 
   <div class="col-xs-12 no-padding">
     <div class="profile-main-info">
@@ -18,7 +18,7 @@
       </div>
       <div class="row hidden">
         <% upcoming_bookings.each do |b| %>
-          <%= render 'shared/booking-list', b: b, old: false %>
+          <%= render 'bookings/index', b: b, old: false %>
         <% end %>
       </div>
 
@@ -29,7 +29,7 @@
       </div>
       <div class="row hidden">
         <% past_bookings.each do |b| %>
-          <%= render 'shared/booking-list', b: b, old: true %>
+          <%= render 'bookings/index', b: b, old: true %>
         <% end %>
       </div>
 
