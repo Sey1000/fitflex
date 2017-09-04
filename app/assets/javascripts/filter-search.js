@@ -9,7 +9,7 @@ $(document).ready(function(){
       else {
         $(".tab-content").removeClass("hidden");
       }
-  });
+    });
 
   $(".button-day").on("click", function() {
     $("#chosen-day").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
@@ -46,14 +46,14 @@ $(document).ready(function(){
     $(".chosen-filters-container").removeClass("hidden");
   });
 
-  //Pick price
+  //Pick a price
 
   $(".button-cost").on("click", function() {
     $("#chosen-cost").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
     $(".chosen-filters-container").removeClass("hidden");
     $(".tab-content").toggleClass("hidden");
-
-  // Pick distante
+  });
+  // Pick a distante
 
   $("#distance-slider").slider({
     formatter: function(value) {

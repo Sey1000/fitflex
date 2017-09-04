@@ -25,12 +25,16 @@ studio_hash = {
   "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
 }
 
-studio_hash.each do |st_name, st_info|
+studios = studio_hash.each do |st_name, st_info|
   s = Studio.create(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id], distance: st_info[:distance])
 end
 
 # Seed Users that DON'T belong to studios (regular customers)
 puts "Created Users"
+
+# user_roles = [
+#   "customer", "instructor", "studio"
+# ]
 
 user_emails = [
   "kris@wagon.com", "maren@wagon.com", "sey@wagon.com", "nhung@wagon.com",
@@ -41,12 +45,12 @@ user_emails = [
 ]
 
 user_emails[0..10].each do |em|
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456', role: 'customer')
 end
 
 # more users with fake infos
 30.times do
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 'customer')
 end
 
 # Some users without names
@@ -55,9 +59,16 @@ user_emails[11..15].each do |em|
 end
 
 # Some users belong to studio
+cl_ids_trainers = ["personal-training-business_opxfqm", "Personal-Trainer-Solingen-Michael_hqb3xu", "jessi-kneeland-700x700_0_eeibxn", "84e695eaaac4a3cc9d6ed9180c8d7e5c--female-personal-trainer-motivational-pics_l3tmwl", "1072414_bjpylf"]
 user_emails[16..19].each do |em|
-  u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456')
-  u.studio = Studio.first
+  u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456', role: 'instructor')
+  u.studio = Studio.all.sample
+  u.save
+end
+
+20.times do
+  u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 'instructor', cld_id: cl_ids_trainers.sample)
+  u.studio = Studio.all.sample
   u.save
 end
 
