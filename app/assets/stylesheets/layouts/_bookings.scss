@@ -17,9 +17,11 @@
     .booking-title {
       width: 250px;
       .booking-time-span {
-        margin-bottom: 4px;
         opacity: 0.7;
       }
+    }
+    .boooking-list-paystat {
+      font-size: 12px;
     }
     .booking-cost {
       text-align: right;
@@ -30,9 +32,11 @@
 
 .booking-list-content {
   position: relative;
+  display: flex;
+  flex-direction: column;
   p {
-    border-bottom: 1px solid $medium-gray;
     color: $gray;
+    margin-bottom: 0;
     strong {
       opacity: 0.8;
     }
@@ -40,16 +44,21 @@
       opacity: 0.6;
     }
   }
-  .boooking-list-paystat {
-    position: absolute;
-    right: 20px;
-    top: 1px;
-  }
   .review-me {
     position: absolute;
     right: 0;
     bottom: 10px;
     font-size: 20px;
     color: $red;
+  }
+  .booking-cancel {
+
+    p {
+      border-bottom: 1px solid $medium-gray;
+      margin-bottom: 2px;
+      text-align: right;
+      font-size: 15px;
+      color: $dark-gray;
+    }
   }
 }
