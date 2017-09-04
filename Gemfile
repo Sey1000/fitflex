@@ -36,6 +36,11 @@ gem 'coffee-rails'
 # Search Swipe
 gem 'rails-assets-swiper', source: 'https://rails-assets.org'
 
+# Money Transformation
+gem 'money-rails'
+# Payment Provider
+gem 'stripe'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
