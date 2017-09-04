@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :update_index]
+
   def index
     courses_by_day = filter_courses(params[:search_day], 10)
     @courses = available_courses(courses_by_day)
@@ -28,6 +30,7 @@ class CoursesController < ApplicationController
     end
 
     @date_words = date_words
+    session[:current_course] = course_path(@course)
   end
 
   def new
