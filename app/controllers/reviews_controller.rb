@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
   def new
     @course = Course.find(params[:course_id])
-    @date_words = date_words
+    @date_words = date_words(@course.start_time)
     @review = Review.new
   end
 
   def create
     @course = Course.find(params[:course_id])
-    @date_words = date_words
+    @date_words = date_words(@course.start_time)
     @review = Review.new(reviews_params)
     @review.course = @course
     @review.user = current_user
