@@ -25,7 +25,7 @@ studio_hash = {
   "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
 }
 
-studios = studio_hash.each do |st_name, st_info|
+studio_hash.each do |st_name, st_info|
   s = Studio.create(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id], distance: st_info[:distance])
 end
 
