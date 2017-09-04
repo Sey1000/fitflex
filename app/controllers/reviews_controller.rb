@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
   def new
     @course = Course.find(params[:course_id])
     @date_words = date_words

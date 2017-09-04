@@ -14,4 +14,8 @@
   <%= render 'courses/map' %>
 </div>
 
-<%= render 'bookings/new', course: @course, date_words: @date_words %>
+<% if current_user %>
+  <%= render 'bookings/new', course: @course, date_words: @date_words %>
+<% else %>
+  <%= render 'bookings/login', course: @course, date_words: @date_words %>
+<% end %>
