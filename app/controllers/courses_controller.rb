@@ -123,7 +123,7 @@ class CoursesController < ApplicationController
     when 'next_seven'
       filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
-    return filtered_courses.joins(:studio).where("studios.distance < #{d}") if filtered_courses
+    return filtered_courses.joins(:studio).where("studios.distance <= #{d}") if filtered_courses
   end
 
   def available_courses(courses)
