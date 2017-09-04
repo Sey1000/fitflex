@@ -2,7 +2,7 @@
   <% if current_user %>
     <h3>Welcome back, <%= current_user.first_name %> </h3>
   <% else %>
-    <h3>Get access to cheap left-over spots for sports courses at studios nearby</h3>
+    <h3 class="text-center not-logged-in-message">Access fitness courses around you<br><br>Designed for people with flexible schedule</h3>
   <% end %>
   <div class="home-buttons-container">
     <%= link_to courses_path(search_day: 'today') do %>
