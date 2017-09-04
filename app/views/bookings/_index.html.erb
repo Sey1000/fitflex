@@ -12,7 +12,12 @@
   </div>
 
   <div class="booking-list-content">
-    <p><strong><%= b.course.title %></strong> | <span class="course-where"><%= b.course.studio.name %></span> | <span class="course-paystat"><%= b.state %></span></p>
+    <div class="booking-list-info">
+      <p><strong><%= b.course.title %></strong> | <span class="course-where"><%= b.course.studio.name %></span></p>
+    </div>
+    <div class="boooking-list-paystat">
+      <p><span class="course-paystat"><%= b.state %></span></p>
+    </div>
     <% if old %>
       <%= link_to new_course_review_path(course_id: b.course), class: "review-me" do %>
         <i class="fa fa-pencil-square-o"></i>
