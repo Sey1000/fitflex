@@ -9,7 +9,7 @@ $(document).ready(function(){
       else {
         $(".tab-content").removeClass("hidden");
       }
-  });
+    });
 
   $(".button-day").on("click", function() {
     $("#chosen-day").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
@@ -25,7 +25,7 @@ $(document).ready(function(){
   });
 
   // Remove chosen-filters on filter-click
-  $("#chosen-category, #chosen-day, #chosen-level, #chosen-distance").on("click", function() {
+  $("#chosen-category, #chosen-day, #chosen-level, #chosen-distance, #chosen-cost").on("click", function() {
     $(this).html("");
     if ($(this).parent().find(".chosen-item").size() == 0 ) {
       $(".chosen-filters-container").addClass("hidden");
@@ -50,6 +50,21 @@ $(document).ready(function(){
     formatter: function(value) {
       return value;
     }
+
+  });
+
+  //Pick a price
+
+   $("#cost-slider").change(function(){
+    $("#chosen-cost").html("<p class='chosen-item'>x    " + $(this).val() + " €" + "</p>");
+    $(".chosen-filters-container").removeClass("hidden");
+  });
+
+  $("#cost-slider").slider({
+    formatter: function(value) {
+      return value;
+    }
+
   });
 
 
@@ -59,6 +74,7 @@ $(document).ready(function(){
     $("#chosen-category").html("");
     $("#chosen-level").html("");
     $("#chosen-distance").html("");
+    $("#chosen-cost").html("");
     $(".chosen-filters-container").toggleClass("hidden");
   });
 

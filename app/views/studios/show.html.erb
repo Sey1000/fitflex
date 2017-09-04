@@ -4,17 +4,12 @@
 <p><%= @studio.description %></p>
 <h6>Our Instructors</h6>
 <div class="instructors">
-  <div class="instr">
-  <%= image_tag cl_image_path 'twjchiqlm70j8zjkvk4l', class: "avatar-xs" %>
-  <p>Alvaro</p>
-  </div>
-  <div class="instr">
-  <%= image_tag cl_image_path 'twjchiqlm70j8zjkvk4l', class: "avatar-xs" %>
-  <p>Nhung</p>
-  </div>
-  <div class="instr">
-  <%= image_tag cl_image_path 'twjchiqlm70j8zjkvk4l', class: "avatar-xs" %>
-  <p>Sey</p>
+  <% @users.each do |user| %>
+    <div class="instr">
+      <%= cl_image_tag user.cld_id, class: "avatar avatar-xs" %>
+      <p><%= user.first_name %></p>
+    </div>
+  <% end %>
   </div>
 </div>
 <h6>Studio Address</h6>
@@ -25,3 +20,10 @@
 
 
 <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=375x150&sensor=false&key=#{ENV['GOOGLE_API_SERVER_KEY']}&maptype=roadmap&markers=color:red|@studio.address"  %>
+  <!-- <div class="instr">
+  <%= image_tag cl_image_path 'twjchiqlm70j8zjkvk4l', class: "avatar-xs" %>
+  <p>Nhung</p>
+  </div>
+  <div class="instr">
+  <%= image_tag cl_image_path 'twjchiqlm70j8zjkvk4l', class: "avatar-xs" %>
+  <p>Sey</p> -->
