@@ -1,5 +1,9 @@
 <div class="container banner" style="background-image: url('<%= cl_image_path("tisyxhi8uquqkwfqokzh") %>')">
-  <h3>Find your next course</h3>
+  <% if current_user %>
+    <h3>Welcome back, <%= current_user.first_name %> </h3>
+  <% else %>
+    <h3>Get access to cheap left-over spots for sports courses at studios nearby</h3>
+  <% end %>
   <div class="home-buttons-container">
     <%= link_to courses_path(search_day: 'today') do %>
       <div class="search-day-button">
