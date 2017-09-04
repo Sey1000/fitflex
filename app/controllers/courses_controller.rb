@@ -4,7 +4,8 @@ class CoursesController < ApplicationController
   def index
     courses_by_day = filter_courses(params[:search_day])
     @courses = available_courses(courses_by_day)
-    # update_index
+    @filters = ["day", "category", "level", "distance", "price_cents"]
+    @categories = Course.order(:category).distinct.pluck(:category)
   end
 
   def show
@@ -122,11 +123,11 @@ class CoursesController < ApplicationController
   def filter_courses(day)
 
     case day
-    when 'today'
+    when 'Today'
       Course.where("start_time > '#{Time.now}' AND start_time < '#{Time.now.end_of_day}'")
-    when 'tomorrow'
+    when 'Tomorrow'
       Course.where("start_time > '#{Time.now.end_of_day}' AND start_time < '#{DateTime.tomorrow.end_of_day}'")
-    when 'next_seven'
+    when 'Any day'
       Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
   end

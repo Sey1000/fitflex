@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  // Pick a day
+
   $(".filter-container").on("click", "li", function() {
       if( $(this).hasClass("active") ) {
         $(".tab-content").toggleClass("hidden");
@@ -10,6 +10,7 @@ $(document).ready(function(){
       }
     });
 
+  // Pick a day
   $(".button-day").on("click", function() {
     $("#chosen-day").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
     $(".chosen-filters-container").removeClass("hidden");

@@ -7,17 +7,17 @@
     <h3 class="text-center not-logged-in-message">Access fitness courses around you<br><br>Designed for people with flexible schedule</h3>
   <% end %>
   <div class="home-buttons-container">
-    <%= link_to courses_path(search_day: 'today') do %>
+    <%= link_to courses_path(search_day: 'Today') do %>
       <div class="search-day-button">
         <h5>Today</h5>
       </div>
     <% end %>
-    <%= link_to courses_path(search_day: 'tomorrow') do %>
+    <%= link_to courses_path(search_day: 'Tomorrow') do %>
       <div class="search-day-button button-top-bottom-margin">
         <h5>Tomorrow</h5>
       </div>
     <% end %>
-    <%= link_to courses_path(search_day: 'next_seven') do %>
+    <%= link_to courses_path(search_day: 'Any day') do %>
       <div class="search-day-button">
         <h5>7 days</h5>
       </div>
