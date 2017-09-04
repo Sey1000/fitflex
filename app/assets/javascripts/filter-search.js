@@ -39,13 +39,13 @@ $(document).ready(function(){
     });
 
   $("#price_cents-slider").change(function(){
-    $("#chosen-price_cents").html("<p class='chosen-item'>x    " + $(this).val() + " €" + "</p>");
+    $("#chosen-price_cents").html("<p class='chosen-item'>x    " + $(this).val()/100 + " €" + "</p>");
     $(".chosen-filters-container").removeClass("hidden");
   });
 
   $("#price_cents-slider").slider({
     formatter: function(value) {
-      return value;
+      return value/100 + "€";
     }
   });
 
