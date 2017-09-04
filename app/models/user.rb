@@ -8,8 +8,9 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :courses, through: :bookings
+  has_many :favorites
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, 
+         :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
   has_attachment :photo
 

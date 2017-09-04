@@ -29,6 +29,20 @@
             <br>
             <%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
           </div>
+
+          <div id="course-12<%= course.id %>">
+          <% favorite = Favorite.where(course_id: course.id, user_id: current_user.id).first %>
+          <% if favorite %>
+            <%= link_to favorite_path(favorite.id), method: :delete, remote: :true do %>
+              <i class="fa fa-heart heart-red" aria-hidden="true"></i>
+            <% end %>
+          <% else %>
+            <%= link_to favorites_path(user_id: current_user.id, course_id: course.id), method: :post, remote: :true do %>
+              <i class="fa fa-heart heart-grey" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+          </div>
+
           <!-- <p class="level"><%= course.level %> </p> -->
         </div>
       </div>
