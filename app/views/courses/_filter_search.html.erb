@@ -6,6 +6,7 @@
       <li><a data-toggle="tab" href="#category-tab">Category</a></li>
       <li><a data-toggle="tab" href="#level-tab">Level</a></li>
       <li><a data-toggle="tab" href="#distance-tab">Distance</a></li>
+      <li><a data-toggle="tab" href="#price_cents-tab">Price</a></li>
     </ul>
   </div>
   <%# render 'reviews/form', courses: @courses %>
@@ -22,8 +23,9 @@
       <div class="chosen-category" id="chosen-category"></div>
       <div class="chosen-category" id="chosen-level"></div>
       <div class="chosen-category" id="chosen-distance"></div>
+      <div class="chosen-category" id="chosen-price_cents"></div>
     </div>
-    <div class="refresh-button" data-day="next_seven" data-level="" data-category="" data-distance="">
+    <div class="refresh-button" data-day="next_seven" data-level="" data-category="" data-distance="" data-price_cents="">
       <i class="fa fa-refresh" aria-hidden="true"></i>
     </div>
   </div>
@@ -105,6 +107,16 @@
         <button type="button" class="btn button-distance" data-distance="10"><p>10 km</p></button> -->
       </div>
     </div>
+
+    <div id="price_cents-tab" class="tab-pane fade">
+      <div class="price_cents-container">
+      <p>0€</p>
+      <input type="text" class="slider" id="price_cents-slider" data-slider-value="1000" data-slider-min="0" data-slider-max="2000" data-slider-step="100" data-slider-selection="after" data-slider-tooltip="show">
+        <p>20€</p>
+<!--         <button type="button" class="btn button-search-options button-price_cents" data-cost="10"><p>10€</p></button>
+        <button type="button" class="btn button-search-options button-cost" data-cost="7"><p>7€</p></button> -->
+      </div>
+    </div>
   </div>
 </div>
 
@@ -132,6 +144,11 @@
         $("#search_courses").submit();
       });
 
+       $("#price_cents-slider").change(function(){
+        $("#slider-price_cost-form").attr('value', $(this).val());
+        $("#search_courses").submit();
+      });
+
       $("#chosen-day").on("click", function() {
         $("#search_courses_day").attr('value', "next_seven");
         $("#search_courses").submit();
@@ -152,11 +169,17 @@
         $("#search_courses").submit();
       });
 
+      $("#chosen-price_cents").on("click", function() {
+        $("#search_courses_price_cents").attr('value', "");
+        $("#search_courses").submit();
+      });
+
       $(".refresh-button").on("click", function() {
         $("#search_courses_day").attr('value', $(this).attr('data-day'));
         $("#search_courses_category").attr('value', $(this).attr('data-category'));
         $("#search_courses_level").attr('value', $(this).attr('data-level'));
         $("#search_crouses_distance").attr('value', $(this).attr('data-distance'));
+        $("#search_crouses_price_cents").attr('value', $(this).attr('data-price_cents'));
         $("#search_courses").submit();
       });
 

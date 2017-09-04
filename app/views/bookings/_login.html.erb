@@ -22,11 +22,11 @@
           <%= course.studio.address %>
         </div>
         <div class="booking-modal-cost">
-          <% cost_amount = course.cost %>
+          <% cost_amount = course.price_cents %>
           <% if cost_amount - cost_amount.to_i == 0 %>
             <%= cost_amount.to_i %> <i class="fa fa-euro"></i>
           <% else %>
-            <%= course.cost%> <i class="fa fa-euro"></i>
+            <%= course.price_cents%> <i class="fa fa-euro"></i>
           <% end %>
         </div>
         <div class="text-center confirm-button-margin">

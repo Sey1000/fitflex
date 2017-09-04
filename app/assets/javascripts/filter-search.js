@@ -9,7 +9,7 @@ $(document).ready(function(){
       else {
         $(".tab-content").removeClass("hidden");
       }
-  });
+    });
 
   $(".button-day").on("click", function() {
     $("#chosen-day").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
@@ -25,7 +25,7 @@ $(document).ready(function(){
   });
 
   // Remove chosen-filters on filter-click
-  $("#chosen-category, #chosen-day, #chosen-level, #chosen-distance").on("click", function() {
+  $("#chosen-category, #chosen-day, #chosen-level, #chosen-distance, #chosen-price_cents").on("click", function() {
     $(this).html("");
     if ($(this).parent().find(".chosen-item").size() == 0 ) {
       $(".chosen-filters-container").addClass("hidden");
@@ -47,10 +47,22 @@ $(document).ready(function(){
   });
 
   $("#distance-slider").slider({
-    value: 100,
     formatter: function(value) {
       return value;
-    },
+    }
+  });
+
+  //Pick a price
+
+  $("#price_cents-slider").change(function(){
+    $("#chosen-price_cents").html("<p class='chosen-item'>x    " + $(this).val()/100 + " €" + "</p>");
+    $(".chosen-filters-container").removeClass("hidden");
+  });
+
+  $("#price_cents-slider").slider({
+    formatter: function(value) {
+      return value/100 + "€";
+    }
   });
 
 
@@ -60,6 +72,7 @@ $(document).ready(function(){
     $("#chosen-category").html("");
     $("#chosen-level").html("");
     $("#chosen-distance").html("");
+    $("#chosen-price_cents").html("");
     $(".chosen-filters-container").toggleClass("hidden");
   });
 
