@@ -13,9 +13,17 @@
 <div class="room-for-button">
   <%= render 'courses/map' %>
 </div>
+        <div class="payment">
+          <%= form_tag bookings_path do %>
+            <%= hidden_field_tag 'course_id', @course.id %>
+            <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+
 
 <% if current_user %>
   <%= render 'bookings/new', course: @course, date_words: @date_words %>
 <% else %>
   <%= render 'bookings/login', course: @course, date_words: @date_words %>
 <% end %>
+
