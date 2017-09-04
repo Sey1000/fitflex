@@ -47,9 +47,10 @@ $(document).ready(function(){
   });
 
   $("#distance-slider").slider({
+    value: 100,
     formatter: function(value) {
       return value;
-    }
+    },
   });
 
 

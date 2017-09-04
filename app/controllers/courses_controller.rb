@@ -60,9 +60,10 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
-    distance = filter_params[:distance].to_i || 10
+    distance = filter_params[:distance].to_i
 
     @update_courses = filter_courses(day, distance)
+    binding.pry
 
     if level.present? && category.empty?
       @update_courses = @update_courses.where(level: level)
