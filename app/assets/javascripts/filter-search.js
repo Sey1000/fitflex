@@ -15,8 +15,8 @@ $(document).ready(function(){
   var buttonFilters = ['day', 'category', 'level'],
     sliderFilters = ['distance', 'price_cents'],
     allFilters = buttonFilters.concat(sliderFilters),
-    units = ["km", "€"],
-    conversion = [1, 100];
+    // units = ["km", "€"],
+    // conversion = [1, 100];
 
   buttonFilters.forEach( function(filter){
     $(".button-" + filter).on("click", function() {
@@ -26,28 +26,39 @@ $(document).ready(function(){
     });
   });
 
-  for (i = 0; i<3; i++) {
-    $("#" + sliderFilters[i] +"-slider").change(function(){
-      $("#chosen-" + sliderFilters[i]).html("<p class='chosen-item'>x    " + $(this).val() + " " + units[i] / conversion[i] + "</p>");
-      $(".chosen-filters-container").removeClass("hidden");
+
+  $("#distance-slider").change(function(){
+    $("#chosen-distance").html("<p class='chosen-item'>x    " + $(this).val() + " km" + "</p>");
+    $(".chosen-filters-container").removeClass("hidden");
+  });
+
+    $("#distance-slider").slider({
+      formatter: function(value) {
+        return value;
+      }
     });
-    $("#" + sliderFilters[i] +"-slider").slider({
+
+  $("#price_cents-slider").change(function(){
+    $("#chosen-price_cents").html("<p class='chosen-item'>x    " + $(this).val() + " €" + "</p>");
+    $(".chosen-filters-container").removeClass("hidden");
+  });
+
+  $("#price_cents-slider").slider({
     formatter: function(value) {
-      return value / conversion[i];
+      return value;
     }
   });
 
-  }
 
   allFilters.forEach( function(filter) {
   // Remove chosen-filters on filter-click
     $("#chosen-" + filter).on("click", function() {
-      $(this).html("Any " + filter);
+      $(this).html("<p class='chosen-item'>x    Any " + filter + "</p>");
     });
 
   // Reset all filters
     $(".refresh-button").on("click", function() {
-      $("#chosen-" + filter).html("Any " + filter);
+      $("#chosen-" + filter).html("<p class='chosen-item'>x    Any " + filter + "</p>");
     });
   });
 });

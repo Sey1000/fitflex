@@ -2,9 +2,8 @@
 
   <div class="filter-container">
     <ul class="nav nav-tabs">
-      <li><a data-toggle="tab active" href='#day-tab'>Days</a></li>
-      <% @filters.drop(1).each do |f| %>
-      <li><a data-toggle="tab" href='#<% f %>-tab'> <%= f.split("_").first.capitalize %></a></li>
+      <% @filters.each do |f| %>
+      <li><a data-toggle="tab" href='#<%= f %>-tab'> <%= f.split("_").first.capitalize %></a></li>
       <% end %>
     </ul>
   </div>
@@ -20,7 +19,9 @@
         <p class="chosen-item">x    <%= params[:search_day] %> </p>
       </div>
       <% @filters.drop(1).each do |f| %>
-        <div class="chosen-category" id='chosen-<% f %>'></div>
+        <div class="chosen-category" id='chosen-<%= f %>'>
+          <p class="chosen-item">x    Any <%= f.split("_").first %> </p>
+        </div>
       <% end %>
     </div>
     <div class="refresh-button" data-day="Any day" data-level="Any level" data-category="Any category" data-distance="Any distance" data-price_cents="Any price">
@@ -42,7 +43,7 @@
         <div class="swiper-wrapper s1-wrapper">
           <% category_icons = ['weightlifting_xt40om', 'dancer_yncg7a', 'buddhist-yoga-pose_mgof1t', 'stretch_ee1nkk', 'mma_ocfpf0', 'mma_ocfpf0', 'buddhist-yoga-pose_mgof1t', 'buddhist-yoga-pose_mgof1t'] %>
           <% @categories.zip(category_icons).each do |c, i| %>
-            <div class="swiper-slide button-category s1-slide" data-category='<% c %>' >
+            <div class="swiper-slide button-category s1-slide" data-category='<%= c %>' >
               <%= cl_image_tag i %>
               <div class="category-text">
                 <p> <%= c %> </p>
@@ -108,7 +109,7 @@
       // Reset to default filter values when clicking on filter in filter-container
       allFilters.forEach( function(filter) {
         $("#chosen-" + filter).on("click", function() {
-          $("#search_courses_" + filter).attr('value', "any" + filter);
+          $("#search_courses_" + filter).attr('value', "Any " + filter);
           $("#search_courses").submit();
         });
       });
