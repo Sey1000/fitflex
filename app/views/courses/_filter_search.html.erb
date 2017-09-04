@@ -109,8 +109,11 @@
     </div>
     <div id="cost-tab" class="tab-pane fade">
       <div class="cost-container">
-        <button type="button" class="btn button-search-options button-cost" data-cost="10"><p>10</p></button>
-        <button type="button" class="btn button-search-options button-cost" data-cost="7"><p>7</p></button>
+      <p>0€</p>
+      <input type="text" class="slider" id="cost-slider" value="10" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-selection="after" data-slider-tooltip="show">
+        <p>20€</p>
+<!--         <button type="button" class="btn button-search-options button-cost" data-cost="10"><p>10€</p></button>
+        <button type="button" class="btn button-search-options button-cost" data-cost="7"><p>7€</p></button> -->
       </div>
     </div>
   </div>
@@ -140,8 +143,8 @@
         $("#search_courses").submit();
       });
 
-      $(".button-cost").on("click", function(){
-        $("#search_courses_cost").attr('value', $(this).attr('data-cost'));
+       $("#cost-slider").change(function(){
+        $("#slider-cost-form").attr('value', $(this).val());
         $("#search_courses").submit();
       });
 

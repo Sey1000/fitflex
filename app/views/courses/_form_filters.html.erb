@@ -3,7 +3,8 @@
     <%= f.text_field :day, value: params[:search_day], class: "hidden"%>
     <%= f.text_field :category, class: "hidden" %>
     <%= f.text_field :level, class: "hidden" %>
-    <%= f.text_field :cost, class: "hidden" %>
+    <%#= f.text_field :cost, class: "hidden" %>
+    <%= f.range_field :cost, :min=>0, :max=>20, :class=>"slide", :id=>"slider-cost-form", class: "hidden" %>
     <%#= f.text_field :day %>
     <%= f.range_field :distance, :min=>0, :max=>10, :class=>"slide", :id=>"slider-distance-form", class: "hidden" %>
 

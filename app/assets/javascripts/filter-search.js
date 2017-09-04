@@ -46,16 +46,21 @@ $(document).ready(function(){
     $(".chosen-filters-container").removeClass("hidden");
   });
 
+  $("#distance-slider").slider({
+    formatter: function(value) {
+      return value;
+    }
+
+  });
+
   //Pick a price
 
-  $(".button-cost").on("click", function() {
-    $("#chosen-cost").html("<p class='chosen-item'>x    " + $(this).text() + "</p>");
+   $("#cost-slider").change(function(){
+    $("#chosen-cost").html("<p class='chosen-item'>x    " + $(this).val() + " €" + "</p>");
     $(".chosen-filters-container").removeClass("hidden");
-    $(".tab-content").toggleClass("hidden");
   });
-  // Pick a distante
 
-  $("#distance-slider").slider({
+  $("#cost-slider").slider({
     formatter: function(value) {
       return value;
     }
