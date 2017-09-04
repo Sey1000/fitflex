@@ -60,13 +60,14 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
-    cost = filter_params[:cost].to_i || 20
+    price_cents = filter_params[:price_cents].to_i || 2000
     distance = filter_params[:distance].to_i || 10
 
 
     @update_courses = filter_courses(day)
     @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
-    @update_courses = @update_courses.where("cost <= ?", cost)
+    @update_courses = @update_courses.where("price_cents <= ?", price_cents)
+
 
     if level.present? && category.empty?
       @update_courses = @update_courses.where(level: level)
@@ -134,11 +135,11 @@ class CoursesController < ApplicationController
   end
 
   def courses_params
-    params.require(:course).permit(:title, :date, :start_time, :end_time, :cost, :spots, :description, :category, :level, :studio_id)
+    params.require(:course).permit(:title, :date, :start_time, :end_time, :price_cents, :spots, :description, :category, :level, :studio_id)
   end
 
   def filter_params
-    params.require(:search_courses).permit(:day, :category, :level, :distance, :cost)
+    params.require(:search_courses).permit(:day, :category, :level, :distance, :price_cents)
   end
 
   def date_words
