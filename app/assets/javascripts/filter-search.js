@@ -25,7 +25,7 @@ $(document).ready(function(){
   });
 
   // Remove chosen-filters on filter-click
-  $("#chosen-category, #chosen-day, #chosen-level, #chosen-distance, #chosen-cost").on("click", function() {
+  $("#chosen-category, #chosen-day, #chosen-level, #chosen-distance, #chosen-price_cents").on("click", function() {
     $(this).html("");
     if ($(this).parent().find(".chosen-item").size() == 0 ) {
       $(".chosen-filters-container").addClass("hidden");
@@ -55,14 +55,14 @@ $(document).ready(function(){
 
   //Pick a price
 
-   $("#cost-slider").change(function(){
-    $("#chosen-cost").html("<p class='chosen-item'>x    " + $(this).val() + " €" + "</p>");
+  $("#price_cents-slider").change(function(){
+    $("#chosen-price_cents").html("<p class='chosen-item'>x    " + $(this).val()/100 + " €" + "</p>");
     $(".chosen-filters-container").removeClass("hidden");
   });
 
-  $("#cost-slider").slider({
+  $("#price_cents-slider").slider({
     formatter: function(value) {
-      return value;
+      return value/100 + "€";
     }
 
   });
@@ -74,7 +74,7 @@ $(document).ready(function(){
     $("#chosen-category").html("");
     $("#chosen-level").html("");
     $("#chosen-distance").html("");
-    $("#chosen-cost").html("");
+    $("#chosen-price_cents").html("");
     $(".chosen-filters-container").toggleClass("hidden");
   });
 
