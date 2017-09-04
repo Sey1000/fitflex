@@ -99,7 +99,7 @@
       <div class="distance-container">
       <p>0 km</p>
         <!-- <input id="distance-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="14"/> -->
-        <input type="text" class="slider" id="distance-slider" data-slider-value= 100 data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-selection="after" data-slider-tooltip="show">
+        <input type="text" class="slider" id="distance-slider" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-selection="after" data-slider-tooltip="show">
         <p>10 km</p>
         <!-- <button type="button" class="btn button-distance" data-distance= [0..1]><p>1 km</p></button> -->
         <!-- <button type="button" class="btn button-distance" data-distance="3"><p>3 km</p></button>
@@ -124,30 +124,26 @@
   <script>
     $(document).ready(function(){
 
-      $(".button-day").on("click", function(e) {
-        $("#search_courses_day").attr('value', $(this).attr('data-day'));
-        $("#search_courses").submit();
-      });
+      var filters = ['day', 'category', 'level'],
+        filterSliders = ['distance', 'price_cents'];
 
-      $(".button-category").on("click", function(){
-        $("#search_courses_category").attr('value', $(this).attr('data-category'));
-        $("#search_courses").submit();
-      });
+        // filter search results for buttons
+        filters.forEach( function(filter){
+          $(".button-"+ filter).on("click", function(e) {
+            $("#search_courses_" + filter).attr('value', $(this).attr("data-" + filter));
+            $("#search_courses").submit();
+          });
+        });
 
-      $(".button-level").on("click", function(){
-        $("#search_courses_level").attr('value', $(this).attr('data-level'));
-        $("#search_courses").submit();
-      });
+        // filter search results for sliders
+        filterSliders.forEach( function(filter){
+          $("#" + filter + "-slider").change(function(){
+            $("#slider-" + filter + "-form").attr('value', $(this).val());
+            $("#search_courses").submit();
+          });
+        });
 
-      $("#distance-slider").change(function(){
-        $("#slider-distance-form").attr('value', $(this).val());
-        $("#search_courses").submit();
-      });
 
-       $("#price_cents-slider").change(function(){
-        $("#slider-price_cost-form").attr('value', $(this).val());
-        $("#search_courses").submit();
-      });
 
       $("#chosen-day").on("click", function() {
         $("#search_courses_day").attr('value', "next_seven");

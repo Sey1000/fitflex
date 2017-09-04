@@ -2,10 +2,8 @@ class StudiosController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :new]
 
   def show
-
     @studio = Studio.find(params[:id])
-    @users = User.all
-    @users = @users.where(studio_id: params[:id].to_i)
+    @users = User.where(studio_id: params[:id].to_i)
   end
 
   def new
