@@ -2,7 +2,8 @@
 
   <div class="filter-container">
     <ul class="nav nav-tabs">
-      <% @filters.each do |f| %>
+      <li><a data-toggle="tab active" href='#day-tab'>Days</a></li>
+      <% @filters.drop(1).each do |f| %>
       <li><a data-toggle="tab" href='#<% f %>-tab'> <%= f.split("_").first.capitalize %></a></li>
       <% end %>
     </ul>
@@ -28,7 +29,7 @@
   </div>
 
   <div class="tab-content hidden">
-    <div id="day-tab" class="tab-pane fade in">
+    <div id="day-tab" class="tab-pane fade in active">
       <div class="days-container">
         <button type="button" class="button-search-options button-day <%= "active" if params[:search_day] == "today" %>" data-day="today"><p>Today</p></button>
         <button type="button" class="button-search-options button-day" data-day="tomorrow"><p>Tomorrow</p></button>
