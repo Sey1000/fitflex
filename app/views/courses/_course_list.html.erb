@@ -1,0 +1,7 @@
+<div id="render_courses">
+  <% courses.each do |cs| %>
+    <%= link_to course_path(cs), class: 'card' do %>
+      <%= render 'courses/course_card', course: cs %>
+    <% end %>
+  <% end %>
+</div>
