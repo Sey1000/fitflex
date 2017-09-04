@@ -3,6 +3,8 @@ class Course < ApplicationRecord
   has_many :reviews
   has_many :bookings
   has_many :users, through: :bookings
+  monetize :price_cents
+
 
   def average_rating
     reviews= self.reviews

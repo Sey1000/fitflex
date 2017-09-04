@@ -1,0 +1,8 @@
+<div class="booking-show-container">
+  <h1>Bookings</h1>
+  <ul>
+    <li>Status: <%= @booking.state %></li>
+    <li>Course: <%= Course.find(@booking.course_id).title %> </li>
+    <li>Amount: <%= humanized_money_with_symbol(@booking.amount) %></li>
+  </ul>
+</div>

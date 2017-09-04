@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :update_index]
+
   def index
     courses_by_day = filter_courses(params[:search_day])
     @courses = available_courses(courses_by_day)
@@ -28,6 +30,7 @@ class CoursesController < ApplicationController
     end
 
     @date_words = date_words
+    session[:current_course] = course_path(@course)
   end
 
   def new
@@ -118,11 +121,11 @@ class CoursesController < ApplicationController
 
     case day
     when 'today'
-      filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{Time.now.end_of_day}'")
+      Course.where("start_time > '#{Time.now}' AND start_time < '#{Time.now.end_of_day}'")
     when 'tomorrow'
-      filtered_courses = Course.where("start_time > '#{Time.now.end_of_day}' AND start_time < '#{DateTime.tomorrow.end_of_day}'")
+      Course.where("start_time > '#{Time.now.end_of_day}' AND start_time < '#{DateTime.tomorrow.end_of_day}'")
     when 'next_seven'
-      filtered_courses = Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
+      Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
   end
 

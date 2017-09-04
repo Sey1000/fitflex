@@ -7,12 +7,7 @@
     </div>
 
     <div class ="booking-cost">
-      <% cost_amount = b.course.cost %>
-      <% if cost_amount.to_i - cost_amount == 0 %>
-      <p><%= cost_amount.to_i %> €</p>
-      <% else %>
-      <p><%= cost_amount.round(3) %> €</p>
-      <% end %>
+      <p><%= humanized_money_with_symbol(b.course.price) %></p>
     </div>
   </div>
 

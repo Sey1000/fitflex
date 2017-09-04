@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170904112218) do
+=======
+ActiveRecord::Schema.define(version: 20170904095458) do
+>>>>>>> 4e9f353b7e4cc712b2cc9d5cc43e68af72b1e7d1
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +37,11 @@ ActiveRecord::Schema.define(version: 20170904112218) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "state"
+    t.integer  "amount_cents", default: 0, null: false
+    t.jsonb    "payment"
     t.index ["course_id"], name: "index_bookings_on_course_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
@@ -43,14 +50,14 @@ ActiveRecord::Schema.define(version: 20170904112218) do
     t.string   "title"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.float    "cost"
     t.integer  "spots"
     t.string   "description"
     t.string   "category"
     t.string   "level"
     t.integer  "studio_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "price_cents", default: 0, null: false
     t.index ["studio_id"], name: "index_courses_on_studio_id", using: :btree
   end
 

@@ -25,13 +25,9 @@
           <%= course.studio.address %>
         </div>
         <div class="booking-modal-cost">
-          <% cost_amount = course.cost %>
-          <% if cost_amount - cost_amount.to_i == 0 %>
-            <%= cost_amount.to_i %> <i class="fa fa-euro"></i>
-          <% else %>
-            <%= course.cost%> <i class="fa fa-euro"></i>
-          <% end %>
+          <%= humanized_money_with_symbol(course.price) %>
         </div>
+
         <%= simple_form_for(Booking.new, remote: true) do |f| %>
           <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
           <%= f.input :course_id, as: :hidden, input_html: { value: course.id } %>
@@ -39,6 +35,15 @@
             <%= f.submit "Confirm", class: "btn btn-confirm" %>
           </div>
         <% end %>
+
+        <div class="payment">
+          <%= form_tag bookings_path do %>
+            <%= hidden_field_tag 'user_id', current_user.id %>
+            <%= hidden_field_tag 'course_id', course.id %>
+            <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>

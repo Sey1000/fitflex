@@ -4,4 +4,6 @@ class Booking < ApplicationRecord
 
   validates :course, uniqueness: { scope: :user, message: "is already booked by user" }
   validates_with BookingCountValidator
+
+  monetize :amount_cents
 end

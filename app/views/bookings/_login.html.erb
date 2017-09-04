@@ -1,0 +1,38 @@
+<button class="new-booking-button" data-toggle="modal" data-target="#bookingLoginModal">
+  <h3 class="text-center">Join</h3>
+</button>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog center-modal-box" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title booking-modal-title" id="myModalLabel">
+          Please log in before
+        </h4>
+      </div>
+      <div class="modal-body booking-modal-body">
+        <%= course.title %>
+        <br>
+        <div class="confirmation-date">
+          <%= date_words %> - <%= course.start_time.strftime ("%l:%M %P") %>
+        </div>
+        <div class="confirmation-address">
+          <%= course.studio.address %>
+        </div>
+        <div class="booking-modal-cost">
+          <% cost_amount = course.cost %>
+          <% if cost_amount - cost_amount.to_i == 0 %>
+            <%= cost_amount.to_i %> <i class="fa fa-euro"></i>
+          <% else %>
+            <%= course.cost%> <i class="fa fa-euro"></i>
+          <% end %>
+        </div>
+        <div class="text-center confirm-button-margin">
+          <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
