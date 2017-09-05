@@ -1,7 +1,11 @@
 <div class="row-course">
     <div class="col-xs-12 course-cards-container course-color">
       <div class="course-card">
-        <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.cld_id %>');">
+        <% if course.studio.photo %>
+          <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.photo.path %>');">
+        <% else %>
+          <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.cld_id %>');">
+        <% end %>
         </div>
         <div class="info">
           <div class="spots">
