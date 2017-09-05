@@ -63,13 +63,13 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
-    price_cents = filter_params[:price_cents].to_i
-    distance = filter_params[:distance].to_i
+    price_cents = filter_params[:price_cents].to_i || 1000
+    distance = filter_params[:distance].to_i || 20
 
-    update_courses_day = filter_courses(day)
-    update_courses_distance = update_courses_day.joins(:studio).where("studios.distance < #{distance}")
-    update_courses_price = update_courses_distance.where("price_cents <= ?", price_cents)
-    @update_courses = update_courses_price.where(level: level) unless level == "Any level"
+    @update_courses = filter_courses(day)
+    @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
+    @update_courses = @update_courses.where("price_cents <= ?", price_cents)
+    @update_courses = @update_courses.where(level: level) unless level == "Any level"
     @update_courses = @update_courses.where(category: category) unless category == "Any category"
 
     respond_to do |format|

@@ -20,7 +20,7 @@
       </div>
       <% @filters.drop(1).each do |f| %>
         <div class="chosen-category" id='chosen-<%= f %>'>
-          <p class="chosen-item">x    Any <%= f.split("_").first %> </p>
+          <p class="chosen-item pending">x    Any <%= f.split("_").first %> </p>
         </div>
       <% end %>
     </div>

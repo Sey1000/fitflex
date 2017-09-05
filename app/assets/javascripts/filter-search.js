@@ -14,7 +14,7 @@ $(document).ready(function(){
 
   var buttonFilters = ['day', 'category', 'level'],
     sliderFilters = ['distance', 'price_cents'],
-    allFilters = buttonFilters.concat(sliderFilters),
+    allFilters = buttonFilters.concat(sliderFilters);
     // units = ["km", "€"],
     // conversion = [1, 100];
 
@@ -53,12 +53,12 @@ $(document).ready(function(){
   allFilters.forEach( function(filter) {
   // Remove chosen-filters on filter-click
     $("#chosen-" + filter).on("click", function() {
-      $(this).html("<p class='chosen-item'>x    Any " + filter + "</p>");
+      $(this).html("<p class='chosen-item pending'>x    Any " + filter + "</p>");
     });
 
   // Reset all filters
     $(".refresh-button").on("click", function() {
-      $("#chosen-" + filter).html("<p class='chosen-item'>x    Any " + filter + "</p>");
+      $("#chosen-" + filter).html("<p class='chosen-item pending'>x    Any " + filter + "</p>");
     });
   });
 });
