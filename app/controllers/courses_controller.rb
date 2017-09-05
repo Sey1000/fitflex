@@ -2,8 +2,12 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :update_index]
 
   def index
-    courses_by_day = filter_courses(params[:search_day])
-    @courses = available_courses(courses_by_day)
+    if params[:search_day]
+      courses_by_day = filter_courses(params[:search_day])
+      @courses = available_courses(courses_by_day)
+    else
+      @courses = Course.all
+    end
     @filters = ["day", "category", "level", "distance", "price_cents"]
     @categories = Course.order(:category).distinct.pluck(:category)
   end
