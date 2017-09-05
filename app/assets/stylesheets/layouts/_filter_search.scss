@@ -6,7 +6,7 @@
 
 .tab-content {
   height: 70px;
-  margin: 5px;
+  margin: 0px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -31,21 +31,19 @@
 }
 
 .chosen-filters {
-  display:flex;
-  justify-content: flex-start;
-  vertical-align: middle;
-  font-size: 11px;
-  height: 30px;
   display: flex;
-  width: 100%;
+  flex-wrap: wrap;
+  padding: 0 2px;
   position:relative;
   margin-top: 5px;
+  margin-bottom: 0;
   .chosen-item {
     // background-color: rgba(255,255,255,0.7);
     background-color: rgba(222,83,121,0.8);
     color: white;
     border: 1px solid $pink;
-    height: 20px;
+    font-size: 13px;
+    margin-bottom: 5px;
   }
   .pending {
     background-color: rgba(222,83,121,0.4);
@@ -64,50 +62,39 @@
 #category-tab {
   margin-bottom: 5px;
   height: 80px;
-}
-
-.s1-wrapper {
-  height: 30px;
-}
-
-.s1-container {
-  width: 100vw;
-  margin: 3px auto;
-  height: 60px;
-}
-
-.s1-slide {
-  width: 70px;
-  margin-left: 7px;
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  img {
-    height: 70%;
+  .category-buttons-container {
+    overflow: auto;
+    width: 100vw;
+    height: 83px;
+    margin-top: -5px;
+    padding-top: 10px;
+    display: flex;
+    .button-category {
+      flex-shrink: 0;
+      height: 65px;
+      width: 70px;
+      margin-right: 8px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.2);
+      // border: 1px solid yellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .category-button-image {
+        width: 30px;
+        height: 30px;
+        opacity: 0.8;
+      }
+      .category-text {
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.8);
+        padding: 0;
+        margin: 0;
+        margin-top: 8px;
+      }
     }
-  &:hover{
-  background-color: rgba(250,250,250,0.5);
   }
-}
-
-.category-text p{
-  font-size: 10px;
-  padding: 0px;
-  margin: 0px;
 }
 
 .filter-wrapper {
@@ -143,7 +130,7 @@
   width: 100vw;
   justify-content: space-around;
   li {
-    border-right: 1px solid white;
+    border-right: 1px solid rgba(255,255,255,0.3);
   }
   li:last-child {
     border-right: none;
