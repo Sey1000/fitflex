@@ -10,7 +10,9 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @booking = Booking.new
-    @existing_booking = current_user.bookings.find_by_course_id(@course.id)
+    if current_user?
+      @existing_booking = current_user.bookings.find_by_course_id(@course.id)
+    end
     #@user = current_user
 
     # @la = location.latitude
