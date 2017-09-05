@@ -1,56 +1,102 @@
 <!-- This file is a partial for rendering in Courses#show, hence the underscore in the title -->
 
-<div class="course-reviews" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%);">
-  <h4 class="review-header">Reviews</h4>
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <% @course.reviews.each_slice(2) do |a|%>
-        <div class="swiper-slide review">
-          <% a.each_with_index do |review_a, i| %>
-            <div class="inner-review">
-              <div class="user-review-image">
-                <%= image_tag 'placeholder', class: 'avatar-xxs' %>
-              </div>
-              <div class="review-content">
-                <div class="user_name_review">
-                  <%= review_a.user.first_name %>
-                </div>
-                <div class="review_title">
-                  <%= review_a.title %>
-                </div>
-              </div>
-              <div class="review-rating">
-                <% review_a.rating.times do %>
-                <i class="fa fa-star"></i>
-                <% end %>
-                <% (5- review_a.rating).times do %>
-                <i class="fa fa-star-o"></i>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+<div class="swiper-container review-cards">
+  <div class="swiper-wrapper">
+    <% @course.reviews.each do |review| %>
+    <div class="swiper-slide ">
+      <div class="rev inner-review">
+        <div class="user-review">
+          <div class="user-review-image">
+            <%= image_tag 'placeholder', class: 'avatar-medium' %>
+          </div>
+          <p>
+            <%= review.user.first_name %>
+          </p>
         </div>
-      <% end %>
+        <div class="review-content">
+          <div class="review_title">
+            <%= review.title %>
+          </div>
+      <!--     <p><%#= review.content.first(30)%>...</p>
+          <a href="#" class="read_more full-review">See full review > </p> -->
+          <p class="item"><%= review.content %></p>
+          <div class="review-rating">
+            <% review.rating.times do %>
+            <i class="fa fa-star"></i>
+            <% end %>
+            <% (5- review.rating).times do %>
+            <i class="fa fa-star-o"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
+    <% end %>
 
-    <div class="swiper-arrows">
-      <div class="swiper-button-next swiper-button-white"></div>
-      <div class="swiper-button-prev swiper-button-white"></div>
-    </div>
     <div class="swiper-pagination sw-pa"></div>
   </div>
 </div>
 
-<% content_for(:after_js) do %>
+
+<%content_for(:after_js) do %>
 <script>
+$(function(){ /* to make sure the script runs after page load */
+
+  $('.item').each(function(event){ /* select all divs with the item class */
+
+    var max_length = 30; /* set the max content length before a read more link will be added */
+
+    if($(this).html().length > max_length){ /* check for content length */
+
+      var short_content   = $(this).html().substr(0,max_length); /* split the content in two parts */
+      var long_content  = $(this).html().substr(max_length);
+
+      $(this).html(short_content+
+             '<a href="#" class="read_more"><br/>Show full review ></a>'+
+             '<span class="more_text" style="display:none;">'+long_content+'<a href="#" class="show_less"><br/>Show less ></a>'+'</span>'
+             ); /* Alter the html to allow the read more functionality */
+
+      $(this).find('a.read_more').click(function(event){ /* find the a.read_more element within the new html and bind the following code to it */
+
+        event.preventDefault(); /* prevent the a from changing the url */
+        $(this).hide(); /* hide the read more button */
+        $(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
+        $('.inner-review').css('height', '180px'); /* increase the height of all of the review cards */
+        // $(this).html();
+
+      });
+
+      $(this).find('a.show_less').click(function(event){
+        $(this).hide(); /* hide the Show less link */
+        $(this).parents('.item').find('.more_text').hide(); /* hide the long text */
+        $(this).parents('.item').find('.read_more').show(); /* show the read more link */
+        $('.inner-review').css('height', '130px'); /* decrease the height of all review cards */
+      });
+
+    }
+
+  });
+
+
+});
+
+// $(function(){
+//   $('.item').each(function(event){
+//     $(this).find('p.active').click(function(event){
+
+//     })
+//   });
+// });
+
+
+
   var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
     slidesPerView: 1,
     paginationClickable: true,
-    spaceBetween: 200,
-    loop: true
+    spaceBetween: 00,
+    loop: true,
+    width: 350,
   });
 </script>
 <% end %>

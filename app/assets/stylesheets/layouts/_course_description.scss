@@ -22,7 +22,11 @@
 }
 
 .class-description {
-  padding: 20px;
+  background-color: white;
+  padding: 1px 5% 20px 5%;
+  .class-description-title {
+    font-size: 17px;
+  }
   p {
     margin: 0;
     font-size: 15px;

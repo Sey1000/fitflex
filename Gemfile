@@ -36,8 +36,6 @@ gem 'coffee-rails'
 # Search Swipe
 gem 'rails-assets-swiper', source: 'https://rails-assets.org'
 
-# Slick carousel
-gem "jquery-slick-rails"
 # Money Transformation
 gem 'money-rails'
 # Payment Provider
