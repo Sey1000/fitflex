@@ -58,7 +58,6 @@
 
   <!-- Sidebar appearing on mobile only -->
   <% if user_signed_in? %>
-
     <div class="go-back hidden-md hidden-lg">
     <%= link_to :back do  %>
       <i class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -93,14 +92,11 @@
         </div>
       </div>
     </div>
+
     <div class="navbar-wagon-right hidden-md hidden-lg">
       <i class="fa fa-bars" style="cursor:pointer" onclick="openNav()"></i>
     </div>
-
   <% else %>
-    <div class="navbar-wagon-right hidden-md hidden-lg">
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    </div>
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
       <%= image_tag "fitflex_logo.png" %>
     <% end %>

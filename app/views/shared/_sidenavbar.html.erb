@@ -95,9 +95,12 @@
     </div>
 
   <% else %>
+
     <div class="navbar-wagon-right hidden-md hidden-lg">
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <i class="fa fa-bars" style="cursor:pointer" onclick="openNav()"></i>
     </div>
+
+  <% else %>
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
       <%= image_tag "fitflex_logo.png" %>
     <% end %>
