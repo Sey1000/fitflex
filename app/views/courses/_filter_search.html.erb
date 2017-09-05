@@ -2,107 +2,79 @@
 
   <div class="filter-container">
     <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#day-tab">Day</a></li>
-      <li><a data-toggle="tab" href="#category-tab">Category</a></li>
-      <li><a data-toggle="tab" href="#level-tab">Level</a></li>
-      <li><a data-toggle="tab" href="#distance-tab">Distance</a></li>
+      <% @filters.each do |f| %>
+      <li><a data-toggle="tab" href='#<%= f %>-tab'> <%= f.split("_").first.capitalize %></a></li>
+      <% end %>
     </ul>
   </div>
-  <%# render 'reviews/form', courses: @courses %>
-  <%# render 'shared/form-filters', courses: @courses %>
+
+  <!-- Rendering ajax form on search results  - by default, no filter -->
   <%= render 'courses/form_filters'  %>
 
+
+  <!-- where the active filters appear -->
   <div class="chosen-filters-container">
     <div class="chosen-filters">
       <div class="chosen-category" id="chosen-day">
-      <% if params[:search_day] %>
-        <p class="chosen-item">x    <%= params[:search_day].capitalize %> </p>
-      <% end %>
+        <p class="chosen-item">x    <%= params[:search_day] %> </p>
       </div>
-      <div class="chosen-category" id="chosen-category"></div>
-      <div class="chosen-category" id="chosen-level"></div>
-      <div class="chosen-category" id="chosen-distance"></div>
+      <% @filters.drop(1).each do |f| %>
+        <div class="chosen-category" id='chosen-<%= f %>'>
+        </div>
+      <% end %>
     </div>
-    <div class="refresh-button" data-day="next_seven" data-level="" data-category="" data-distance="">
+    <div class="refresh-button" data-day="Any day" data-level="" data-category="" data-distance="" data-price_cents="">
       <i class="fa fa-refresh" aria-hidden="true"></i>
     </div>
   </div>
 
   <div class="tab-content hidden">
-    <div id="day-tab" class="tab-pane fade active in">
+    <div id="day-tab" class="tab-pane fade in active">
       <div class="days-container">
         <button type="button" class="button-search-options button-day <%= "active" if params[:search_day] == "today" %>" data-day="today"><p>Today</p></button>
         <button type="button" class="button-search-options button-day" data-day="tomorrow"><p>Tomorrow</p></button>
-        <button type="button" class="button-search-options button-day" data-day="next_seven"><p>+7 Days</p></button>
+        <button type="button" class="button-search-options button-day" data-day="Any day"><p>+7 Days</p></button>
       </div>
     </div>
 
     <div id="category-tab" class="tab-pane fade">
       <div class="swiper-container s1-container">
         <div class="swiper-wrapper s1-wrapper">
-          <div class="swiper-slide button-category s1-slide" data-category="Yoga">
-            <%= cl_image_tag 'buddhist-yoga-pose_mgof1t' %>
-            <div class="category-text">
-              <p>Yoga</p>
+          <% category_icons = ['weightlifting_xt40om', 'dancer_yncg7a', 'buddhist-yoga-pose_mgof1t', 'stretch_ee1nkk', 'mma_ocfpf0', 'mma_ocfpf0', 'buddhist-yoga-pose_mgof1t', 'buddhist-yoga-pose_mgof1t'] %>
+          <% @categories.zip(category_icons).each do |c, i| %>
+            <div class="swiper-slide button-category s1-slide" data-category='<%= c %>' >
+              <%= cl_image_tag i %>
+              <div class="category-text">
+                <p> <%= c %> </p>
+              </div>
             </div>
-          </div>
-          <div class="swiper-slide button-category s1-slide" data-category="Crossfit">
-            <%= cl_image_tag 'weightlifting_xt40om' %>
-            <div class="category-text">
-              <p>Crossfit</p>
-            </div>
-          </div>
-          <div class="swiper-slide button-category s1-slide" data-category="Kickboxing">
-            <%= cl_image_tag 'mma_ocfpf0' %>
-            <div class="category-text">
-              <p>Kickboxing</p>
-            </div>
-          </div>
-          <div class="swiper-slide button-category s1-slide" data-category="Dance">
-            <%= cl_image_tag 'dancer_yncg7a' %>
-            <div class="category-text">
-              <p>Dance</p>
-            </div>
-          </div>
-          <div class="swiper-slide button-category s1-slide" data-category="Pilates">
-            <%= cl_image_tag 'buddhist-yoga-pose_mgof1t' %>
-            <div class="category-text">
-              <p>Pilates</p>
-            </div>
-          </div>
-          <div class="swiper-slide button-category s1-slide" data-category="HIIT">
-            <%= cl_image_tag 'stretch_ee1nkk' %>
-            <div class="category-text">
-              <p>HIIT</p>
-            </div>
-          </div>
-          <div class="swiper-slide button-category s1-slide" data-category="Martial Arts">
-            <%= cl_image_tag 'mma_ocfpf0' %>
-            <div class="category-text">
-              <p>Martial Arts</p>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
 
     <div id="level-tab" class="tab-pane fade">
       <div class="level-container">
-        <button type="button" class="btn button-search-options button-level" data-level="Beginner"><p>Beginner</p></button>
-        <button type="button" class="btn button-search-options button-level" data-level="Intermediate"><p>Intermediate</p></button>
-        <button type="button" class="btn button-search-options button-level" data-level="Advanced"><p>Advanced</p></button>
+        <% levels = ["Beginner", "Intermediate", "Advanced"] %>
+        <% levels.each do |l| %>
+          <button type="button" class="btn button-search-options button-level" data-level= '<%= l %>' ><p><%= l %></p></button>
+        <% end %>
       </div>
     </div>
+
     <div id="distance-tab" class="tab-pane fade">
       <div class="distance-container">
       <p>0 km</p>
-        <!-- <input id="distance-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="14"/> -->
-        <input type="text" class="slider" id="distance-slider" value="10" data-slider-min="0" data-slider-max="10" data-slider-step="0.5" data-slider-selection="after" data-slider-tooltip="show">
+        <input type="text" class="slider" id="distance-slider" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-selection="after" data-slider-tooltip="show">
         <p>10 km</p>
-        <!-- <button type="button" class="btn button-distance" data-distance= [0..1]><p>1 km</p></button> -->
-        <!-- <button type="button" class="btn button-distance" data-distance="3"><p>3 km</p></button>
-        <button type="button" class="btn button-distance" data-distance="5"><p>5 km</p></button>
-        <button type="button" class="btn button-distance" data-distance="10"><p>10 km</p></button> -->
+      </div>
+    </div>
+
+    <div id="price_cents-tab" class="tab-pane fade">
+      <div class="price_cents-container">
+      <p>0€</p>
+      <input type="text" class="slider" id="price_cents-slider" data-slider-value="1000" data-slider-min="0" data-slider-max="2000" data-slider-step="100" data-slider-selection="after" data-slider-tooltip="show">
+        <p>20€</p>
       </div>
     </div>
   </div>
@@ -112,54 +84,43 @@
   <script>
     $(document).ready(function(){
 
-      $(".button-day").on("click", function(e) {
-        $("#search_courses_day").attr('value', $(this).attr('data-day'));
-        $("#search_courses").submit();
+      var buttonFilters = ['day', 'category', 'level'],
+        sliderFilters = ['distance', 'price_cents'],
+        allFilters = buttonFilters.concat(sliderFilters);
+
+        // filter search results for buttons
+        buttonFilters.forEach( function(filter){
+          $(".button-"+ filter).on("click", function(e) {
+            $("#search_courses_" + filter).attr('value', $(this).attr("data-" + filter));
+            $("#search_courses").submit();
+          });
+        });
+
+        // filter search results for sliders
+        sliderFilters.forEach( function(filter){
+          $("#" + filter + "-slider").change(function(){
+            $("#slider-" + filter + "-form").attr('value', $(this).val());
+            $("#search_courses").submit();
+          });
+        });
+
+
+      // Reset to default filter values when clicking on filter in filter-container
+      allFilters.forEach( function(filter) {
+        $("#chosen-" + filter).on("click", function() {
+          $("#search_courses_" + filter).attr('value', "Any " + filter);
+          $("#search_courses").submit();
+        });
       });
 
-      $(".button-category").on("click", function(){
-        $("#search_courses_category").attr('value', $(this).attr('data-category'));
-        $("#search_courses").submit();
+      // Reset button
+      allFilters.forEach( function(filter){
+        $(".refresh-button").on("click", function() {
+          $("#search_courses_" + filter).attr('value', $(this).attr("data-" + filter));
+        });
       });
 
-      $(".button-level").on("click", function(){
-        $("#search_courses_level").attr('value', $(this).attr('data-level'));
-        $("#search_courses").submit();
-      });
-
-      $("#distance-slider").change(function(){
-        $("#slider-distance-form").attr('value', $(this).val());
-        $("#search_courses").submit();
-      });
-
-      $("#chosen-day").on("click", function() {
-        $("#search_courses_day").attr('value', "next_seven");
-        $("#search_courses").submit();
-      });
-
-      $("#chosen-category").on("click", function() {
-        $("#search_courses_category").attr('value', "");
-        $("#search_courses").submit();
-      });
-
-      $("#chosen-level").on("click", function() {
-        $("#search_courses_level").attr('value', "");
-        $("#search_courses").submit();
-      });
-
-      $("#chosen-distance").on("click", function() {
-        $("#search_crouses_distance").attr('value', "");
-        $("#search_courses").submit();
-      });
-
-      $(".refresh-button").on("click", function() {
-        $("#search_courses_day").attr('value', $(this).attr('data-day'));
-        $("#search_courses_category").attr('value', $(this).attr('data-category'));
-        $("#search_courses_level").attr('value', $(this).attr('data-level'));
-        $("#search_crouses_distance").attr('value', $(this).attr('data-distance'));
-        $("#search_courses").submit();
-      });
-
+      // swiper for categories-selection
       var swiper = new Swiper('.swiper-container', {
           pagination: '.swiper-pagination',
           slidesPerView: 5,
@@ -167,7 +128,7 @@
           spaceBetween: 20,
           freeMode: true
       });
-      
+
     });
   </script>
 <% end %>

@@ -23,12 +23,28 @@ class BookingsController < ApplicationController
     #   end
     # end
 
-    @course = Course.find(params[:course_id])
+    # @course = Course.find(params[:course_id])
+    # @studio = @course.studio
+    # @booking = Booking.new(amount: @course.price, state: 'pending', course: @course, user: current_user)
+    # if @booking.save
+    #   redirect_to new_booking_payment_path(@booking)
+    # else
+    #   render 'courses/show'
+    # end
+
+    @course = Course.find(params[:booking][:course_id])
+    @studio = @course.studio
     @booking = Booking.new(amount: @course.price, state: 'pending', course: @course, user: current_user)
     if @booking.save
-      redirect_to new_booking_payment_path(@booking)
+      respond_to do |format|
+        format.html { redirect_to new_booking_payment_path(@booking) }
+        format.js
+      end
     else
-      render 'courses/show'
+      respond_to do |format|
+        format.html { render 'courses/show' }
+        format.js
+      end
     end
 
   end

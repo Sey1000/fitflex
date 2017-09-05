@@ -33,6 +33,10 @@ end
 # Seed Users that DON'T belong to studios (regular customers)
 puts "Created Users"
 
+# user_roles = [
+#   "customer", "instructor", "studio"
+# ]
+
 user_emails = [
   "kris@wagon.com", "maren@wagon.com", "sey@wagon.com", "nhung@wagon.com",
   "alvaro@wagon.com", "meow@wagon.com", "boris@wagon.com", "test@wagon.com",
@@ -42,12 +46,12 @@ user_emails = [
 ]
 
 user_emails[0..10].each do |em|
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456', role: 'customer')
 end
 
 # more users with fake infos
 30.times do
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 'customer')
 end
 
 # Some users without names
@@ -56,9 +60,16 @@ user_emails[11..15].each do |em|
 end
 
 # Some users belong to studio
+cl_ids_trainers = ["personal-training-business_opxfqm", "Personal-Trainer-Solingen-Michael_hqb3xu", "jessi-kneeland-700x700_0_eeibxn", "84e695eaaac4a3cc9d6ed9180c8d7e5c--female-personal-trainer-motivational-pics_l3tmwl", "1072414_bjpylf"]
 user_emails[16..19].each do |em|
-  u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456')
-  u.studio = Studio.first
+  u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456', role: 'instructor')
+  u.studio = Studio.all.sample
+  u.save
+end
+
+20.times do
+  u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 'instructor', cld_id: cl_ids_trainers.sample)
+  u.studio = Studio.all.sample
   u.save
 end
 
