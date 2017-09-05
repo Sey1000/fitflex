@@ -8,4 +8,5 @@
 //= require gmaps/google
 //= require attachinary
 //= require swiper
+//= require jquery.slick
 //= require_tree .
