@@ -1,10 +1,11 @@
 <div class="form-filters">
   <%= form_for :search_courses, url: "/courses/search_courses", remote: true, method: :post, html: { id: 'search_courses' } do |f| %>
     <%= f.text_field :day, value: params[:search_day], class: "hidden"%>
-    <%= f.text_field :category, value: "Any category", class: "hidden" %>
-    <%= f.text_field :level, value: "Any level", class: "hidden" %>
+    <%= f.text_field :category, value: "", class: "hidden" %>
+    <%= f.text_field :level, value: "", class: "hidden" %>
     <%= f.range_field :price_cents, :min=>0, :max=>2000, :class=>"slide", :id=>"slider-price_cost-form", class: "hidden" %>
     <%= f.range_field :distance, :min=>0, :max=>10, :class=>"slide", :id=>"slider-distance-form", class: "hidden" %>
+
     <% f.submit %>
   <% end %>
 </div>

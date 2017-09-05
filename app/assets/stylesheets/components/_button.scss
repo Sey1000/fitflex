@@ -81,3 +81,17 @@
   margin: 20px 0;
 }
 
+.call-to-action-button {
+
+  padding: 5px;
+  // border: 2px solid $dark-blue;
+  // border-radius: 5px;
+  width: 75%;
+  color: black;
+  margin: 0 5px;
+}
+
+.border-right-cta {
+   border-right: 1px solid $dark-gray;
+}
+
