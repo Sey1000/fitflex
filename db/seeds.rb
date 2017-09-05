@@ -36,41 +36,108 @@ puts "Created Users"
 #   "customer", "instructor", "studio"
 # ]
 
-user_emails = [
-  "kris@wagon.com", "maren@wagon.com", "sey@wagon.com", "nhung@wagon.com",
-  "alvaro@wagon.com", "meow@wagon.com", "boris@wagon.com", "test@wagon.com",
-  "random@wagon.com", "woof@wagon.com", "pixel@wagon.com", "ajax@wagon.com",
-  "stuff@wagon.com", "beer@wagon.com", "frontend@wagon.com", "fullstack@wagon.com",
-  "backend@wagon.com", "bleh@wagon.com", "info@fit-flex.de", "hi@fitflex.com"
+thirty_female_emails = [
+  'Roselyn@wagon.com', 'Peyton@wagon.com', 'Alice@wagon.com', 'Aleah@wagon.com','Marilyn@gmail.com',
+  'Madison@gmail.com', 'Elaine@gmail.com', 'Kenya@gmail.com', 'Lillian@gmail.com', 'Tamara@gmail.com',
+  'Liliana@yahoo.com', 'Katherine@yahoo.com', 'Celeste@yahoo.com', 'Paisley@yahoo.com', 'Eleanor@yahoo.com',
+  'Daphne@hotmail.com', 'Nina@hotmail.com', 'Anika@hotmail.com', 'Shayla@hotmail.com', 'Giada@hotmail.com', 'Ayla@hotmail.com',
+  'Karsyn@me.com', 'Ellie@me.com', 'Dylan@me.com', 'Lea@me.com', 'Danika@me.com', 'Jillian@hello.me',
+  'Samara@hello.me', 'Ireland@hello.me', 'Kaitlynn@hello.me'
 ]
 
-user_emails[0..10].each do |em|
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456', role: 'customer')
+thirty_male_emails = [
+'Demetrius@wagon.com', 'Dominique@wagon.com', 'Zachariah@wagon.com', 'Liam@wagon.com', 'Keshawn@wagon.com',
+  'Keon@wagon.com', 'Trevin@wagon.com', 'Vaughn@gmail.com', 'Rhys@gmail.com', 'Alexzander@gmail.com', 'Martin@gmail.com',
+  'Van@gmail.com', 'Javier@gmail.com', 'Jovanni@yahoo.com', 'Carlos@yahoo.com', 'Layne@yahoo.com',
+  'Titus@yahoo.com', 'Talon@yahoo.com', 'Rex@yahoo.com', 'Jaiden@mail.me', 'Kash@wagon.com', 'Zachery@wagon.com',
+  'Marvin@wagon.com', 'Cordell@wagon.com', 'Dario@wagon.com', 'Jake@gmail.com', 'Erik@gmail.com', 'Kole@gmail.com',
+  'Donovan@gmail.com', 'Steven@gmail.com'
+]
+
+thirty_random_female_names = [
+  'Roselyn', 'Peyton', 'Alice', 'Aleah','Marilyn',
+  'Madison', 'Elaine', 'Kenya', 'Lillian', 'Tamara',
+  'Liliana', 'Katherine', 'Celeste', 'Paisley', 'Eleanor',
+  'Daphne', 'Nina', 'Anika', 'Shayla', 'Giada', 'Ayla',
+  'Karsyn', 'Ellie', 'Dylan', 'Lea', 'Danika', 'Jillian',
+  'Samara', 'Ireland', 'Kaitlynn'
+]
+
+thirty_random_male_names = [
+  'Demetrius', 'Dominique', 'Zachariah', 'Liam', 'Keshawn',
+  'Keon', 'Trevin', 'Vaughn', 'Rhys', 'Alexzander', 'Martin',
+  'Van', 'Javier', 'Jovanni', 'Carlos', 'Layne', 'Titus',
+  'Talon', 'Rex', 'Jaiden', 'Kash', 'Zachery', 'Marvin',
+  'Cordell', 'Dario', 'Jake', 'Erik', 'Kole', 'Donovan', 'Steven'
+]
+
+twenty_cld_id_men = [
+  'men/random_zrfkdi', 'men/random_chbygh', 'men/random_chbygh', 'men/random_ffvhsk',
+  'men/random_l3j3ql', 'men/random_ocybor', 'men/random_opivew', 'men/random_qtfwpm',
+  'men/random_rj3gwq', 'men/random_sfen6u', 'men/random_sgrdql', 'men/random_t8evfw',
+  'men/random_tcc328', 'men/random_tptur9', 'men/random_tupenp', 'men/random_u3rnej',
+  'men/random_w6niot', 'men/random_wlsf9g', 'men/random_wpbgdo', 'men/random_xltpjl'
+]
+
+twenty_cld_id_women = [
+  'women/random_ltuw8r', 'women/random_rq9xbu', 'women/random_sasarw', 'women/random_si84sh',
+  'women/random_u2d7lv', 'women/random_w5tmcr', 'women/random_wnztaq', 'women/random_zzl4wh',
+  'women/random_rq9xbu', 'women/random_poo84f', 'women/random_ltuw8r', 'women/random_ijmrbw',
+  'women/random_h9j7lr', 'women/random_gx2ffw', 'women/random_fpehkn', 'women/random_cuxthj',
+  'women/random_jc2nu7', 'women/random_eagdej', 'women/random_ilnlij',' women/random_u1otnj',
+]
+
+ten_cld_id_male_instructors = [
+  'male_instructors/thomastadlock', 'male_instructors/_20', 'male_instructors/YOGA-MEN222-crop',
+  'male_instructors/YOGA-MEN221', 'male_instructors/images', 'male_instructors/article-2533788-1A6B39AD00000578-253_634x604',
+  'male_instructors/yoga-instructors-feature_1800x1236', 'male_instructors/albert6',
+  'male_instructors/a74f54dc5998d2f485d681ba85a4fa73--yoga-om-do-yoga', 'male_instructors/Yogi1-e1314031338497'
+]
+
+ten_cld_id_female_instructors = [
+  "jessi-kneeland-700x700_0_eeibxn",
+  "84e695eaaac4a3cc9d6ed9180c8d7e5c--female-personal-trainer-motivational-pics_l3tmwl",
+  'instructors_female/UK-Maersk-Training-Appoints-First-Female-Instructor-300x160_lp6o',
+  'instructors_female/64f03039e6818ee5287881e23bb0a920_gqsscp', 'instructors_female/Cross-legged_sitting_2C_female_indxk6',
+  'instructors_female/yoga-1284657_960_720_xn2dmw', 'instructors_female/170309-F-AG923-0096_raupcg', 'instructors_female/170401-F-EC705-001_zliof7',
+  'instructors_female/yoga-2607013_960_720_exwntt', 'instructors_female/girl-1211435_960_720_cl9p8j'
+]
+
+# 30 Female users
+(0..20).to_a.each do |index|
+  u = User.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, email: thirty_female_emails[index], password: '123456', password_confirmation: '123456', role: 'customer')
+  u.cld_id = twenty_cld_id_women[index]
+  u.save
 end
 
-# more users with fake infos
-30.times do
-  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 'customer')
+# 30 Male users
+(0..20).to_a.each do |index|
+  u = User.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, email: thirty_male_emails[index], password: '123456', password_confirmation: '123456', role: 'customer')
+  u.cld_id = twenty_cld_id_men[index]
+  u.save
 end
 
 # Some users without names
-user_emails[11..15].each do |em|
-  User.create(email: em, password: '123456', password_confirmation: '123456')
+10.times do
+  User.create(email: Faker::Internet.email, password: '123456', password_confirmation: '123456')
 end
 
-# Some users belong to studio
-cl_ids_trainers = ["personal-training-business_opxfqm", "Personal-Trainer-Solingen-Michael_hqb3xu", "jessi-kneeland-700x700_0_eeibxn", "84e695eaaac4a3cc9d6ed9180c8d7e5c--female-personal-trainer-motivational-pics_l3tmwl", "1072414_bjpylf"]
-user_emails[16..19].each do |em|
-  u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: em, password: '123456', password_confirmation: '123456', role: 'instructor')
+# 10 Female instructors
+(20..30).to_a.each do |index|
+  u = User.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, email: thirty_female_emails[index], password: '123456', password_confirmation: '123456', role: 'instructor')
   u.studio = Studio.all.sample
+  u.cld_id = ten_cld_id_female_instructors[index - 20]
   u.save
 end
 
-20.times do
-  u = User.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 'instructor', cld_id: cl_ids_trainers.sample)
+# 10 Male instructors
+(20..30).to_a.each do |index|
+  u = User.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, email: thirty_male_emails[index], password: '123456', password_confirmation: '123456', role: 'instructor')
   u.studio = Studio.all.sample
+  u.cld_id = ten_cld_id_male_instructors[index - 20]
   u.save
 end
+
 
 demo_user = User.create(first_name: "Kris", last_name: "Espinosa", email: "demo@wagon.com", password: '123456', password_confirmation: '123456')
 
