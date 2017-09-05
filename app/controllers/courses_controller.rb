@@ -2,8 +2,12 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :update_index]
 
   def index
-    courses_by_day = filter_courses(params[:search_day])
-    @courses = available_courses(courses_by_day)
+    if params[:search_day]
+      courses_by_day = filter_courses(params[:search_day])
+      @courses = available_courses(courses_by_day)
+    else
+      @courses = Course.all
+    end
     @filters = ["day", "category", "level", "distance", "price_cents"]
     @categories = Course.order(:category).distinct.pluck(:category)
   end
@@ -71,8 +75,8 @@ class CoursesController < ApplicationController
     @update_courses = filter_courses(day)
     @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
     @update_courses = @update_courses.where("price_cents <= ?", price_cents)
-    @update_courses = @update_courses.where(level: level) unless level == "Any level"
-    @update_courses = @update_courses.where(category: category) unless category == "Any category"
+    @update_courses = @update_courses.where(level: level) unless level == ""
+    @update_courses = @update_courses.where(category: category) unless category == ""
 
     respond_to do |format|
       format.html { redirect_to courses_path }

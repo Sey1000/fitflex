@@ -20,11 +20,10 @@
       </div>
       <% @filters.drop(1).each do |f| %>
         <div class="chosen-category" id='chosen-<%= f %>'>
-          <p class="chosen-item pending">x    Any <%= f.split("_").first %> </p>
         </div>
       <% end %>
     </div>
-    <div class="refresh-button" data-day="Any day" data-level="Any level" data-category="Any category" data-distance="Any distance" data-price_cents="Any price">
+    <div class="refresh-button" data-day="Any day" data-level="" data-category="" data-distance="" data-price_cents="">
       <i class="fa fa-refresh" aria-hidden="true"></i>
     </div>
   </div>
