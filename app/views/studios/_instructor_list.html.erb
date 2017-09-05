@@ -1,0 +1,10 @@
+<h6>Our instructors</h6>
+
+<div class="instructors">
+  <% users.each do |user| %>
+    <div class="instr">
+      <%= cl_image_tag user.cld_id, class: "avatar avatar-xs" %>
+      <p><%= user.first_name %></p>
+    </div>
+  <% end %>
+  </div>

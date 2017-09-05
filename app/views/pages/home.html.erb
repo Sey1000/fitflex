@@ -1,10 +1,13 @@
-<div class="container banner" style="background-image: url('<%= cl_image_path("tisyxhi8uquqkwfqokzh") %>')">
+<div class="container banner container-home" style="background-image: url('<%= cl_image_path("tisyxhi8uquqkwfqokzh") %>');">
   <% if current_user && current_user.first_name %>
     <h3>Welcome back, <%= current_user.first_name %> </h3>
   <% elsif current_user && current_user.email%>
     <h3>Welcome back, <%= current_user.email %> </h3>
   <% else %>
-    <h3 class="text-center not-logged-in-message">Access fitness courses around you<br><br>Designed for people with flexible schedule</h3>
+    <div class="text-center not-logged-in-message">
+      <h4>Flexible Time Schedule?</h4>
+      <h3>Explore Fitness Around You</h3>
+    </div>
   <% end %>
   <div class="home-buttons-container">
     <%= link_to courses_path(search_day: 'Today') do %>
@@ -25,6 +28,9 @@
   </div>
 
     <% unless current_user %>
-      <%= link_to "Are you a studio owner?", new_user_registration_path(role: "owner") %>
-    <% end %>
+    <div class="studio-owner">
+      <%= link_to "Studio Owner?", new_user_registration_path(role: "owner") %>
+      <% end %>
+    </div>
 </div>
+

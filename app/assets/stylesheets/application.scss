@@ -10,13 +10,14 @@
 @import "font-awesome";
 @import "swiper";
 @import "bootstrap-slider";
+@import 'slick';
 
 // Your CSS partials
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
 
-// compensating navbar height
-body {
-  padding-top: 50px;
-}
+// // compensating navbar height
+// body {
+//   padding-top: 50px;
+// }

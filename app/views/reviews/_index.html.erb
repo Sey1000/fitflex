@@ -9,7 +9,15 @@
           <% a.each_with_index do |review_a, i| %>
             <div class="inner-review">
               <div class="user-review-image">
+              <% if review_a.user.photo? %>
+                <%= cl_image_tag (review_a.user.photo.path), class: 'avatar-xxs' %>
+              <% elsif review_a.user.facebook_picture_url %>
+                <% image_tag (review_a.user.facebook_picture_url), class: 'avatar-xxs' %>
+              <% elsif review_a.user.cld_id %>
+                <%= cl_image_tag(review_a.user.cld_id, class: "avatar-xxs") %>
+              <% else %>
                 <%= image_tag 'placeholder', class: 'avatar-xxs' %>
+              <% end %>
               </div>
               <div class="review-content">
                 <div class="user_name_review">

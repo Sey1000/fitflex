@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   get 'about',       to: 'pages#about'
   resources :courses do
     resources :reviews, only: [:new, :create]
+    resources :payments, only: [:new, :create]
   end
 
   resources :favorites, only: [:index, :create, :destroy ]
 
   resources :bookings, only: [:index, :show, :create, :destroy] do
-    resources :payments, only: [:new, :create]
+    # resources :payments, only: [:new, :create]
   end
   resources :users, only: [:show, :edit, :update]
   resources :studios

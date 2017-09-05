@@ -1,6 +1,6 @@
 function openNav(){
-  $("#mySidenav").css("width", "220px");
+  $("#mySidenav").css("right", "0px");
 };
 function closeNav() {
-  $("#mySidenav").css("width", "0px");
+  $("#mySidenav").css("right", "-220px");
 };

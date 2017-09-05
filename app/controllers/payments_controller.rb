@@ -1,12 +1,11 @@
 class PaymentsController < ApplicationController
-  before_action :set_booking
+  before_action :set_course
 
   def new
 
   end
 
   def create
-
     customer = Stripe::Customer.create(
     source: params[:stripeToken],
     email:  params[:stripeEmail]
@@ -14,12 +13,12 @@ class PaymentsController < ApplicationController
 
     charge = Stripe::Charge.create(
     customer:     customer.id,   # You should store this customer id and re-use it.
-    amount:       @booking.amount_cents,
-    description:  "Payment for Course #{Course.find(@booking.course_id).title} for Booking #{@booking.id}",
-    currency:     @booking.amount.currency
+    amount:       @course.price_cents,
+    description:  "Payment for Course #{@course.title}",
+    currency:     @course.price.currency
     )
 
-    @booking.update(payment: charge.to_json, state: 'paid')
+    @booking = Booking.create!(amount: @course.price, state: 'paid', course: @course, user: current_user, payment: charge.to_json)
     redirect_to user_path(current_user)
 
     rescue Stripe::CardError => e
@@ -28,7 +27,7 @@ class PaymentsController < ApplicationController
   end
 
   private
-  def set_booking
-    @booking = Booking.where(state: 'pending').find(params[:booking_id])
+  def set_course
+    @course = Course.find(params[:course_id])
   end
 end
