@@ -11,6 +11,15 @@
   }
 }
 
+.bookmark-btn {
+  border: 0;
+  background: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
 .button-day {
   height: 49px;
   margin: 0 8px;

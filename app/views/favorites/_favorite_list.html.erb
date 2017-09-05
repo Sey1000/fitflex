@@ -1,9 +1,11 @@
-<h3>Favorites</h3>
+<div class="favorites_title">
+  Favorites
+</div>
 <% favorites.each do |f| %>
- <%= link_to course_path(f.course.studio), class: 'card' do %>
+ <%= link_to course_path(f.course), class: 'card' do %>
   <div class="favorite_title_profile">
-    <%= render 'courses/course_card', course: f.course %>
-    <% end %>
+    <%= render 'courses/favorite_course_card', course: f.course %>
   </div>
+  <% end %>
 <% end %>
 

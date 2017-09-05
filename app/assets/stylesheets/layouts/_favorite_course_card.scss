@@ -1,0 +1,52 @@
+.course-card {
+  display: flex;
+  margin: 0px 7px;
+  padding: 10px 5px;
+  .favorite-studio-picture {
+    width: 100px;
+    height: 100px;
+    background: gray;
+    background-size: cover;
+    flex: 0 0 auto;
+  }
+}
+.favorites_title {
+  font-size: 26px;
+  margin-top: 16px;
+  margin-left: 10px;
+  color: #de5379;
+}
+.favorite-studio-title {
+  font-size: 12px;
+}
+.favorite-course-times {
+  font-size: 12px;
+  color: #5b5b5b;
+}
+.favorite-info {
+  height: 100px;
+  flex: 1 0 auto;
+  bottom: 0px;
+  color: #2b6a8c;
+  padding: 0 10px;
+  position: relative;
+  .spots {
+    position: absolute;
+    bottom: 22px;
+    right: 5px;
+    color: #7b7b7b;
+    font-weight: 300;
+    font-size: 13px;
+    .fa {
+      font-size: 12px;
+    }
+  }
+}
+.favorite-course-price {
+  position: absolute;
+  bottom: -7px;
+  left: 8px;
+  font-size: 16px;
+  color: black;
+  font-weight: 500;
+}

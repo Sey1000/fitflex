@@ -29,7 +29,7 @@
       </div>
       <div class="row hidden">
         <% past_bookings.each do |b| %>
-        <%= render 'bookings/index', b: b, old: true %>
+          <%= render 'bookings/index', b: b, old: true %>
         <% end %>
       </div>
 
@@ -39,8 +39,9 @@
       </div>
       <div class="row hidden">
         <!-- favorite index -->
-        <%= render 'favorites/favorite_list', favorites: @favorites %>
-        <h2><%#= link_to 'Favorites', favorites_path %></h2>
+        <%= link_to course_path, class: 'card' do%>
+          <%= render 'favorites/favorite_list', favorites: @favorites %>
+        <% end %>
       </div>
 
       <%= link_to edit_user_registration_path, class: "setting-link" do %>
