@@ -72,6 +72,12 @@ end
   u.save
 end
 
+# Assigning avatars to the rest
+u = User.where(cld_id: nil, facebook_picture_url: nil)
+u.each do |user|
+  u.cld_id = "https://kitt.lewagon.com/placeholder/users/random"
+end
+
 demo_user = User.create(first_name: "Kris", last_name: "Espinosa", email: "demo@wagon.com", password: '123456', password_confirmation: '123456')
 
 puts "Created Courses. To get correct course dates, make sure to seed before demo"
