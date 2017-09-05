@@ -5,35 +5,34 @@
       <div class="modal-header text-center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-        <h4 class="modal-title booking-modal-title" id="myModalLabel"> Book Now </h4>
+        <h4 class="modal-title booking-modal-title" id="myModalLabel"> Course "<%= @course.title %>" </h4>
       </div>
 
       <div class="modal-body booking-modal-body text-center">
-        <div class="confirmation-course">
-          <h4> <%= @course.title %></h4>
-        </div>
         <div class="confirmation-date">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
           <%= date_words(@course.start_time) %> | <%= @course.start_time.strftime("%l:%M %p") %> - <%= @course.end_time.strftime("%l:%M %p") %>
         </div>
         <div class="confirmation-address">
-          <%= @course.studio.name %>
-          <%= @course.studio.address %>
+          <strong> <%= @course.studio.name %> </strong>
+          <br>
+          <i class="fa fa-map-marker" aria-hidden="true"></i>  <%= @course.studio.address %>
         </div>
         <div class="submit-payment">
-          <%= form_tag booking_payments_path(booking) do %>
+          <%= form_tag course_payments_path(@course) do %>
             <article>
               <label class="amount">
-                <span>Amount: <%= humanized_money_with_symbol(booking.amount) %></span>
+                <span><%= humanized_money_with_symbol(@course.price) %></span>
               </label>
             </article>
 
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-name="<%= @booking.course.title   %>"
+              data-name="<%= @course.title   %>"
               data-email="<%= current_user.email %>"
-              data-description="Course <%= @booking.course.title %>"
-              data-amount="<%= @booking.amount_cents %>"
-              data-currency="<%= @booking.amount.currency %>"></script>
+              data-description="Course <%= @course.title %>"
+              data-amount="<%= @course.price_cents %>"
+              data-currency="<%= @course.price.currency %>"></script>
           <% end %>
         </div>
       </div>

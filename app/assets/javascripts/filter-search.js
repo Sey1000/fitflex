@@ -53,12 +53,12 @@ $(document).ready(function(){
   allFilters.forEach( function(filter) {
   // Remove chosen-filters on filter-click
     $("#chosen-" + filter).on("click", function() {
-      $(this).html("<p class='chosen-item pending'>x    Any " + filter + "</p>");
+      $(this).html("");
     });
 
   // Reset all filters
     $(".refresh-button").on("click", function() {
-      $("#chosen-" + filter).html("<p class='chosen-item pending'>x    Any " + filter + "</p>");
+      $("#chosen-" + filter).html("");
     });
   });
 });

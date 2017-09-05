@@ -81,11 +81,17 @@
   margin: 20px 0;
 }
 
-// Booking status buttons
-.btn-status {
-  height: 1.9em;
-  width: 5.3em;
-  padding: 1px 3px;
-  font-size: 13px;
-  opacity: 0.8;
+.call-to-action-button {
+
+  padding: 5px;
+  // border: 2px solid $dark-blue;
+  // border-radius: 5px;
+  width: 75%;
+  color: black;
+  margin: 0 5px;
 }
+
+.border-right-cta {
+   border-right: 1px solid $dark-gray;
+}
+

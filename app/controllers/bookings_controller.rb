@@ -35,9 +35,9 @@ class BookingsController < ApplicationController
     @course = Course.find(params[:booking][:course_id])
     @studio = @course.studio
     @booking = Booking.new(amount: @course.price, state: 'pending', course: @course, user: current_user)
-    if @booking.save
+    if @booking.valid?
       respond_to do |format|
-        format.html { redirect_to new_booking_payment_path(@booking) }
+        format.html { redirect_to new_course_payment_path(@course) }
         format.js
       end
     else
@@ -51,6 +51,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id]).destroy
+    redirect_to user_path(current_user)
   end
 
 

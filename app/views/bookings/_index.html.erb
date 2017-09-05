@@ -5,15 +5,6 @@
     <div class="booking-title">
       <p class="booking-time-span"><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> <%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
     </div>
-    <div class="boooking-list-paystat">
-    <% if b.state == 'pending' %>
-      <p><span class="course-paystat btn btn-warning btn-status"><%= b.state %></span></p>
-    <% elsif b.state == 'paid' %>
-      <p><span class="course-paystat btn btn-success btn-status"><%= b.state %></span></p>
-    <% else %>
-      <p><span class="course-paystat btn btn-danger btn-status"><%= b.state %></span></p>
-    <% end %>
-    </div>
     <div class ="booking-cost">
       <p><%= humanized_money_with_symbol(b.course.price) %></p>
     </div>
@@ -21,9 +12,14 @@
 
   <div class="booking-list-content">
     <div class="booking-list-info">
-      <p><strong><%= b.course.title %></strong> | <span class="course-where"><%= b.course.studio.name %></span></p>
-      <div class="booking-cancel btn-cancel"> <p><i class="fa fa-times-circle-o" aria-hidden="true"></i> Cancel</p>
-      </div>
+      <p><strong><%= b.course.title %></strong> | <span class="course-where"><%= b.course.studio.name %> <%= b.id %> </span></p>
+      <% if b.course.start_time - Time.now > 0  %>
+        <div class="booking-cancel btn-cancel">
+          <%= link_to booking_path(b), method: :delete, data: { confirm: "Are you sure you want to cancel the booking?" } do %>
+            <p><i class="fa fa-times-circle-o" aria-hidden="true"></i></p>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <% if old %>
       <%= link_to new_course_review_path(course_id: b.course), class: "review-me" do %>

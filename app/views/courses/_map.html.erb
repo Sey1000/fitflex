@@ -1,4 +1,4 @@
-<%= link_to studio_path(@studio.id) , {style: "text-decoration: none;"} do %>
+
 <div class="studio-address-map">
   <div class="studio-info">
   <h4>The Studio</h4>
@@ -8,11 +8,15 @@
   <div class="studio-map-info">
     <p class="studio-address"> <%= @json_distance%> away</p>
     <p class="studio-address">
-<%= link_to "Get directions", "https://maps.google.com?saddr=#{@la.to_s},#{@lo.to_s}&daddr=#{URI.encode(@course.studio.address)}&mode=bicycling&key=#{ENV['GOOGLE_API_SERVER_KEY']}", class: "studio-address" %>
+
 </p>
   </div>
 </div>
-<% end %>
+<div class="call_to_action">
+<%= link_to 'Check out the Studio', studio_path(@studio.id), class: "call-to-action-button studio-address border-right-cta" %>
+
+<%= link_to 'Get directions', "https://maps.google.com?saddr=#{@la.to_s},#{@lo.to_s}&daddr=#{URI.encode(@course.studio.address)}&mode=bicycling&key=#{ENV['GOOGLE_API_SERVER_KEY']}", class: "call-to-action-button studio-address" %>
+</div>
 <div id="map" style="width: 100%; height: 150px;">
 
   <% content_for(:after_js) do %>
