@@ -34,11 +34,11 @@
           <% favorite = Favorite.where(course_id: course.id, user_id: current_user.id).first %>
           <% if favorite %>
             <%= link_to favorite_path(favorite.id), method: :delete, remote: :true do %>
-              <i class="fa fa-heart heart-red" aria-hidden="true"></i>
+              <i class="fa fa-heart heart-red"></i>
             <% end %>
           <% else %>
-            <%= link_to favorites_path(user_id: current_user.id, course_id: course.id), method: :post, remote: :true do %>
-              <i class="fa fa-heart heart-grey" aria-hidden="true"></i>
+            <%= link_to favorites_path(course_id: course.id, user_id: current_user.id), method: :post, remote: :true do %>
+              <i class="fa fa-heart heart-grey"></i>
             <% end %>
           <% end %>
           </div>
