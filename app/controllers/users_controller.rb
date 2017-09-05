@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show #see own profile incl. bookings
     @user = User.find(params[:id])
     @bookings = @user.bookings
+    @favorites = @user.favorites
   end
 
   def edit
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def users_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :photo)
   end

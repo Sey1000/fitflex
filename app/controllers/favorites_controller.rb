@@ -6,7 +6,6 @@ class FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new(favorite_params)
     @course = Course.find(params[:course_id])
-
     if @favorite.save && @course
       respond_to do |format|
         format.html {
