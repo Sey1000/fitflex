@@ -1,25 +1,29 @@
 <!-- This partial is also rendered in Reviews#new view -->
 <%= render 'courses/show_top_content', course: @course %>
 
-<!-- Rest of this is not -->
-<div id="room_for_error">
-  <% if @booking && @booking.errors.any? %>
-    <%= render 'bookings/booking_error_message' %>
-  <% end %>
-</div>
 
 <%= render 'reviews/index' %>
 
 <div class="room-for-button">
   <%= render 'courses/map' %>
 </div>
-        <div class="payment">
-          <%= form_tag bookings_path do %>
-            <%= hidden_field_tag 'course_id', @course.id %>
-            <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-          <% end %>
-        </div>
 
+<% if @existing_booking %>
+  <%= link_to 'View Your Booking', booking_path(@existing_booking), class: 'new-booking-button'  %>
+<% else %>
+  <div class="payment">
+    <%= simple_form_for @booking, remote: true do |f| %>
+      <%= f.input :course_id, input_html: {value:  @course.id}, as: :hidden %>
+      <%= f.button :submit, "Join", class: 'new-booking-button' %>
+    <% end %>
+  </div>
+<% end %>
+
+<div id="payment-modal">
+  <% if @booking.persisted? %>
+    <%= render 'payments/new', booking: @booking %>
+  <% end %>
+</div>
 
 <% if current_user %>
   <%= render 'bookings/new', course: @course, date_words: @date_words %>
