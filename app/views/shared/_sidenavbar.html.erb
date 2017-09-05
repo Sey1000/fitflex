@@ -88,13 +88,13 @@
         </div>
       </div>
     </div>
-
+  
     <div class="navbar-wagon-right hidden-md hidden-lg">
       <i class="fa fa-bars" style="cursor:pointer" onclick="openNav()"></i>
     </div>
 
   <% else %>
-    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= link_to root_path, class: "brand-not-logged-in" do %>
       <%= image_tag "fitflex_logo.png" %>
     <% end %>
   <% end %>
