@@ -40,17 +40,34 @@
     </div>
 
     <div id="category-tab" class="tab-pane fade">
-      <div class="swiper-container s1-container">
-        <div class="swiper-wrapper s1-wrapper">
-          <% category_icons = ['weightlifting_xt40om', 'dancer_yncg7a', 'buddhist-yoga-pose_mgof1t', 'stretch_ee1nkk', 'mma_ocfpf0', 'mma_ocfpf0', 'buddhist-yoga-pose_mgof1t', 'buddhist-yoga-pose_mgof1t'] %>
-          <% @categories.zip(category_icons).each do |c, i| %>
-            <div class="swiper-slide button-category s1-slide" data-category='<%= c %>' >
-              <%= cl_image_tag i %>
-              <div class="category-text">
-                <p> <%= c %> </p>
-              </div>
-            </div>
-          <% end %>
+      <div class="category-buttons-container">
+        <div class="button-category" data-category= "Yoga">
+          <%= cl_image_tag 'buddhist-yoga-pose_mgof1t', class: "category-button-image" %>
+          <p class="category-text">Yoga</p>
+        </div>
+        <div class="button-category" data-category= "Crossfit">
+          <%= cl_image_tag 'weightlifting_xt40om', class: "category-button-image" %>
+          <p class="category-text">Crossfit</p>
+        </div>
+        <div class="button-category" data-category= "Dance">
+          <%= cl_image_tag 'dancer_yncg7a', class: "category-button-image" %>
+          <p class="category-text">Dance</p>
+        </div>
+        <div class="button-category" data-category= "Kickboxing">
+          <%= cl_image_tag 'mma_ocfpf0', class: "category-button-image" %>
+          <p class="category-text">Kickboxing</p>
+        </div>
+        <div class="button-category" data-category= "HIIT">
+          <%= cl_image_tag 'stretch_ee1nkk', class: "category-button-image" %>
+          <p class="category-text">HIIT</p>
+        </div>
+        <div class="button-category" data-category= "Pilates">
+          <%= cl_image_tag 'buddhist-yoga-pose_mgof1t', class: "category-button-image" %>
+          <p class="category-text">Pilates</p>
+        </div>
+        <div class="button-category" data-category= "Martial Arts">
+          <%= cl_image_tag 'mma_ocfpf0', class: "category-button-image" %>
+          <p class="category-text">Martial Arts</p>
         </div>
       </div>
     </div>

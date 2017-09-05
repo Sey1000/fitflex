@@ -1,7 +1,13 @@
 <!-- This File is for Reveiws#new to render the top section of courses#show view -->
 
 <!-- Course Title banner -->
-<div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.cld_id %>');">
+
+<% if @course.studio.photo %>
+  <div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.photo.path %>');">
+<% else %>
+  <div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.cld_id %>');">
+<% end %>
+    
   <div class="course-banner-content">
     <h3 class="course-show-title text-center"><%= course.title %></h3>
     <div class="star-ratings-css-medium text-center">
