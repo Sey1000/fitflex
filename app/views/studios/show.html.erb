@@ -3,7 +3,7 @@
 <div class="studio-description">
 <h3><%= @studio.name %></h3>
 <p><%= @studio.description %></p>
-<% if current_user.studio == @studio && current_user.role == "owner" %>
+<% if current_user && current_user.studio == @studio && current_user.role == "owner" %>
   <h6>Hello, <%= current_user.first_name %> </h6>
 <% else %>
   <h6>Our instructors</h6>
