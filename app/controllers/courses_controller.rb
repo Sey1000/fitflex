@@ -4,7 +4,8 @@ class CoursesController < ApplicationController
   def index
     courses_by_day = filter_courses(params[:search_day])
     @courses = available_courses(courses_by_day)
-    # update_index
+    @filters = ["day", "category", "level", "distance", "price_cents"]
+    @categories = Course.order(:category).distinct.pluck(:category)
   end
 
   def show
@@ -64,24 +65,14 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
-    price_cents = filter_params[:price_cents].to_i || 2000
-    distance = filter_params[:distance].to_i || 10
-
+    price_cents = filter_params[:price_cents].to_i || 1000
+    distance = filter_params[:distance].to_i || 20
 
     @update_courses = filter_courses(day)
     @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
     @update_courses = @update_courses.where("price_cents <= ?", price_cents)
-
-
-    if level.present? && category.empty?
-      @update_courses = @update_courses.where(level: level)
-    elsif level.empty? && category.present?
-      @update_courses = @update_courses.where(category: category)
-    elsif level.present? && category.present?
-      @update_courses = @update_courses.where({category: category, level: level})
-    else
-      @update_courses
-    end
+    @update_courses = @update_courses.where(level: level) unless level == "Any level"
+    @update_courses = @update_courses.where(category: category) unless category == "Any category"
 
     respond_to do |format|
       format.html { redirect_to courses_path }
@@ -125,11 +116,11 @@ class CoursesController < ApplicationController
   def filter_courses(day)
 
     case day
-    when 'today'
+    when 'Today'
       Course.where("start_time > '#{Time.now}' AND start_time < '#{Time.now.end_of_day}'")
-    when 'tomorrow'
+    when 'Tomorrow'
       Course.where("start_time > '#{Time.now.end_of_day}' AND start_time < '#{DateTime.tomorrow.end_of_day}'")
-    when 'next_seven'
+    when 'Any day'
       Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
   end
