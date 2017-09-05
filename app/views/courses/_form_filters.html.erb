@@ -5,6 +5,7 @@
     <%= f.text_field :level, value: "", class: "hidden" %>
     <%= f.range_field :price_cents, :min=>0, :max=>2000, :class=>"slide", :id=>"slider-price_cost-form", class: "hidden" %>
     <%= f.range_field :distance, :min=>0, :max=>10, :class=>"slide", :id=>"slider-distance-form", class: "hidden" %>
+
     <% f.submit %>
   <% end %>
 </div>
