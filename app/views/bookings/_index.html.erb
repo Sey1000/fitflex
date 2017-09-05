@@ -5,15 +5,6 @@
     <div class="booking-title">
       <p class="booking-time-span"><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> <%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
     </div>
-    <div class="boooking-list-paystat">
-    <% if b.state == 'pending' %>
-      <p><span class="course-paystat btn btn-warning btn-status"><%= b.state %></span></p>
-    <% elsif b.state == 'paid' %>
-      <p><span class="course-paystat btn btn-success btn-status"><%= b.state %></span></p>
-    <% else %>
-      <p><span class="course-paystat btn btn-danger btn-status"><%= b.state %></span></p>
-    <% end %>
-    </div>
     <div class ="booking-cost">
       <p><%= humanized_money_with_symbol(b.course.price) %></p>
     </div>

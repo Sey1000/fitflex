@@ -9,7 +9,7 @@
 </div>
 
 <% if @existing_booking %>
-  <%= link_to 'View Your Booking', booking_path(@existing_booking), class: 'new-booking-button'  %>
+  <%= link_to 'View Your Booking', user_path(current_user), class: 'new-booking-button'  %>
 <% else %>
   <div class="payment">
     <%= simple_form_for @booking, remote: true do |f| %>

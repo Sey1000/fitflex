@@ -24,34 +24,35 @@
   }
 }
 
-
+.modal-dialog.center-modal-box {
+  margin: 35px;
+}
+.modal-header {
+  padding: 11px 13px;
+}
 .btn-confirm {
   background-color: $darker-pink;
   color: white;
 }
 
 .modal-body {
-  padding: 0px 43px 22px;
+  padding: 0px 0px 20px 0px;
 }
 .center-modal-box {
-  top: 35vh;
+  top: 24vh;
 }
 
 .booking-checked {
   color: green;
 }
 
-.confirmation-course {
-  margin-bottom: 6px;
-}
-
 .confirmation-address {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .confirmation-date {
-  font-size: 18px;
-  margin-top: 10px;
+  font-size: 15px;
+  margin: 10px 0px;
 }
 
 .confirm-button-margin {
