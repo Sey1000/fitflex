@@ -13,7 +13,7 @@
   <h6>Hello, <%= @owner.first_name  || @owner.email %> </h6>
   <div class="create-items-container">
     <%= link_to "Add an instructor", new_user_registration_path(role: "instructor"), class: "btn btn-primary" %>
-    <%= link_to "Add a course", new_course_path(studio: @studio), class: "btn btn-primary" %>
+    <%= link_to "Add a course", new_course_path, class: "btn btn-primary" %>
   </div>
 <% else %>
   <%= render "instructor_list", users: @users %>

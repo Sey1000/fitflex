@@ -44,10 +44,12 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    @course
   end
 
   def create
     @course = Course.new(courses_params)
+    @course.studio = current_user.studio
     if @course.save
       redirect_to course_path(@course)
     else

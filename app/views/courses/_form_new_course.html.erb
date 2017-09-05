@@ -1,4 +1,4 @@
-<%= simple_form_for(Course.new) do |f| %>
+<%= simple_form_for(@course) do |f| %>
   <div class="container">
     <div class="form-inputs">
 
@@ -9,7 +9,6 @@
       <%= f.input :description, required: true, autofocus: true %>
       <%= f.input :category, required: true, autofocus: true %>
       <%= f.input :level, required: true, autofocus: true %>
-      <%= f.input :studio_id, as: :hidden, input_html: {value: @studio.id}%>
       <%= f.submit "Register course", class: "btn btn-primary" %>
     </div>
   </div>
