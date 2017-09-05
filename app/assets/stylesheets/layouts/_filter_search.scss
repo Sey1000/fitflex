@@ -47,6 +47,11 @@
     border: 1px solid $pink;
     height: 20px;
   }
+  .pending {
+    background-color: rgba(222,83,121,0.4);
+    border: none;
+    color: $light-gray;
+  }
   p {
     top: 50%;
     margin-right: 5px;
