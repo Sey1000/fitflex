@@ -21,9 +21,14 @@
 
   <div class="booking-list-content">
     <div class="booking-list-info">
-      <p><strong><%= b.course.title %></strong> | <span class="course-where"><%= b.course.studio.name %></span></p>
-      <div class="booking-cancel btn-cancel"> <p><i class="fa fa-times-circle-o" aria-hidden="true"></i> Cancel</p>
-      </div>
+      <p><strong><%= b.course.title %></strong> | <span class="course-where"><%= b.course.studio.name %> <%= b.id %> </span></p>
+      <% if b.course.start_time - Time.now > 0  %>
+        <div class="booking-cancel btn-cancel">
+          <%= link_to booking_path(b), method: :delete, data: { confirm: "Are you sure you want to cancel the booking?" } do %>
+            <p><i class="fa fa-times-circle-o" aria-hidden="true"></i></p>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <% if old %>
       <%= link_to new_course_review_path(course_id: b.course), class: "review-me" do %>
