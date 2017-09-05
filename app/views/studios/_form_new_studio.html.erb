@@ -1,0 +1,13 @@
+<%= simple_form_for(Studio.new) do |f| %>
+  <div class="form-inputs">
+
+    <%= f.input :name, required: true, autofocus: true %>
+    <%= f.input :description, required: true, autofocus: true %>
+    <%= f.input :address, required: true, autofocus: true %>
+    <%= f.input :telephone, required: false, autofocus: true %>
+    <%= f.input :photo, as: :attachinary, label: false %>
+    <%= f.submit "Register studio", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
