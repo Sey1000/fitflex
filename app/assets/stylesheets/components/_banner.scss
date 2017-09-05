@@ -27,14 +27,18 @@
 }
 
 .course-banner{
-  padding-left: 5%;
-  height: 20vh;
+  padding-top: 8vh;
+  height: 25vh;
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
-  .course-show-title {
-  color: white;
+  .course-banner-content {
+    .course-show-title {
+      color: white;
+      font-size: 25px;
+      margin-bottom: 3px;
+    }
   }
 }
 

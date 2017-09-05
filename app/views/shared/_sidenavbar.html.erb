@@ -8,7 +8,6 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
-
       <!-- Links when logged in -->
       <%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "About Us", about_path, class: "navbar-wagon-item navbar-wagon-link" %>
@@ -58,9 +57,11 @@
 
   <!-- Sidebar appearing on mobile only -->
   <% if user_signed_in? %>
-    <div class="navbar-wagon-right hidden-md hidden-lg">
-      <i class="fa fa-bars" style="cursor:pointer" onclick="openNav()"></i>
-    </div>
+    <!-- LOGO APP -->
+    <%= link_to root_path, class: "navbar-wagon-brand hidden-md hidden-lg" do %>
+      <%= image_tag "fitflex_logo.png" %>
+    <% end %>
+
     <div class="sidenav" id="mySidenav">
       <i class="fa fa-times closebtn" onclick="closeNav()"></i>
       <div class="user-info">
@@ -87,10 +88,12 @@
         </div>
       </div>
     </div>
-    <!-- LOGO APP -->
-    <%= link_to root_path, class: "navbar-wagon-brand hidden-md hidden-lg" do %>
-      <%= image_tag "fitflex_logo.png" %>
-    <% end %>
+
+
+    <div class="navbar-wagon-right hidden-md hidden-lg">
+      <i class="fa fa-bars" style="cursor:pointer" onclick="openNav()"></i>
+    </div>
+
   <% else %>
     <div class="navbar-wagon-right hidden-md hidden-lg">
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
