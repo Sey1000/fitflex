@@ -18,3 +18,11 @@
   height: 13px;
   opacity: 0.6;
 }
+
+.call_to_action{
+  background-color: $light-gray;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 8px 0;
+}
