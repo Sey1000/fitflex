@@ -1,13 +1,13 @@
-.historical-bookings .row {
+.profile-info .row {
   :last-child {
-    .booking-list-content p {
+    .booking-list-content {
       border-bottom: none;
     }
   }
 }
 
 .booking-wrap {
-  padding: 0 10%;
+  padding: 0 6% 0 10%;
   .booking-top {
     margin-top: 5px;
     display: flex;
@@ -20,9 +20,6 @@
         opacity: 0.7;
       }
     }
-    .boooking-list-paystat {
-      font-size: 12px;
-    }
     .booking-cost {
       text-align: right;
       width: 60px;
@@ -30,10 +27,15 @@
   }
 }
 
+.booking-list-info {
+  width: 90%;
+}
+
 .booking-list-content {
+  border-bottom: 1px solid $medium-gray;
   position: relative;
   display: flex;
-  flex-direction: column;
+  text-align: left;
   p {
     color: $gray;
     margin-bottom: 0;
@@ -47,18 +49,28 @@
   .review-me {
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 8px;
     font-size: 20px;
     color: $red;
   }
   .booking-cancel {
-
     p {
-      border-bottom: 1px solid $medium-gray;
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      border-bottom:  none;
+      padding-bottom: 2px;
       margin-bottom: 2px;
       text-align: right;
-      font-size: 15px;
-      color: $dark-gray;
+      font-size: 18px;
+      color: $medium-gray;
+    }
+    a {
+      &:hover {
+        .fa {
+        color: $darker-pink;
+        }
+      }
     }
   }
 }
