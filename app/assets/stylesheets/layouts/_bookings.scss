@@ -18,6 +18,7 @@
       width: 250px;
       .booking-time-span {
         opacity: 0.7;
+        text-align: left;
       }
     }
     .booking-cost {
@@ -50,8 +51,7 @@
     position: absolute;
     right: 0;
     bottom: 0px;
-    font-size: 20px;
-    color: $red;
+    font-size: 13px;
   }
   .booking-cancel {
     p {
@@ -62,7 +62,7 @@
       padding-bottom: 2px;
       margin-bottom: 2px;
       text-align: right;
-      font-size: 18px;
+      font-size: 13px;
       color: $medium-gray;
     }
     a {
