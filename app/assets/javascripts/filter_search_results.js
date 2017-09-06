@@ -50,14 +50,4 @@ $(document).ready(function(){
       $("#search_courses").submit();
     });
   });
-
-  // swiper for categories-selection
-  var swiper = new Swiper('.swiper-container', {
-      pagination: '.swiper-pagination',
-      slidesPerView: 5,
-      paginationClickable: true,
-      spaceBetween: 20,
-      freeMode: true
-  });
-
 });
