@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   def index
     if params[:search_day]
       courses_by_day = filter_courses(params[:search_day])
-      @courses = available_courses(courses_by_day)
+      @courses = courses_by_day.reject { |course| course.bookings.length == course.spots }
     else
       @courses = Course.all
     end
@@ -84,6 +84,7 @@ class CoursesController < ApplicationController
     distance = filter_params[:distance].to_i
 
     @update_courses = filter_courses(day)
+    @update_courses = @update_courses.joins(:bookings).where("spots = bookings.count")
     @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
     @update_courses = @update_courses.where("price_cents <= ?", price_cents)
     @update_courses = @update_courses.where(level: level) unless level == ""
@@ -138,10 +139,6 @@ class CoursesController < ApplicationController
     when 'Any day'
       Course.where("start_time > '#{Time.now}' AND start_time < '#{(DateTime.now + 7.days).end_of_day}'")
     end
-  end
-
-  def available_courses(courses)
-    courses.reject { |course| course.bookings.length == course.spots } if courses
   end
 
   def courses_params
