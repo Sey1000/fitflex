@@ -6,8 +6,8 @@
 }
 
 .booking-wrap {
+  width: 100%;
   display: flex;
-  width: calc(100vw - 50px);
   border-bottom: 1px solid $medium-gray;
   .booking-picture {
     display: flex;
@@ -48,7 +48,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  width: 270px;
+  width: 72vw;
   height: 87px;
   p {
     color: $gray;
