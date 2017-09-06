@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170906120158) do
     t.string   "category"
     t.string   "level"
     t.integer  "studio_id"
+    t.integer  "instructor_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "price_cents", default: 0, null: false
@@ -71,7 +72,7 @@ ActiveRecord::Schema.define(version: 20170906120158) do
     t.string   "last_name"
     t.string   "description"
     t.integer  "age"
-    t.string   "area",        default: [],              array: true
+    t.string   "area",        default: [], array: true
     t.integer  "studio_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false

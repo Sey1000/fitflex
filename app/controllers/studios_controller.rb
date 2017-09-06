@@ -3,7 +3,7 @@ class StudiosController < ApplicationController
 
   def show
     @studio = Studio.find(params[:id])
-    @users = User.where(studio_id: params[:id].to_i).where(role: "instructor")
+    @users = Instructor.where(studio_id: params[:id].to_i)
     @owner = current_user if current_user && current_user.studio == @studio && current_user.role == "owner"
   end
 

@@ -1,8 +1,8 @@
 .inner-review {
-  height: 130px;
+  height: 145px;
   border-radius: 5px;
-  background-color: $medium-gray;
-  color: black;
+  background-color: $dark-blue;
+  color: white;
   margin: 0 10px;
   position: relative;
   box-shadow: 2px 2px 1px $dark-gray;
@@ -34,10 +34,10 @@
     margin-bottom: 0;
   }
   .full-review{
-      font-size: 11px;
-      opacity: 0.6;
-      margin-bottom: 2px;
-    }
+    font-size: 11px;
+    opacity: 0.6;
+    margin-bottom: 2px;
+  }
   .review-rating {
     color: #d19108;
   }
@@ -56,6 +56,11 @@
 }
 
 
+.review_title {
+  font-weight: 500;
+  font-size: 16px;
+  max-width: 180px;
+}
 
 
 
@@ -126,13 +131,6 @@
 
 // }
 
-.user_name_review {
-  font-size: 12px;
-}
-
-.review_title {
-  font-weight: 500;
-}
 
 // .sw-pa {
 //   bottom: 0 !important;
