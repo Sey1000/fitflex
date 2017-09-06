@@ -1,6 +1,7 @@
 class Studio < ApplicationRecord
   has_many :users
   has_many :courses
+  has_many :instructors
 
   validates :address, presence: true
 
