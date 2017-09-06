@@ -75,7 +75,7 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
-    price_cents = filter_params[:price_cents].to_iz
+    price_cents = filter_params[:price_cents].to_i
     distance = filter_params[:distance].to_i || 20
 
     @update_courses = filter_courses(day)
