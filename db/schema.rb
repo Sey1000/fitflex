@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20170906153252) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "price_cents",   default: 0, null: false
-    t.integer  "instructor_id"
     t.index ["instructor_id"], name: "index_courses_on_instructor_id", using: :btree
     t.index ["studio_id"], name: "index_courses_on_studio_id", using: :btree
   end
