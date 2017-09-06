@@ -11,21 +11,19 @@
   }
 }
 
+.bookmark-btn {
+  border: 0;
+  background: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
 .button-day {
   height: 49px;
   margin: 0 8px;
   padding: 5px 15px;
-}
-
-.button-category {
-  img {
-    height: 35px;
-    width: 35px;
-  }
-  padding: 5px;
-  img {
-    background-color: none;
-  }
 }
 
 .button-level {

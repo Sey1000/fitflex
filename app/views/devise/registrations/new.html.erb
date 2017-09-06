@@ -12,6 +12,8 @@
       <%= f.input :password_confirmation, required: true %>
       <% if params[:role] == "owner" %>
         <%= f.input :role, as: :hidden, input_html: {value: "owner"}%>
+      <% elsif params[:role] == "instructor" %>
+        <%= f.input :role, as: :hidden, input_html: {value: "instructor"}%>
       <% end %>
     </div>
 

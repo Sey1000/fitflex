@@ -1,5 +1,6 @@
 <!-- This file is a partial for rendering in Courses#show, hence the underscore in the title -->
 
+<<<<<<< HEAD
 <div class="swiper-container review-cards">
   <div class="swiper-wrapper">
     <% @course.reviews.each do |review| %>
@@ -27,24 +28,21 @@
               <a href="#" class="hide-item">Show less</a>
             </div>
           </div>
-      <!--     <p><%#= review.content.first(30)%>...</p>
-      <a href="#" class="read_more full-review">See full review > </p> -->
-        <!-- <p class="item"><%= review.content %></p> -->
-        <div class="review-rating">
-          <% review.rating.times do %>
-          <i class="fa fa-star"></i>
-          <% end %>
-          <% (5- review.rating).times do %>
-          <i class="fa fa-star-o"></i>
-          <% end %>
+          <div class="review-rating">
+            <% review.rating.times do %>
+            <i class="fa fa-star"></i>
+            <% end %>
+            <% (5- review.rating).times do %>
+            <i class="fa fa-star-o"></i>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <% end %>
+    <% end %>
 
-  <div class="swiper-pagination sw-pa"></div>
-</div>
+    <div class="swiper-pagination sw-pa"></div>
+  </div>
 </div>
 
 
