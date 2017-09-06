@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170906100235) do
     t.string   "last_name"
     t.string   "description"
     t.integer  "age"
-    t.string   "area", array: true, default: []
+    t.string   "area"
     t.integer  "studio_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
