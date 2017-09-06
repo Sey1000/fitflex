@@ -1,14 +1,21 @@
-.studio-owner {
-  position: relative;
-  width: 80px;
+.login-home {
+  width: 100vw;
+  height: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 0px 15px;
   a {
-    width: 140px;
-    position: absolute;
-    right: 0px;
-    bottom: 5px;
-    left: 140px;
-    top: 1px;
-    font-size: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+  .studio-owner {
+    width: 30vw;
+    text-align: right;
+  }
+  .customer-log-in {
+    position: relative;
+    width: 30vw;
   }
 }
 .container-home {
