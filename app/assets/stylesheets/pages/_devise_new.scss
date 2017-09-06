@@ -8,12 +8,14 @@
   .sign-up-header {
     text-align: center;
   }
-  .provider-signup{
+  .provider-signup {
+    display: flex;
+
     margin: 15px 0px;
     .provider-button {
     width: 100%;
     background-color: blue;
-    padding: 8px 53px;
+    padding: 9px 27px;
     border-radius: 7px;
     background-color: rgb(59, 89, 152);
     color: white;
