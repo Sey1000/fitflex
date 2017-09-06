@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20170906120158) do
     t.integer  "age"
     t.string   "area",        default: [], array: true
     t.integer  "studio_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "cld_id"
     t.index ["studio_id"], name: "index_instructors_on_studio_id", using: :btree
   end

@@ -36,19 +36,23 @@
       <div class="tabs-content">
         <div class="tab-content tab-one-content" id="upcoming-bookings">
           <div class="row row-tab">
+          <% if upcoming_bookings.length > 0 %>
             <% upcoming_bookings.each do |b| %>
             <%= render 'bookings/index', b: b, old: false %>
             <% end %>
+          <% else %>
+            <p>Book your first <%= link_to "course", courses_path %>!</p>
+          <% end %>
           </div>
         </div>
         <div class="tab-content hidden tab-two-content" id="past-bookings">
           <div class="row row-tab">
-          <% if past_bookings %>
+          <% if past_bookings.length > 0 %>
             <% past_bookings.each do |b| %>
               <%= render 'bookings/index', b: b, old: true %>
             <% end %>
           <% else %>
-              <p>Book your first <%= link_to "course", courses_path %></p>
+              <p>Book your first <%= link_to "course", courses_path %>!</p>
           <% end %>
           </div>
         </div>

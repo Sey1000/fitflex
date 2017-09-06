@@ -13,7 +13,7 @@
   display:flex;
   justify-content: space-around;
   align-items: center;
-  margin: 35px 5px 20px 5px;
+  margin: 60px 5px 20px 5px;
   padding: 0 30px;
   h1 {
   font-size: 20px;
@@ -106,14 +106,9 @@
 .tabs {
   display: flex;
   padding: 0;
-  .tab-one {
-    background: $medium-gray;
-  }
-  .tab-two {
-    background: $dark-gray;
-  }
-  .tab-three {
-    background: $medium-gray;
+  .tab-one, .tab-two, .tab-three {
+    background: $light-gray;
+    color: $dark-gray;
   }
 }
 .tabs a {
@@ -122,12 +117,12 @@
 .tabs a:hover {
   cursor: pointer;
   text-decoration: none;
-  opacity: 0.8;
 }
 .tabs h3 {
   font-size: 15px;
   font-weight: bold;
   margin: 0 0 2px 0;
+  color: $darker-pink;
 }
 .tabs p {
   opacity: 0.5;
@@ -160,22 +155,11 @@
     margin-right: 0px !important;
     }
   }
-  .tab-two-content {
+  .tab-one-content, .tab-three-content, .tab-two-content {
     text-align: center;
     p {
       margin: 0;
-      font-size: 16px;
-    }
-    a {
-      text-decoration: none;
-      color: $darker-pink;
-    }
-  }
-  .tab-three-content {
-    text-align: center;
-    p {
-      margin: 0;
-      font-size: 16px;
+      font-size: 15px;
     }
     a {
       text-decoration: none;
