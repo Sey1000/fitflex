@@ -9,6 +9,7 @@
   width: 100%;
   display: flex;
   border-bottom: 1px solid $medium-gray;
+  padding: 2px 0px;
   .booking-picture {
     display: flex;
     align-items: center;
@@ -50,6 +51,7 @@
   text-align: left;
   width: 72vw;
   height: 87px;
+  margin-top: 10px;
   p {
     color: $gray;
     margin-bottom: 0;
@@ -57,7 +59,7 @@
       opacity: 0.8;
     }
     .course-where {
-      color: $dark-blue;
+      color: $dark-gray;
     }
   }
   .review-me {
