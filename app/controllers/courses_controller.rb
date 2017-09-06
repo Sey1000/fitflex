@@ -79,7 +79,7 @@ class CoursesController < ApplicationController
     distance = filter_params[:distance].to_i || 20
 
     @update_courses = filter_courses(day)
-    @update_courses = @update_courses.joins(:bookings).where("spots = bookings.count")
+    @update_courses = @update_courses.where.not(spots: bookings.count)
     @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
     @update_courses = @update_courses.where("price_cents <= ?", price_cents)
     @update_courses = @update_courses.where(level: level) unless level == ""
