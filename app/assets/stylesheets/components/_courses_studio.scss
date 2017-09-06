@@ -1,0 +1,30 @@
+.studio-address-map {
+  background-color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  .studio-info {
+    width: 50vw;
+  }
+}
+
+.studio-address{
+  font-size: 13px;
+  text-decoration: none;
+  color: black;
+}
+
+.course-instructor {
+  padding: 20px;
+}
+
+.instructor-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.instructor-name {
+  font-weight: 500;
+  font-size: 16px;
+}
+

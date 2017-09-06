@@ -40,6 +40,7 @@ class CoursesController < ApplicationController
 
     @date_words = date_words
     session[:current_course] = course_path(@course)
+
   end
 
   def new
