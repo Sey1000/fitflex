@@ -1,6 +1,6 @@
 <!-- This file is a partial for rendering in Courses#show, hence the underscore in the title -->
 
-<<<<<<< HEAD
+
 <div class="swiper-container review-cards">
   <div class="swiper-wrapper">
     <% @course.reviews.each do |review| %>
@@ -19,14 +19,10 @@
             <%= review.title %>
           </div>
           <div class="items">
-            <div class="item-short">
-              <p><%= review.content.first(30)%>...</p>
-              <a href="#" class="show-item">Show full review > </a>
-            </div>
-            <div class="item-long">
-              <p><%= review.content%></p>
-              <a href="#" class="hide-item">Show less</a>
-            </div>
+            <p class="item-short"><%= review.content.first(30)%>...</p>
+            <a href="#" class="review-item">Show full review > </a>
+            <p class="item-short hidden"><%= review.content%></p>
+            <a href="#" class="review-item hidden">Show less</a>
           </div>
           <div class="review-rating">
             <% review.rating.times do %>
@@ -50,22 +46,22 @@
 <script>
 
   $(function(){
-    $('.item-long').hide();
-    $('.items').each(function(event){
-      $(this).find('.show-item').click(function(event){
-        $(this).parent().hide();
-        $(this).parents('.items').find('.item-long').show();
-        $('.inner-review').css('height', '180px');
+    $('.review-item').click(function(event){
+        $(this).siblings('.item-short').toggleClass('hidden');
+        $(this).toggleClass('hidden');
+        $(this).siblings('a').toggleClass('hidden');
+        // $(this).siblings('item-long').removeClass('hidden');
+        // $(this).siblings('hide-item').removeClass('hidden');
+        $('.inner-review').toggleClass('large-review');
       });
-    });
-    $('.items').each(function(event){
-      $(this).find('.hide-item').click(function(event){
-        $(this).parent().hide();
-        $(this).parents('.items').find('.item-short').show();
-        $('.inner-review').css('height', '130px');
-      });
-    });
-  });
+  //   $('.items').each(function(event){
+  //     $(this).find('.hide-item').click(function(event){
+  //       $(this).parent().hide();
+  //       $(this).parents('.items').find('.item-short').show();
+  //       $('.inner-review').css('height', '130px');
+  //     });
+  //   });
+   });
 
   var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
