@@ -37,10 +37,14 @@
     </div>
   </div>
 </div>
-
-<div class="class-description">
-  <h4> About this course </h4>
-  <p> <%= @course.description %></p>
+<div class="class-description-container">
+  <div class="class-description">
+    <h4> About this course </h4>
+    <p> <%= @course.description %></p>
+    <div id="course-12<%= @course.id %>">
+      <%= render "courses/course_favorite_button", course: @course %>
+    </div>
+  </div>
 </div>
 
 
