@@ -17,78 +17,57 @@
           <div class="review_title">
             <%= review.title %>
           </div>
-      <!--     <p><%#= review.content.first(30)%>...</p>
-          <a href="#" class="read_more full-review">See full review > </p> -->
-          <p class="item"><%= review.content %></p>
-          <div class="review-rating">
-            <% review.rating.times do %>
-            <i class="fa fa-star"></i>
-            <% end %>
-            <% (5- review.rating).times do %>
-            <i class="fa fa-star-o"></i>
-            <% end %>
+          <div class="items">
+            <div class="item-short">
+              <p><%= review.content.first(30)%>...</p>
+              <a href="#" class="show-item">Show full review > </a>
+            </div>
+            <div class="item-long">
+              <p><%= review.content%></p>
+              <a href="#" class="hide-item">Show less</a>
+            </div>
           </div>
+      <!--     <p><%#= review.content.first(30)%>...</p>
+      <a href="#" class="read_more full-review">See full review > </p> -->
+        <!-- <p class="item"><%= review.content %></p> -->
+        <div class="review-rating">
+          <% review.rating.times do %>
+          <i class="fa fa-star"></i>
+          <% end %>
+          <% (5- review.rating).times do %>
+          <i class="fa fa-star-o"></i>
+          <% end %>
         </div>
       </div>
     </div>
-    <% end %>
-
-    <div class="swiper-pagination sw-pa"></div>
   </div>
+  <% end %>
+
+  <div class="swiper-pagination sw-pa"></div>
+</div>
 </div>
 
 
 <%content_for(:after_js) do %>
 <script>
-$(function(){ /* to make sure the script runs after page load */
 
-  $('.item').each(function(event){ /* select all divs with the item class */
-
-    var max_length = 30; /* set the max content length before a read more link will be added */
-
-    if($(this).html().length > max_length){ /* check for content length */
-
-      var short_content   = $(this).html().substr(0,max_length); /* split the content in two parts */
-      var long_content  = $(this).html().substr(max_length);
-
-      $(this).html(short_content+
-             '<a href="#" class="read_more"><br/>Show full review ></a>'+
-             '<span class="more_text" style="display:none;">'+long_content+'<a href="#" class="show_less"><br/>Show less ></a>'+'</span>'
-             ); /* Alter the html to allow the read more functionality */
-
-      $(this).find('a.read_more').click(function(event){ /* find the a.read_more element within the new html and bind the following code to it */
-
-        event.preventDefault(); /* prevent the a from changing the url */
-        $(this).hide(); /* hide the read more button */
-        $(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
-        $('.inner-review').css('height', '180px'); /* increase the height of all of the review cards */
-        // $(this).html();
-
+  $(function(){
+    $('.item-long').hide();
+    $('.items').each(function(event){
+      $(this).find('.show-item').click(function(event){
+        $(this).parent().hide();
+        $(this).parents('.items').find('.item-long').show();
+        $('.inner-review').css('height', '180px');
       });
-
-      $(this).find('a.show_less').click(function(event){
-        $(this).hide(); /* hide the Show less link */
-        $(this).parents('.item').find('.more_text').hide(); /* hide the long text */
-        $(this).parents('.item').find('.read_more').show(); /* show the read more link */
-        $('.inner-review').css('height', '130px'); /* decrease the height of all review cards */
+    });
+    $('.items').each(function(event){
+      $(this).find('.hide-item').click(function(event){
+        $(this).parent().hide();
+        $(this).parents('.items').find('.item-short').show();
+        $('.inner-review').css('height', '130px');
       });
-
-    }
-
+    });
   });
-
-
-});
-
-// $(function(){
-//   $('.item').each(function(event){
-//     $(this).find('p.active').click(function(event){
-
-//     })
-//   });
-// });
-
-
 
   var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',

@@ -1,11 +1,11 @@
 .inner-review {
   height: 130px;
   border-radius: 5px;
-  background-color: $dark-blue;
-  color: white;
+  background-color: $medium-gray;
+  color: black;
   margin: 0 10px;
   position: relative;
-  box-shadow: 3px 3px 1px $medium-gray;
+  box-shadow: 2px 2px 1px $dark-gray;
 }
 
 .review-cards {
@@ -39,17 +39,18 @@
       margin-bottom: 2px;
     }
   .review-rating {
-    color: #E9A30A;
+    color: #d19108;
   }
 }
 
-.item {
+.items {
   a {
-    color: white;
+    color: black;
     font-size: 11px;
     opacity: 0.6;
   }
 }
+
 
 
 
