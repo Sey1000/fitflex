@@ -28,9 +28,14 @@
   </div>
 
     <% unless current_user %>
-    <div class="studio-owner">
-      <%= link_to "Studio Owner?", new_user_registration_path(role: "owner") %>
-      <% end %>
+    <div class="login-home">
+      <div class="customer-log-in">
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
+      </div>
+      <div class="studio-owner">
+        <%= link_to "Studio Owner?", new_user_registration_path(role: "owner") %>
+        <% end %>
+      </div>
     </div>
 </div>
 
