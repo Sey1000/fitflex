@@ -104,6 +104,12 @@ ten_cld_id_female_instructors = [
   'instructors_female/yoga-2607013_960_720_exwntt', 'instructors_female/girl-1211435_960_720_cl9p8j'
 ]
 
+instructors_motivations = [
+  "I don't tell you that it will be easy, I tell you that it will be worth it! – Hard work always pays off.",
+  "Actions speak louder than words!", "Who only does what he already knows will always stay where he is. – The secret of success is to begin.",
+  "We will create the best version of yourself together!", "IF YOU HAVE A BODY, YOU ARE AN ATHLETE.", "The sky is the limit. You can do anything you set your mind to.",
+  "How bad do you want it?", "If it doesn’t challenge you, it doesn’t change you.","Do today what your future self will thank you for."
+]
 # 30 Female users
 (0..20).to_a.each do |index|
   u = User.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, email: thirty_female_emails[index], password: '123456', password_confirmation: '123456', role: 'customer')
@@ -125,7 +131,7 @@ end
 
 # 10 Female instructors
 (20..30).to_a.each do |index|
-  u = User.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, email: thirty_female_emails[index], password: '123456', password_confirmation: '123456', role: 'instructor')
+  u = Instructor.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, age: rand(20..40))
   u.studio = Studio.all.sample
   u.cld_id = ten_cld_id_female_instructors[index - 20]
   u.save
@@ -133,7 +139,7 @@ end
 
 # 10 Male instructors
 (20..30).to_a.each do |index|
-  u = User.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, email: thirty_male_emails[index], password: '123456', password_confirmation: '123456', role: 'instructor')
+  u = Instructor.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, age: rand(20..40))
   u.studio = Studio.all.sample
   u.cld_id = ten_cld_id_male_instructors[index - 20]
   u.save
