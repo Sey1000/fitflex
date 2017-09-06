@@ -16,7 +16,33 @@
   width: 100%;
 }
 
-.stars{
+.stars {
   position: relative;
   width: 110px;
 }
+
+.star-ratings-css-small {
+  color: #e9a30a;
+  font-size: 18px;
+  height: 25px;
+  width: 103px;
+  position: relative;
+  padding: 0;
+  z-index: -1;
+}
+
+.star-ratings-css-medium {
+  color: #e9a30a;
+  font-size: 18px;
+  height: 25px;
+  position: relative;
+  padding: 0;
+  z-index: 0;
+}
+
+
+.star {
+  display: inline;
+  text-decoration: none;
+}
+

@@ -1,4 +1,3 @@
-<div class="profile-main-info">
   <% if user.facebook_picture_url %>
     <% avatar_url = user.facebook_picture_url.split("?")[0] + "?type=large" %>
     <div class="avatar-lg facebook-avatar-background" style="background-image: url('<%= avatar_url %>')"></div>
@@ -7,4 +6,4 @@
   <% else %>
     <%= cl_image_tag "twjchiqlm70j8zjkvk4l", class: "avatar avatar-lg" %>
   <% end %>
-</div>
+
