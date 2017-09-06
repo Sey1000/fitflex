@@ -83,18 +83,72 @@
 
     <div id="distance-tab" class="tab-pane fade">
       <div class="distance-container">
-        <p>0 km</p>
-        <input type="text" class="slider" id="distance-slider" value='<%= @max_values[:distance] %>' data-slider-min=0 data-slider-max='<%= @max_values[:distance] %>' data-slider-step=1 data-slider-selection="after" data-slider-tooltip="show">
-        <p><%= @max_values[:distance] %> km</p>
+      <p>0 km</p>
+        <input type="text" class="slider" id="distance-slider" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-selection="after" data-slider-tooltip="show">
+        <p>10 km</p>
       </div>
     </div>
 
     <div id="price_cents-tab" class="tab-pane fade">
       <div class="price_cents-container">
       <p>0€</p>
-      <input type="text" class="slider" id="price_cents-slider" data-slider-value='<%= @max_values[:price_cents] %>' data-slider-min=0 data-slider-max='<%= @max_values[:price_cents] %>' data-slider-step=100 data-slider-selection="after" data-slider-tooltip="show">
-        <p><%= @max_values[:price_cents] / 100 %> €</p>
+      <input type="text" class="slider" id="price_cents-slider" data-slider-value="1000" data-slider-min="0" data-slider-max="2000" data-slider-step="100" data-slider-selection="after" data-slider-tooltip="show">
+        <p>20€</p>
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+
+      var buttonFilters = ['day', 'category', 'level'],
+        sliderFilters = ['distance', 'price_cents'],
+        allFilters = buttonFilters.concat(sliderFilters);
+
+        // filter search results for buttons
+        buttonFilters.forEach( function(filter){
+          $(".button-"+ filter).on("click", function(e) {
+            $("#search_courses_" + filter).attr('value', $(this).attr("data-" + filter));
+            $("#search_courses").submit();
+          });
+        });
+
+        // filter search results for sliders
+        sliderFilters.forEach( function(filter){
+          $("#" + filter + "-slider").change(function(){
+            $("#slider-" + filter + "-form").attr('value', $(this).val());
+            $("#search_courses").submit();
+          });
+        });
+
+
+      // Reset to default filter values when clicking on filter in filter-container
+      allFilters.forEach( function(filter) {
+        $("#chosen-" + filter).on("click", function() {
+          $("#search_courses_" + filter).attr('value', "Any " + filter);
+          $("#search_courses").submit();
+        });
+      });
+
+      // Reset button
+      allFilters.forEach( function(filter){
+        $(".refresh-button").on("click", function() {
+          $("#search_courses_" + filter).attr('value', $(this).attr("data-" + filter));
+        });
+      });
+
+      // swiper for categories-selection
+      var swiper = new Swiper('.swiper-container', {
+          pagination: '.swiper-pagination',
+          slidesPerView: 5,
+          paginationClickable: true,
+          spaceBetween: 20,
+          freeMode: true
+      });
+
+    });
+  </script>
+<% end %>
+
