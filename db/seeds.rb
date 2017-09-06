@@ -104,6 +104,22 @@ ten_cld_id_female_instructors = [
   'instructors_female/yoga-2607013_960_720_exwntt', 'instructors_female/girl-1211435_960_720_cl9p8j'
 ]
 
+instructors_motivations = [
+  "I don't tell you that it will be easy, I tell you that it will be worth it! – Hard work always pays off.",
+  "Actions speak louder than words!", "Who only does what he already knows will always stay where he is. – The secret of success is to begin.",
+  "We will create the best version of yourself together!", "IF YOU HAVE A BODY, YOU ARE AN ATHLETE.", "The sky is the limit. You can do anything you set your mind to.",
+  "How bad do you want it?", "If it doesn’t challenge you, it doesn’t change you.","Do today what your future self will thank you for.",
+  "Only those who know their goal will find the path. I will help you with that.", "If you’re not in love with your Body, let me help you.", "Be the person you’d like to meet",
+  "You have to take personal responsibility, you can not change the circumstances, the seasons or the wind, but you can change yourself physically and mentally. You have it.",
+  "You don't work out anywhere, so don't work out with anyone.", "Be stronger than your excuses", "Let's make the work out fun!", "Winners are not born, they are made.",
+  "Together we will reach your dream body and give you more confidence", "Change only comes through change. Let's start with the change now!", "Never surrender. Never give up. Never back down."
+]
+
+instructors_areas = [
+  "Diet", "Own body-weight workout", "Crossfit", "Yoga", "Flexibility", "Weight loss", "Health oriented training", "Functional training", "Muscle building",
+  "Body shaping", "Body building", "Back strength", "Improvement of the posture", "Rehabilitation Training", "Endobalance (female hormone metabolism, detox)",
+  "Lifestyle coaching", "Dynamic Joint Mobility-Training", "Outdoor workouts", "Preventive Back-strengthening exercise"
+]
 # 30 Female users
 (0..20).to_a.each do |index|
   u = User.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, email: thirty_female_emails[index], password: '123456', password_confirmation: '123456', role: 'customer')
@@ -125,7 +141,8 @@ end
 
 # 10 Female instructors
 (20..30).to_a.each do |index|
-  u = User.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, email: thirty_female_emails[index], password: '123456', password_confirmation: '123456', role: 'instructor')
+  area_array = instructors_areas.sample((2..5).to_a.sample)
+  u = Instructor.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, age: rand(20..40), description: instructors_motivations[index - 20], area: area_array )
   u.studio = Studio.all.sample
   u.cld_id = ten_cld_id_female_instructors[index - 20]
   u.save
@@ -133,7 +150,8 @@ end
 
 # 10 Male instructors
 (20..30).to_a.each do |index|
-  u = User.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, email: thirty_male_emails[index], password: '123456', password_confirmation: '123456', role: 'instructor')
+  area_array = instructors_areas.sample((2..5).to_a.sample)
+  u = Instructor.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, age: rand(20..40), area: area_array )
   u.studio = Studio.all.sample
   u.cld_id = ten_cld_id_male_instructors[index - 20]
   u.save

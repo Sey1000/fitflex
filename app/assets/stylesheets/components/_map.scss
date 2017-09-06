@@ -1,6 +1,7 @@
 .studio-address-map {
+  background-color: white;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-around;
   .studio-info {
     width: 50vw;
@@ -26,3 +27,40 @@
   text-align: center;
   padding: 8px 0;
 }
+// circle for stats
+.container-stats{
+    width: 110px;
+    height: 110px;
+    margin: 100px auto;
+}
+.prec-stats{
+    top: 30px;
+    position: relative;
+    font-size: 30px;
+}
+
+.circle-stats{
+    position: relative;
+    top: 5px;
+    left: 5px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #E6F4F7;
+}
+
+.active-border{
+    position: relative;
+    text-align: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+
+    background-color:#39B4CC;
+    background-image:
+        linear-gradient(200deg, transparent 50%, #A2ECFB 50%),
+        linear-gradient(90deg, #A2ECFB 50%, transparent 50%);
+
+}
+
