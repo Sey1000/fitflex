@@ -1,53 +1,72 @@
 <div class="body-profile" style="background: linear-gradient(0deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%);">
-  <%= render 'users/profile_avatar', user: @user %>
 
   <div class="col-xs-12 no-padding">
     <div class="profile-main-info">
-      <% if @user.first_name %>
-      <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
-      <% else %>
-      <h1><%= @user.email %> </h1>
-      <% end %>
+      <%= render 'users/profile_avatar', user: @user %>
+      <div class="profile-name">
+        <% if @user.first_name %>
+        <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
+        <% else %>
+        <h1><%= @user.email %> </h1>
+        <% end %>
+        <%= link_to edit_user_registration_path, class: "setting-link" do %>
+        <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
+        <% end %>
+      </div>
     </div>
 
-    <div class="profile-info">
-      <div class="historical-bookings">
-        <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
-        <h2>Upcoming bookings (<%= upcoming_bookings.count %>)</h2>
-        <i class="fa fa-chevron-down"></i>
-      </div>
-      <div class="row hidden">
-        <% upcoming_bookings.each do |b| %>
-        <%= render 'bookings/index', b: b, old: false %>
-        <% end %>
-      </div>
-
-      <div class="historical-bookings">
-        <% past_bookings = @user.bookings.select { |b| b.course.start_time - Time.now < 0 } %>
-        <h2>History (<%= past_bookings.count %>)</h2>
-        <i class="fa fa-chevron-down"></i>
-      </div>
-      <div class="row hidden">
-        <% past_bookings.each do |b| %>
-          <%= render 'bookings/index', b: b, old: true %>
-        <% end %>
+    <div class="profile-content">
+      <div class="tabs">
+        <a class="tab active tab-one" href="#" data-target="#upcoming-bookings">
+          <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
+          <h3><%= upcoming_bookings.count %></h3>
+          <p>Upcoming</p>
+        </a>
+        <a class="tab tab-two" href="#" data-target="#past-bookings">
+          <% past_bookings = @user.bookings.select { |b| b.course.start_time - Time.now < 0 } %>
+          <h3><%= past_bookings.count %></h3>
+          <p>History</p>
+        </a>
+        <a class="tab tab-three" href="#" data-target="#favorite-courses">
+          <h3><%= @favorites.count %></h3>
+          <p>Favorites</p>
+        </a>
       </div>
 
-      <div class="historical-bookings">
-        <h2>Favorites (<%= @favorites.count %>)</h2>
-        <i class="fa fa-chevron-down"></i>
-      </div>
-      <div class="row hidden">
-        <!-- favorite index -->
-        <%= link_to course_path, class: 'card' do%>
-          <%= render 'favorites/favorite_list', favorites: @favorites %>
-        <% end %>
-      </div>
+      <div class="tabs-content">
+        <div class="tab-content tab-one-content" id="upcoming-bookings">
+          <div class="row row-tab">
+            <% upcoming_bookings.each do |b| %>
+            <%= render 'bookings/index', b: b, old: false %>
+            <% end %>
+          </div>
+        </div>
+        <div class="tab-content hidden tab-two-content" id="past-bookings">
+          <div class="row row-tab">
+          <% if past_bookings %>
+            <% past_bookings.each do |b| %>
+              <%= render 'bookings/index', b: b, old: true %>
+            <% end %>
+          <% else %>
+              <p>Book your first <%= link_to "course", courses_path %></p>
+          <% end %>
+          </div>
+        </div>
+        <div class="tab-content hidden tab-three-content" id="favorite-courses">
+          <div class="row row-tab">
+            <!-- favorite index -->
+            <% if @favorites.length > 0 %>
+              <%= link_to course_path, class: 'card' do%>
+                <%= render 'favorites/favorite_list', favorites: @favorites %>
+              <% end %>
+            <% else %>
+              <p>No favorites yet? <br>Explore our <%= link_to "courses", courses_path %></p>
+            <% end %>
+          </div>
 
-      <%= link_to edit_user_registration_path, class: "setting-link" do %>
-      <h2><i class="fa fa-cog" aria-hidden="true"></i> Profile settings</h2>
-      <% end %>
-    </div>
+        </div>
+      </div>
+      </div>
   </div>
 </div>
 

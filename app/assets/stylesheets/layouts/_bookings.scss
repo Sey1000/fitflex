@@ -1,4 +1,4 @@
-.profile-info .row {
+.tabs-content .row {
   :last-child {
     .booking-list-content {
       border-bottom: none;
@@ -7,7 +7,7 @@
 }
 
 .booking-wrap {
-  padding: 0 6% 0 10%;
+  width: calc(100vw - 50px);
   .booking-top {
     margin-top: 5px;
     display: flex;
@@ -49,7 +49,7 @@
   .review-me {
     position: absolute;
     right: 0;
-    bottom: 8px;
+    bottom: 0px;
     font-size: 20px;
     color: $red;
   }
