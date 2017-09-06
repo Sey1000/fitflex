@@ -7,24 +7,7 @@
             <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.cld_id %>');">
           <% end %>
             <div id="course-12<%= course.id %>">
-              <% if current_user %>
-                <% favorite = Favorite.where(course_id: course.id, user_id: current_user.id).first %>
-                <% if favorite %>
-                  <%#= link_to favorite_path(favorite.id), method: :delete, remote: :true do %>
-                  <%= form_tag favorite_path(favorite.id), method: :delete, remote: :true do %>
-                    <%= button_tag(type: 'submit', class: "bookmark-btn") do %>
-                      <i class="fa fa-heart heart-red"></i>
-                    <% end %>
-                  <% end %>
-                <% else %>
-                  <%#= link_to favorites_path(course_id: course.id, user_id: current_user.id), method: :post, remote: true do %>
-                  <%= form_tag favorites_path(course_id: course.id, user_id: current_user.id), method: :post, remote: true do %>
-                    <%= button_tag(type: 'submit', class: "bookmark-btn") do %>
-                      <i class="fa fa-heart-o heart-grey"></i>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              <% end %>
+            <%= render "courses/course_favorite_button", course: course %>
             </div>
           </div>
           <div class="info">

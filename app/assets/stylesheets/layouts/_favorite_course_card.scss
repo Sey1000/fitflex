@@ -1,10 +1,10 @@
 .course-card {
   display: flex;
   margin: 0px 7px;
-  padding: 10px 5px;
+  padding: 5px 3px;
   .favorite-studio-picture {
     width: 100px;
-    height: 100px;
+    height: 85px;
     background: gray;
     background-size: cover;
     flex: 0 0 auto;
@@ -16,11 +16,16 @@
   margin-left: 10px;
   color: #de5379;
 }
+.favorite-course-title {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
 .favorite-studio-title {
-  font-size: 12px;
+  font-size: 15px;
 }
 .favorite-course-times {
-  font-size: 12px;
+  font-size: 14px;
   color: #5b5b5b;
 }
 .favorite-info {
@@ -30,6 +35,8 @@
   color: #2b6a8c;
   padding: 0 10px;
   position: relative;
+  width: 59vw;
+  text-align: left;
   .spots {
     position: absolute;
     bottom: 22px;
@@ -44,8 +51,7 @@
 }
 .favorite-course-price {
   position: absolute;
-  bottom: -7px;
-  left: 8px;
+  right: 0px;
   font-size: 16px;
   color: black;
   font-weight: 500;
