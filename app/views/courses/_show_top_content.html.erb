@@ -2,6 +2,7 @@
 
 <!-- Course Title banner -->
 
+
 <% if @course.studio.photo %>
   <div class="course-banner" style="background-image: linear-gradient(to right bottom, rgba(10,10,10,0.6), rgba(100,100,100,0.6)),url('<%= cl_image_path @course.studio.photo.path %>');">
 <% else %>
@@ -17,7 +18,7 @@
 </div>
 
 <!-- Time & Cost -->
-<div class="blue-banner" style="background: linear-gradient(-225deg, rgba(36, 149, 191,0.6) 0%, rgba(30, 62, 119,0.8) 50%); height: 5vh;">
+<div class="blue-banner" style="background: $light-gray; height: 5vh;">
   <%= @date_words %> - <%= @course.start_time.strftime ("%l:%M %P") %>
   <div class="prices">
     <%= humanized_money_with_symbol(@course.price) %>

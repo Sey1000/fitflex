@@ -1,4 +1,4 @@
-.profile-info .row {
+.tabs-content .row {
   :last-child {
     .booking-list-content {
       border-bottom: none;
@@ -7,7 +7,7 @@
 }
 
 .booking-wrap {
-  padding: 0 6% 0 10%;
+  width: calc(100vw - 50px);
   .booking-top {
     margin-top: 5px;
     display: flex;
@@ -18,6 +18,7 @@
       width: 250px;
       .booking-time-span {
         opacity: 0.7;
+        text-align: left;
       }
     }
     .booking-cost {
@@ -49,9 +50,8 @@
   .review-me {
     position: absolute;
     right: 0;
-    bottom: 8px;
-    font-size: 20px;
-    color: $red;
+    bottom: 0px;
+    font-size: 13px;
   }
   .booking-cancel {
     p {
@@ -62,7 +62,7 @@
       padding-bottom: 2px;
       margin-bottom: 2px;
       text-align: right;
-      font-size: 18px;
+      font-size: 13px;
       color: $medium-gray;
     }
     a {

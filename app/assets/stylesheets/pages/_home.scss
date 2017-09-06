@@ -1,17 +1,26 @@
-.studio-owner {
-  position: relative;
-  width: 80px;
+.login-home {
+  position: absolute;
+  bottom: 11px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 21px 0px 31px;
   a {
-    width: 140px;
-    position: absolute;
-    right: 0px;
-    bottom: 5px;
-    left: 140px;
-    top: 1px;
-    font-size: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+  .studio-owner {
+    width: 30vw;
+    text-align: right;
+  }
+  .customer-log-in {
+    position: relative;
+    width: 30vw;
   }
 }
 .container-home {
+  position: relative;
   .not-logged-in-message {
     margin: 18px 0px 0px 0px;
   }

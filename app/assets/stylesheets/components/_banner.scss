@@ -10,7 +10,7 @@
   background-position: center top;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   h3 {
     font-size: 23px;
@@ -27,6 +27,7 @@
 }
 
 .course-banner{
+
   padding-top: 8vh;
   height: 25vh;
   background-size: cover;
@@ -39,6 +40,7 @@
       font-size: 25px;
       margin-bottom: 3px;
     }
+
   }
 }
 
@@ -48,5 +50,6 @@
   align-items: center;
   padding: 0 5%;
   font-weight: 500;
-  color: white;
+  color: black;
+  font-size: 15px;
 }

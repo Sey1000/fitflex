@@ -1,17 +1,28 @@
 
 <div class="studio-address-map">
   <div class="studio-info">
-  <h4>The Studio</h4>
-    <h6><%= @course.studio.name %></h6>
-    <p class="studio-address"><%= @course.studio.address %></p>
+    <h4 class="classes-heading-small">The Studio</h4>
+    <p class="studio-address"><strong> <%= @course.studio.name %> </strong></br> <%= @course.studio.address %></p>
   </div>
-  <div class="studio-map-info">
-    <p class="studio-address"> <%= @json_distance%> away</p>
-    <p class="studio-address">
 
-</p>
-  </div>
+  <p class="studio-address"> <%= @json_distance%> away</p>
+
 </div>
+
+<!-- <div class="container container-stats">
+    <div id="activeBorder" class="active-border">
+        <div id="circle" class="circle-stats">
+            <span class="prec prec-stats 270" id="prec">0%</span>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+
 <div class="call_to_action">
 <%= link_to 'Check out the Studio', studio_path(@studio.id), class: "call-to-action-button studio-address border-right-cta" %>
 
@@ -34,11 +45,45 @@
     }
     });
     });
+var i = 0 , prec;
+var degs = $("#prec").attr("class").split(' ')[1];
+var activeBorder = $("#activeBorder");
+
+setTimeout(function(){
+    if($("#circle").is(":hover"))
+       loopit("c");
+    else
+       loopit("nc");
+},1);
+
+function loopit(dir){
+    if (dir == "c")
+        i++
+    else
+        i--;
+    if (i < 0)
+        i = 0;
+    if (i > degs)
+        i = degs;
+    prec = (100*i)/360;
+    $(".prec").html(Math.round(prec)+"%");
+
+    if (i<=180){
+        activeBorder.css('background-image','linear-gradient(' + (90+i) + 'deg, transparent 50%, #A2ECFB 50%),linear-gradient(90deg, #A2ECFB 50%, transparent 50%)');
+    }
+    else{
+        activeBorder.css('background-image','linear-gradient(' + (i-90) + 'deg, transparent 50%, #39B4CC 50%),linear-gradient(90deg, #A2ECFB 50%, transparent 50%)');
+    }
+
+    setTimeout(function(){
+        if($("#circle").is(":hover"))
+            loopit("c");
+        else
+           loopit("nc");
+    },1);
+
+}
     <% end %>
   <% end %>
 </div>
-<%#= @request %>
 
-
-<!-- <h3><%#= @course.studio.name %></h3> -->
-<%#= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=375x200&sensor=false&key=#{ENV['GOOGLE_API_SERVER_KEY']}&maptype=roadmap&markers=color:red|@course.studio.address"  %>

@@ -1,40 +1,63 @@
-<div class="row-course">
-    <div class="col-xs-12 course-cards-container course-color">
-      <div class="course-card">
-        <% if course.studio.photo %>
-          <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.photo.path %>');">
-        <% else %>
-          <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.cld_id %>');">
-        <% end %>
-        </div>
-        <div class="info">
-          <div class="spots">
-            <%= course.spots - course.bookings.length %> spots left!
+  <div class="row-course">
+      <div class="col-xs-12 course-cards-container course-color">
+        <div class="course-card">
+          <% if course.studio.photo %>
+            <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.photo.path %>');">
+          <% else %>
+            <div class="studio-picture" style="background-image: url('<%= cl_image_path course.studio.cld_id %>');">
+          <% end %>
+            <div id="course-12<%= course.id %>">
+              <% if current_user %>
+                <% favorite = Favorite.where(course_id: course.id, user_id: current_user.id).first %>
+                <% if favorite %>
+                  <%#= link_to favorite_path(favorite.id), method: :delete, remote: :true do %>
+                  <%= form_tag favorite_path(favorite.id), method: :delete, remote: :true do %>
+                    <%= button_tag(type: 'submit', class: "bookmark-btn") do %>
+                      <i class="fa fa-heart heart-red"></i>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <%#= link_to favorites_path(course_id: course.id, user_id: current_user.id), method: :post, remote: true do %>
+                  <%= form_tag favorites_path(course_id: course.id, user_id: current_user.id), method: :post, remote: true do %>
+                    <%= button_tag(type: 'submit', class: "bookmark-btn") do %>
+                      <i class="fa fa-heart-o heart-grey"></i>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-          <div class="distance">
-            <i class="fa fa-map-marker"></i> <%= course.studio.distance %> km
+          <div class="info">
+            <div class="spots">
+              <%= course.spots - course.bookings.length %> spots left!
+            </div>
+            <div class="distance">
+              <i class="fa fa-map-marker"></i> <%= course.studio.distance %> km
+            </div>
+            <p class="course-price"> <%= humanized_money_with_symbol(course.price) %></p>
+            <h3 class="course-title"> <%= course.title %> </h3>
+            <div class="studio-title">
+              <h4 class="studio-card-title"><%= course.studio.name %></h4>
+            </div>
+            <div class="star-ratings-css-small">
+              <%= render 'shared/stars', course: course %>
+            </div>
+            <div class="course-times">
+              <% if course.start_time.to_date == Date.today %>
+                Today
+              <% elsif course.start_time.to_date == (Date.today + 1) %>
+                Tomorrow
+              <% else %>
+                <%= course.start_time.strftime('%A, %b %d') %>
+              <% end %>
+              <br>
+              <%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
+            </div>
+
+
+
+            <!-- <p class="level"><%= course.level %> </p> -->
           </div>
-          <p class="course-price"> <%= humanized_money_with_symbol(course.price) %></p>
-          <h3 class="course-title"> <%= course.title %> </h3>
-          <div class="studio-title">
-            <h4 class="studio-card-title"><%= course.studio.name %></h4>
-          </div>
-          <div class="star-ratings-css-small">
-            <%= render 'shared/stars', course: course %>
-          </div>
-          <div class="course-times">
-            <% if course.start_time.to_date == Date.today %>
-              Today
-            <% elsif course.start_time.to_date == (Date.today + 1) %>
-              Tomorrow
-            <% else %>
-              <%= course.start_time.strftime('%A, %b %d') %>
-            <% end %>
-            <br>
-            <%= course.start_time.strftime("%l:%M %p") %> - <%= course.end_time.strftime("%l:%M %p") %>
-          </div>
-          <!-- <p class="level"><%= course.level %> </p> -->
         </div>
       </div>
-    </div>
-</div>
+  </div>
