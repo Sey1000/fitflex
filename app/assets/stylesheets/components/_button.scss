@@ -49,16 +49,18 @@
   .heart-red {
     color: #DE5379;
     position: absolute;
-    right: -290px;
-    top: 21px;
-    font-size: 25px;
+    left: calc(100vw - 47px);
+    top: 35px;
+    font-size: 22px;
+    width: 26px;
   }
   .heart-grey {
     color: white;
     position: absolute;
-    right: -290px;
-    top: 21px;
-    font-size: 25px;
+    left: calc(100vw - 47px);
+    top: 35px;
+    font-size: 22px;
+    width: 26px;
   }
 }
 
