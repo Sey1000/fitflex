@@ -1,6 +1,6 @@
 <!-- This file is a partial (hence the underscore in the title) rendered in Users#show view -->
 
-<div class="col-xs-12 booking-wrap">
+<div class="col-xs-12 booking-wrap no-padding">
   <div class="booking-top">
     <div class="booking-title">
       <p class="booking-time-span"><%= b.course.start_time.day %> <%= b.course.start_time.strftime("%B") %> <%= b.course.start_time.hour %> - <%= b.course.end_time.hour %> h</p>
@@ -16,14 +16,14 @@
       <% if b.course.start_time - Time.now > 0  %>
         <div class="booking-cancel btn-cancel">
           <%= link_to booking_path(b), method: :delete, data: { confirm: "Are you sure you want to cancel the booking?" } do %>
-            <p><i class="fa fa-times-circle-o" aria-hidden="true"></i></p>
+            <p><i class="fa fa-times" aria-hidden="true"></i> Cancel</p>
           <% end %>
         </div>
       <% end %>
     </div>
     <% if old %>
       <%= link_to new_course_review_path(course_id: b.course), class: "review-me" do %>
-        <i class="fa fa-pencil-square-o"></i>
+        <i class="fa fa-star"></i> Review
       <% end %>
     <% end %>
   </div>

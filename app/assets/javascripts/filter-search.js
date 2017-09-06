@@ -33,6 +33,7 @@ $(document).ready(function(){
   });
 
     $("#distance-slider").slider({
+      value: 10,
       formatter: function(value) {
         return value;
       }
@@ -44,6 +45,7 @@ $(document).ready(function(){
   });
 
   $("#price_cents-slider").slider({
+    value: 3000,
     formatter: function(value) {
       return value/100 + "€";
     }

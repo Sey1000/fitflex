@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904131040) do
+ActiveRecord::Schema.define(version: 20170906120158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,19 @@ ActiveRecord::Schema.define(version: 20170904131040) do
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_favorites_on_course_id", using: :btree
     t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "description"
+    t.integer  "age"
+    t.string   "area",        default: [],              array: true
+    t.integer  "studio_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "cld_id"
+    t.index ["studio_id"], name: "index_instructors_on_studio_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -124,6 +137,7 @@ ActiveRecord::Schema.define(version: 20170904131040) do
   add_foreign_key "courses", "studios"
   add_foreign_key "favorites", "courses"
   add_foreign_key "favorites", "users"
+  add_foreign_key "instructors", "studios"
   add_foreign_key "reviews", "courses"
   add_foreign_key "reviews", "users"
   add_foreign_key "users", "studios"
