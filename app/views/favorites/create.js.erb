@@ -1,1 +1,1 @@
-$("#course-12<%= @course.id %>").html("<%= j render "courses/course_dislike", favorite: @favorite %>");
+$("#course-12<%= @course.id %>").html("<%= j render 'courses/course_favorite_button', course: @course %>");

@@ -11,12 +11,54 @@
   }
 }
 
-.bookmark-btn {
-  border: 0;
-  background: none;
+.course-card {
+  .bookmark-btn {
+    border: 0;
+    background: none;
 
-  &:focus {
-    outline: 0;
+    &:focus {
+      outline: 0;
+    }
+  }
+  .heart-red {
+    color: #DE5379;
+    position: absolute;
+    left: 19px;
+    top: 21px;
+  }
+  .heart-grey {
+    color: white;
+    position: absolute;
+    left: 19px;
+    top: 21px;
+  }
+}
+.class-description-container {
+  position: relative;
+}
+
+.class-description {
+  .bookmark-btn {
+    border: 0;
+    background: none;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+  .heart-red {
+    color: #DE5379;
+    position: absolute;
+    right: -290px;
+    top: 21px;
+    font-size: 25px;
+  }
+  .heart-grey {
+    color: white;
+    position: absolute;
+    right: -290px;
+    top: 21px;
+    font-size: 25px;
   }
 }
 
