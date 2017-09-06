@@ -42,7 +42,7 @@
     background-color: rgba(222,83,121,0.8);
     color: white;
     border: 1px solid $pink;
-    font-size: 13px;
+    font-size: 15px;
     margin-bottom: 5px;
   }
   .pending {
@@ -132,6 +132,12 @@
   justify-content: space-around;
   li {
     border-right: 1px solid rgba(255,255,255,0.3);
+    &:active, &:hover, &:focus {
+      background-color: white;
+      .search-tab-button {
+        color: $darkest-blue;
+      }
+    }
   }
   li:last-child {
     border-right: none;
@@ -146,7 +152,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  &:active, &:hover {
-    color: $darkest-blue;
-  }
 }
