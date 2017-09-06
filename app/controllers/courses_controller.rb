@@ -9,6 +9,11 @@ class CoursesController < ApplicationController
       @courses = Course.all
     end
     @filters = ["day", "category", "level", "distance", "price_cents"]
+    @max_values = {
+      distance: 10,
+      price_cents: 3000
+    }
+
     @categories = Course.order(:category).distinct.pluck(:category)
   end
 
@@ -75,8 +80,8 @@ class CoursesController < ApplicationController
     day = filter_params[:day]
     category = filter_params[:category]
     level = filter_params[:level]
-    price_cents = filter_params[:price_cents].to_i || 1000
-    distance = filter_params[:distance].to_i || 20
+    price_cents = filter_params[:price_cents].to_i
+    distance = filter_params[:distance].to_i
 
     @update_courses = filter_courses(day)
     @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
