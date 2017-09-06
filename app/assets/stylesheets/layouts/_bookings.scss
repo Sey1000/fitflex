@@ -1,13 +1,19 @@
-.tabs-content .row {
+.row-tab {
   :last-child {
-    .booking-list-content {
       border-bottom: none;
-    }
+
   }
 }
 
 .booking-wrap {
+  display: flex;
   width: calc(100vw - 50px);
+  border-bottom: 1px solid $medium-gray;
+  .booking-picture {
+    display: flex;
+    align-items: center;
+    margin: 0 11px 0px 0px;
+  }
   .booking-top {
     margin-top: 5px;
     display: flex;
@@ -24,19 +30,26 @@
     .booking-cost {
       text-align: right;
       width: 60px;
+      p {
+      opacity: 0.7;
+
+      }
     }
   }
 }
 
 .booking-list-info {
   width: 90%;
+  padding-bottom: 6px;
 }
 
 .booking-list-content {
-  border-bottom: 1px solid $medium-gray;
   position: relative;
   display: flex;
+  flex-direction: column;
   text-align: left;
+  width: 270px;
+  height: 87px;
   p {
     color: $gray;
     margin-bottom: 0;
@@ -54,18 +67,18 @@
     font-size: 13px;
   }
   .booking-cancel {
-    p {
-      position: absolute;
-      right: 0px;
-      bottom: 0px;
-      border-bottom:  none;
-      padding-bottom: 2px;
-      margin-bottom: 2px;
-      text-align: right;
-      font-size: 13px;
-      color: $medium-gray;
-    }
     a {
+      p {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        border-bottom:  none;
+        padding-bottom: 2px;
+        margin-bottom: 2px;
+        text-align: right;
+        color: $medium-gray;
+        font-size: 13px;
+      }
       &:hover {
         .fa {
         color: $darker-pink;
