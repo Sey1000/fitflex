@@ -1,6 +1,7 @@
 <!-- This file is a partial for rendering in Courses#show, hence the underscore in the title -->
-
-
+<div class="reviews-title">
+<h4>All reviews (<%= @course.reviews.length %>)</h4>
+</div>
 <div class="swiper-container review-cards">
   <div class="swiper-wrapper">
     <% @course.reviews.each do |review| %>
@@ -8,7 +9,15 @@
       <div class="rev inner-review">
         <div class="user-review">
           <div class="user-review-image">
+          <% if review.user.photo? %>
+            <%= cl_image_tag(review.user.photo, class: 'avatar-medium') %>
+          <% elsif review.user.cld_id %>
+            <%= cl_image_tag(review.user.cld_id, class: 'avatar-medium') %>
+          <% elsif review.user.facebook_picture_url %>
+            <%= image_tag facebok_picture_url, class: 'avatar-medium' %>
+          <% else %>
             <%= image_tag 'placeholder', class: 'avatar-medium' %>
+          <% end %>
           </div>
           <p>
             <%= review.user.first_name %>
