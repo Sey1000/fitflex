@@ -110,7 +110,7 @@ end
 male_instructors=[]
 (20..30).to_a.each do |index|
   area_array = instructors_areas.sample((2..5).to_a.sample)
-  u = Instructor.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, age: rand(20..40), area: area_array )
+  u = Instructor.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, age: rand(20..40),description: instructors_motivations[index - 10], area: area_array )
   u.cld_id = ten_cld_id_male_instructors[index - 20]
   u.save
   male_instructors << u

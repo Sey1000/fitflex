@@ -15,15 +15,18 @@
 }
 
 .course-instructor {
-  padding: 20px;
+  padding: 1px 5% 20px 5%;
+  height: 180px;
 }
 
 .instructor-content {
-  display: flex;
-  justify-content: space-around;
+  position: relative;
 }
 
 .instructor-name {
+  position: absolute;
+  left: 132px;
+  top: 12px;
   font-weight: 500;
   font-size: 16px;
 }
