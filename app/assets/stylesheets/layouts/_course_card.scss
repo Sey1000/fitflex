@@ -33,11 +33,11 @@
   position: relative;
   .spots {
     position: absolute;
-    bottom: 22px;
+    bottom: 26px;
     right: 5px;
     color: #7b7b7b;
     font-weight: 300;
-    font-size: 13px;
+    font-size: 11px;
     .fa {
       font-size: 12px;
     }
@@ -48,17 +48,17 @@
       font-size: 12px;
     }
     position: absolute;
-    bottom: 5px;
+    bottom: 11px;
     right: 5px;
     color: #7b7b7b;
     font-weight: 300;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .course-price {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 12px;
+    right: 10px;
     font-size: 16px;
     color: black;
     font-weight: 500;
@@ -72,8 +72,8 @@
 }
 
 .course-times {
-  margin: 0px;
-  font-size: 14px;
+  margin-top: 4px;
+  font-size: 11px;
   color: black;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .studio-card-title {
-  font-size: 15px;
+  font-size: 12px;
   margin: 0px;
 }
 

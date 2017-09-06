@@ -1,6 +1,7 @@
 <!-- This file is a partial for rendering in Courses#show, hence the underscore in the title -->
-
-
+<div class="reviews-title">
+<h4>All reviews (<%= @course.reviews.length %>)</h4>
+</div>
 <div class="swiper-container review-cards">
   <div class="swiper-wrapper">
     <% @course.reviews.each do |review| %>
@@ -8,7 +9,15 @@
       <div class="rev inner-review">
         <div class="user-review">
           <div class="user-review-image">
+          <% if review.user.photo? %>
+            <%= cl_image_tag(review.user.photo, class: 'avatar-medium') %>
+          <% elsif review.user.cld_id %>
+            <%= cl_image_tag(review.user.cld_id, class: 'avatar-medium') %>
+          <% elsif review.user.facebook_picture_url %>
+            <%= image_tag facebok_picture_url, class: 'avatar-medium' %>
+          <% else %>
             <%= image_tag 'placeholder', class: 'avatar-medium' %>
+          <% end %>
           </div>
           <p>
             <%= review.user.first_name %>
@@ -54,13 +63,6 @@
         // $(this).siblings('hide-item').removeClass('hidden');
         $('.inner-review').toggleClass('large-review');
       });
-  //   $('.items').each(function(event){
-  //     $(this).find('.hide-item').click(function(event){
-  //       $(this).parent().hide();
-  //       $(this).parents('.items').find('.item-short').show();
-  //       $('.inner-review').css('height', '130px');
-  //     });
-  //   });
    });
 
   var swiper = new Swiper('.swiper-container', {
@@ -68,7 +70,7 @@
     slidesPerView: 1,
     paginationClickable: true,
     spaceBetween: 00,
-    loop: true,
+    loop: false,
     width: 350,
   });
 </script>

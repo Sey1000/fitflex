@@ -12,31 +12,6 @@ Studio.destroy_all
 
 # Seed 10 Studios
 puts "Created Studios"
-
-studio_hash = {
-  "Bodystreet" => { address: "Charlottenstr. 79, 10117 Berlin", telephone: "030 33846280", cld_id: "jnmth8rsvmvcbhi0hokx", distance: 0.2 },
-  "Fitbox" => { address: "Rudi-Dutschke-Straße 1, 10969 Berlin", telephone: "030 98322747", cld_id: "hzgzwqyvcjxocjxrty4v", distance: 0.4 },
-  "Urban Gladiator" => { address: "Wilhelmstraße 14, 10963 Berlin", telephone: "0176 55131262", cld_id: "sloh6uufvv8tvyqa8jwf", distance: 0.9 },
-  "Medical Fitness Academy" => { address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "gg69jatbm9zaegcdzafb", distance: 4.0 },
-  "McFit" => { address: "Tauentzienstraße 8, 10789 Berlin", telephone: "030 25794520", cld_id: "tkzjagesfqt24rzkp1ib", distance: 4.5 },
-  "Ladyline Loft" => { address: "Stromstraße 39, 10551 Berlin", telephone: "030 77906990", cld_id: "hdspljxylbtwbgcuaxab", distance: 6.1 },
-  "Westhaften Studios" => { address: "Turmstraße 57, 10551 Berlin", telephone: "030 3959521", cld_id: "am3jqwown9tkbeshaian", distance: 6.0 },
-  "Nautilus Fitnesscenter" => { address: "Manteuffelstraße 65, 12103 Berlin", telephone: "030 75702377", cld_id: "mwughpj2aqebnfheppf9", distance: 5.7 },
-  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre", distance: 6.4 },
-  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
-}
-
-studio_hash.each do |st_name, st_info|
-  s = Studio.create(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id], distance: st_info[:distance])
-end
-
-# Seed Users that DON'T belong to studios (regular customers)
-puts "Created Users"
-
-# user_roles = [
-#   "customer", "instructor", "studio"
-# ]
-
 thirty_female_emails = [
   'Roselyn@wagon.com', 'Peyton@wagon.com', 'Alice@wagon.com', 'Aleah@wagon.com','Marilyn@gmail.com',
   'Madison@gmail.com', 'Elaine@gmail.com', 'Kenya@gmail.com', 'Lillian@gmail.com', 'Tamara@gmail.com',
@@ -47,7 +22,7 @@ thirty_female_emails = [
 ]
 
 thirty_male_emails = [
-'Demetrius@wagon.com', 'Dominique@wagon.com', 'Zachariah@wagon.com', 'Liam@wagon.com', 'Keshawn@wagon.com',
+  'Demetrius@wagon.com', 'Dominique@wagon.com', 'Zachariah@wagon.com', 'Liam@wagon.com', 'Keshawn@wagon.com',
   'Keon@wagon.com', 'Trevin@wagon.com', 'Vaughn@gmail.com', 'Rhys@gmail.com', 'Alexzander@gmail.com', 'Martin@gmail.com',
   'Van@gmail.com', 'Javier@gmail.com', 'Jovanni@yahoo.com', 'Carlos@yahoo.com', 'Layne@yahoo.com',
   'Titus@yahoo.com', 'Talon@yahoo.com', 'Rex@yahoo.com', 'Jaiden@mail.me', 'Kash@wagon.com', 'Zachery@wagon.com',
@@ -108,8 +83,65 @@ instructors_motivations = [
   "I don't tell you that it will be easy, I tell you that it will be worth it! – Hard work always pays off.",
   "Actions speak louder than words!", "Who only does what he already knows will always stay where he is. – The secret of success is to begin.",
   "We will create the best version of yourself together!", "IF YOU HAVE A BODY, YOU ARE AN ATHLETE.", "The sky is the limit. You can do anything you set your mind to.",
-  "How bad do you want it?", "If it doesn’t challenge you, it doesn’t change you.","Do today what your future self will thank you for."
+  "How bad do you want it?", "If it doesn’t challenge you, it doesn’t change you.","Do today what your future self will thank you for.",
+  "Only those who know their goal will find the path. I will help you with that.", "If you’re not in love with your Body, let me help you.", "Be the person you’d like to meet",
+  "You have to take personal responsibility, you can not change the circumstances, the seasons or the wind, but you can change yourself physically and mentally. You have it.",
+  "You don't work out anywhere, so don't work out with anyone.", "Be stronger than your excuses", "Let's make the work out fun!", "Winners are not born, they are made.",
+  "Together we will reach your dream body and give you more confidence", "Change only comes through change. Let's start with the change now!", "Never surrender. Never give up. Never back down."
 ]
+
+instructors_areas = [
+  "Diet", "Own body-weight workout", "Crossfit", "Yoga", "Flexibility", "Weight loss", "Health oriented training", "Functional training", "Muscle building",
+  "Body shaping", "Body building", "Back strength", "Improvement of the posture", "Rehabilitation Training", "Endobalance (female hormone metabolism, detox)",
+  "Lifestyle coaching", "Dynamic Joint Mobility-Training", "Outdoor workouts", "Preventive Back-strengthening exercise"
+]
+
+# 10 Female instructors
+female_instructors=[]
+(20..30).to_a.each do |index|
+  area_array = instructors_areas.sample((2..5).to_a.sample)
+  u = Instructor.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, age: rand(20..40), description: instructors_motivations[index - 20], area: area_array )
+  u.cld_id = ten_cld_id_female_instructors[index - 20]
+  u.save
+  female_instructors << u
+end
+
+# 10 Male instructors
+male_instructors=[]
+(20..30).to_a.each do |index|
+  area_array = instructors_areas.sample((2..5).to_a.sample)
+  u = Instructor.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, age: rand(20..40), area: area_array )
+  u.cld_id = ten_cld_id_male_instructors[index - 20]
+  u.save
+  male_instructors << u
+end
+
+studio_hash = {
+  "Bodystreet" => { address: "Charlottenstr. 79, 10117 Berlin", telephone: "030 33846280", cld_id: "jnmth8rsvmvcbhi0hokx", distance: 0.2 },
+  "Fitbox" => { address: "Rudi-Dutschke-Straße 1, 10969 Berlin", telephone: "030 98322747", cld_id: "hzgzwqyvcjxocjxrty4v", distance: 0.4 },
+  "Urban Gladiator" => { address: "Wilhelmstraße 14, 10963 Berlin", telephone: "0176 55131262", cld_id: "sloh6uufvv8tvyqa8jwf", distance: 0.9 },
+  "Medical Fitness Academy" => { address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "gg69jatbm9zaegcdzafb", distance: 4.0 },
+  "McFit" => { address: "Tauentzienstraße 8, 10789 Berlin", telephone: "030 25794520", cld_id: "tkzjagesfqt24rzkp1ib", distance: 4.5 },
+  "Ladyline Loft" => { address: "Stromstraße 39, 10551 Berlin", telephone: "030 77906990", cld_id: "hdspljxylbtwbgcuaxab", distance: 6.1 },
+  "Westhaften Studios" => { address: "Turmstraße 57, 10551 Berlin", telephone: "030 3959521", cld_id: "am3jqwown9tkbeshaian", distance: 6.0 },
+  "Nautilus Fitnesscenter" => { address: "Manteuffelstraße 65, 12103 Berlin", telephone: "030 75702377", cld_id: "mwughpj2aqebnfheppf9", distance: 5.7 },
+  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre", distance: 6.4 },
+  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
+}
+
+studio_hash.each do |st_name, st_info|
+  s = Studio.new(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id], distance: st_info[:distance])
+  s.save
+end
+
+Studio.all.each_with_index do |s,i|
+  female_instructors[i].update(studio: s)
+  male_instructors[i].update(studio: s)
+end
+# Seed Users that DON'T belong to studios (regular customers)
+puts "Created Users"
+
+
 # 30 Female users
 (0..20).to_a.each do |index|
   u = User.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, email: thirty_female_emails[index], password: '123456', password_confirmation: '123456', role: 'customer')
@@ -129,21 +161,6 @@ end
   User.create(email: Faker::Internet.email, password: '123456', password_confirmation: '123456')
 end
 
-# 10 Female instructors
-(20..30).to_a.each do |index|
-  u = Instructor.new(first_name: thirty_random_female_names[index], last_name: Faker::Name.last_name, age: rand(20..40))
-  u.studio = Studio.all.sample
-  u.cld_id = ten_cld_id_female_instructors[index - 20]
-  u.save
-end
-
-# 10 Male instructors
-(20..30).to_a.each do |index|
-  u = Instructor.new(first_name: thirty_random_male_names[index], last_name: Faker::Name.last_name, age: rand(20..40))
-  u.studio = Studio.all.sample
-  u.cld_id = ten_cld_id_male_instructors[index - 20]
-  u.save
-end
 
 
 demo_user = User.create(first_name: "Kris", last_name: "Espinosa", email: "demo@wagon.com", password: '123456', password_confirmation: '123456')
@@ -174,6 +191,7 @@ course_hash.each do |title, info|
   st = random_today.sample
   cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
   cour.studio = Studio.all.sample
+  cour.instructor = cour.studio.instructors.sample
   cour.save
 end
 
@@ -183,6 +201,7 @@ end
     st = random_today.sample + 1.day
     cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
     cour.studio = Studio.all.sample
+    cour.instructor = cour.studio.instructors.sample
     cour.save
   end
 end
@@ -192,6 +211,7 @@ course_hash.each do |title, info|
   st = random_today.sample + (2..7).to_a.sample.day
   cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
   cour.studio = Studio.all.sample
+  cour.instructor = cour.studio.instructors.sample
   cour.save
 end
 
@@ -200,6 +220,7 @@ course_hash.each do |title, info|
   st = random_today.sample - (1..7).to_a.sample.day
   cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
   cour.studio = Studio.all.sample
+  cour.instructor = cour.studio.instructors.sample
   cour.save
 end
 
@@ -224,23 +245,23 @@ review_titles = [
   ["Too easy for me", "Too difficult", "This was great", "Awesome",
     "Would do it again", "Good deal!", "Loved it!!",
     "Please bring this course to Frankfurt"],
-  ["Best course ever", "You should definitely do this course!",
+    ["Best course ever", "You should definitely do this course!",
       "Perfect intensity, price, everything!", "Best instructor ever", "This was great",
       "Awesome", "Would do it again", "Good deal!", "Loved it!!",
       "Please bring this course to Frankfurt"]
-]
+    ]
 
-puts "Created reviews"
+    puts "Created reviews"
 
-Course.all.each do |cs|
-  (1..5).to_a.sample.times do
-    ind = (0..2).to_a.sample
-    r = Review.new(title: review_titles[ind].sample, content: Faker::HowIMetYourMother.quote, rating: ind + 3)
-    r.course = cs
-    r.user = User.all.sample
-    r.save
-  end
-end
+    Course.all.each do |cs|
+      (1..5).to_a.sample.times do
+        ind = (0..2).to_a.sample
+        r = Review.new(title: review_titles[ind].sample, content: Faker::HowIMetYourMother.quote, rating: ind + 3)
+        r.course = cs
+        r.user = User.all.sample
+        r.save
+      end
+    end
 
 # 100.times do
 #   ind = (0..2).to_a.sample

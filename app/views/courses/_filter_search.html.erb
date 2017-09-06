@@ -18,7 +18,9 @@
   <div class="chosen-filters-container">
     <div class="chosen-filters">
       <div class="chosen-category" id="chosen-day">
-        <p class="chosen-item">x    <%= params[:search_day] %> </p>
+        <% if params[:search_day] %>
+          <p class="chosen-item">x    <%= params[:search_day] %> </p>
+        <% end %>
       </div>
       <% @filters.drop(1).each do |f| %>
         <div class="chosen-category" id='chosen-<%= f %>'>
@@ -38,6 +40,7 @@
         <button type="button" class="button-search-options button-day" data-day="Any day"><p>+7 Days</p></button>
       </div>
     </div>
+
 
     <div id="category-tab" class="tab-pane fade">
       <div class="category-buttons-container">
