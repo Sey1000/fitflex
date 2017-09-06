@@ -16,7 +16,7 @@
   </div>
 
     <div class="booking-list-info">
-      <p><strong><%= b.course.title %></strong> <br>
+      <p><strong><%= b.course.title %></strong>  with <%= b.course.instructor.first_name  %><br>
         <span class="course-where"><%= b.course.studio.name %> <%= b.id %> </span></p>
       <% if b.course.start_time - Time.now > 0  %>
         <div class="booking-cancel btn-cancel">
