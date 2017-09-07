@@ -1,9 +1,15 @@
 <!-- This file is a partial (hence the underscore in the title) rendered in Users#show view -->
 
 <div class="col-xs-12 booking-wrap no-padding">
-  <div class="booking-picture">
-     <%= cl_image_tag(b.course.instructor.cld_id, class: "avatar avatar-medium") %>
-  </div>
+
+          <% if b.course.studio.photo %>
+            <div class="booking-picture" style="background-image: url('<%= cl_image_path b.course.studio.photo.path %>');"></div>
+
+          <% else %>
+            <div class="booking-picture" style="background-image: url('<%= cl_image_path b.course.studio.cld_id %>');"></div>
+          <% end %>
+
+
 
   <div class="booking-list-content">
   <div class="booking-top">
