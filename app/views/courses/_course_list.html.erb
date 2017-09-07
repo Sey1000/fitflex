@@ -1,5 +1,7 @@
 <% courses.each do |cs| %>
   <%= link_to course_path(cs), class: 'card' do %>
-    <%= render 'courses/course_card', course: cs %>
+    <% if cs.spots > cs.bookings.size %>
+      <%= render 'courses/course_card', course: cs %>
+    <% end %>
   <% end %>
 <% end %>
