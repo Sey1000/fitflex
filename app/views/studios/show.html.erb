@@ -1,10 +1,10 @@
 
-<div class="container">
   <% if @owner %>
     <%= cl_image_tag @studio.photo.path, class: "studio-image-show" %>
   <% else %>
     <%= cl_image_tag @studio.cld_id, class: "studio-image-show" %>
   <% end %>
+<div class="container">
 <div class="studio-description">
 <h3><%= @studio.name %></h3>
 <p><%= @studio.description %></p>
@@ -21,11 +21,13 @@
 </div>
 
 
-<h6>Studio Address</h6>
+<h4 class="classes-heading-small">Studio Address</h4>
 <p class="studio-address"><%= @studio.address %></p>
 <p class="studio-address"> <i class="fa fa-phone"></i><%= @studio.telephone %></p>
+</div>
+
+
 
 
 
 <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=375x150&sensor=false&key=#{ENV['GOOGLE_API_SERVER_KEY']}&maptype=roadmap&markers=color:red|#{@studio.address}" %>
-</div>
