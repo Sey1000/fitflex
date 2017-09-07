@@ -112,14 +112,10 @@
   }
 }
 
-.price_cents-container {
-  display:flex;
-  align-items: center;
-  p {
-    color: white;
-    margin: 10px 10px;
-  }
+.price_cents-container {
+  justify-content: space-around;
 }
+
 .tooltip-arrow {
   opacity: 0.7;
 }
