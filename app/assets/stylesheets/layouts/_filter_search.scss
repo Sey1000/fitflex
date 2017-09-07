@@ -64,11 +64,11 @@
   height: 80px;
   .category-buttons-container {
     overflow: auto;
-    width: 95vw;
+    width: 98vw;
     height: 83px;
     margin-top: -5px;
     padding-top: 10px;
-    display: flex;
+    display: -webkit-box;
     justify-content: space-around;
     .button-category {
       flex-shrink: 0;
