@@ -10,10 +10,14 @@
   display: flex;
   border-bottom: 1px solid $medium-gray;
   padding: 2px 0px;
+  align-items: center;
   .booking-picture {
     display: flex;
     align-items: center;
     margin: 0 11px 0px 0px;
+    width: 75px;
+    height: 83px;
+    background-size: cover;
   }
   .booking-top {
     margin-top: 5px;

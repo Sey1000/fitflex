@@ -73,7 +73,11 @@ class CoursesController < ApplicationController
   end
 
   def update_index
-    day = filter_params[:day]
+    unless filter_params[:day] == ""
+      day = filter_params[:day]
+    else
+      day = "Any day"
+    end
     category = filter_params[:category]
     level = filter_params[:level]
     price_cents = filter_params[:price_cents]
