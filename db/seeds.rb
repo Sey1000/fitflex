@@ -3,11 +3,11 @@ require 'faker'
 puts "Start seeding.."
 
 # First clear database
-Instructor.destroy_all
 Favorite.destroy_all
 Review.destroy_all
 Booking.destroy_all
 Course.destroy_all
+Instructor.destroy_all
 User.destroy_all
 Studio.destroy_all
 
