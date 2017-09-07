@@ -102,7 +102,7 @@ class CoursesController < ApplicationController
       @update_courses
     end
 
-    @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
+    # @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
     @update_courses = @update_courses.where(level: level) unless level == ""
     @update_courses = @update_courses.where(category: category) unless category == ""
 
