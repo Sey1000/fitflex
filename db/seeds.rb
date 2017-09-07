@@ -35,8 +35,7 @@ studio_hash = {
   "Ladyline Loft" => { address: "Stromstraße 39, 10551 Berlin", telephone: "030 77906990", cld_id: "hdspljxylbtwbgcuaxab", distance: 6.1 },
   "Westhaften Studios" => { address: "Turmstraße 57, 10551 Berlin", telephone: "030 3959521", cld_id: "am3jqwown9tkbeshaian", distance: 6.0 },
   "Nautilus Fitnesscenter" => { address: "Manteuffelstraße 65, 12103 Berlin", telephone: "030 75702377", cld_id: "mwughpj2aqebnfheppf9", distance: 5.7 },
-  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre", distance: 6.4 },
-  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
+  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre", distance: 6.4 }
 }
 
 studio_hash.each do |st_name, st_info|
@@ -128,16 +127,16 @@ puts "Created Areas"
 
 course_hash = {
   "New life Yoga" => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
-  "Goat Yoga" => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
-  "Body and Mind"  => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
   "Learn Pole Dancing" => { category: "Dance", description: "You will increase your upper body strength and improve your cardio with each move, plus learn the true Diva routine containing 15 new moves." },
   "Crossfit for life" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
-  "Adaptive Training" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
   "Competitors" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
   "Zumba" => { category: "Dance", description: "Learn how to blend specific Zumba moves and body sculpting techniques using maraca-like Zumba Toning Sticks for an intense strength-training experience." },
+  "Body and Mind"  => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
   "Creative Pilates" => { category: "Pilates", description: "High-energy and dynamic class which integrates elements of Pilates, Dance, cardio, strength training and stretching. No dance experience required!" },
   "Kickboxing for winners" => { category: "Kickboxing", description: "Come ready to sweat like crazy, build a rock solid core, and burn hundreds of calories." },
+  "Adaptive Training" => { category: "Crossfit", description: "Crossfit is appropriate for all populations looking to create a more robust and efficient aerobic system. " },
   "Traditional Taekwondo" => { category: "Martial Arts", description: "Taekwondo emphasizes a sense of morality, humility, and a respect for one's opponent. Practitioners can improve both their physical ability and mental strength." },
+  "Goat Yoga" => { category: "Yoga", description: "This course is comprised of six series of asana, each of which has a specific function in cleansing and strengthening the mind and body." },
   "Interval Training" => { category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions." }
 }
 
@@ -157,7 +156,20 @@ course_hash.each do |title, info|
 end
 
 # tomorrow
-(3..5).to_a.sample.times do
+# morning goat yoga course tomorrow: for demo
+demo_goat_start_time = Time.now.beginning_of_day + 1.day + 8.hours
+demo_goat_course = Course.new(title: "Goat Yoga", category: "Yoga")
+demo_goat_course.start_time = demo_goat_start_time
+demo_goat_course.end_time = demo_goat_start_time + 1.hour
+demo_goat_course.price = 13
+demo_goat_course.spots = 10
+demo_goat_course.description = "Breath-taking, smile-inducing fitness trend sweeping the world since 2016 where you do a standard yoga class with adorable goats."
+demo_goat_course.level = "Intermediate"
+demo_goat_course.studio = Studio.first
+demo_goat_course.instructor = demo_goat_course.studio.instructors.sample
+demo_goat_course.save
+
+3.times do
   course_hash.each do |title, info|
     st = random_today.sample + 1.day
     cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
@@ -168,14 +180,15 @@ end
 end
 
 # next 7 days
-course_hash.each do |title, info|
-  st = random_today.sample + (2..7).to_a.sample.day
-  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
-  cour.studio = Studio.all.sample
-  cour.instructor = cour.studio.instructors.sample
-  cour.save
+3.times.do
+  course_hash.each do |title, info|
+    st = random_today.sample + (2..7).to_a.sample.day
+    cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+    cour.studio = Studio.all.sample
+    cour.instructor = cour.studio.instructors.sample
+    cour.save
+  end
 end
-
 # TODO: make past courses array and assign to demo user
 
 # # old courses
@@ -294,5 +307,15 @@ end
 puts "Created reviews"
 
 # 8. Favorites =========================================================================================
+
+
+demo_studio = Studio.new(title: "Fitco Fitness", address: "Herzbergstraße 87-89, 10365 Berlin")
+  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
+
+
+
+
+
+
 
 puts "Seeding complete"
