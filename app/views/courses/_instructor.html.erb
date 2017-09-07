@@ -9,8 +9,8 @@
       <div class="instructor-description hidden">
         <%= @course.instructor.description %>
         <ul>
-          <% @course.instructor.area.each do |a| %>
-          <li><%= a %></li>
+          <% @course.instructor.areas.each do |area| %>
+          <li><%= area.name %></li>
           <% end %>
         </ul>
       </div>
