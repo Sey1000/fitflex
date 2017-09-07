@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-  var buttonFilters = ['day', 'category', 'level'],
-    sliderFilters = {'distance': 10, 'price_cents': 3000};
+  var buttonFilters = ['day', 'category', 'level', 'price_cents'];
 
     // filter search results for buttons
     buttonFilters.forEach( function(filter){
@@ -12,28 +11,24 @@ $(document).ready(function(){
     });
 
     // filter search results for sliders
-    Object.keys(sliderFilters).forEach(function(filter) {
-      $("#" + filter + "-slider").change(function(){
-        $("#slider-" + filter + "-form").attr('value', $(this).val());
+      $("#distance-slider").change(function(){
+        $("#slider-distance-form").attr('value', $(this).val());
         $("#search_courses").submit();
       });
-    });
 
   // Reset to default filter values when clicking on button-filter in filter-container
   buttonFilters.forEach( function(filter) {
     $("#chosen-" + filter).on("click", function() {
-      $("#search_courses_" + filter).attr('value', "Any " + filter);
+      $("#search_courses_" + filter).attr('value', "");
       $("#search_courses").submit();
     });
   });
 
   // Reset to default filter values when clicking on slider-filter in filter-container
-  Object.keys(sliderFilters).forEach(function(filter) {
-    $("#chosen-" + filter).on("click", function() {
-      $("#slider-" + filter + "-form").attr('value', sliderFilters[filter]);
+    $("#chosen-distance").on("click", function() {
+      $("#slider-distance-form").attr('value', "");
       $("#search_courses").submit();
     });
-  });
 
   // Reset button-filters on reset-button click
   buttonFilters.forEach( function(filter){
@@ -44,10 +39,8 @@ $(document).ready(function(){
   });
 
   // Reset slider-filters on reset-button click
-  Object.keys(sliderFilters).forEach( function(filter){
     $(".refresh-button").on("click", function() {
-      $("#slider-" + filter + "-form").attr('value', sliderFilters[filter]);
+      $("#slider-distance-form").attr('value', "");
       $("#search_courses").submit();
     });
   });
-});
