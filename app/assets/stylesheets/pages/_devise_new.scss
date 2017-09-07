@@ -2,24 +2,52 @@
   padding: 40px;
   width: 100vw;
   height: 100vh;
-  background-color: white;
+  background-image: url('/blue-pink-gradient.png');
+  background-size: cover;
   h2 {
     font-size: 20px;
   }
   .sign-up-header {
     text-align: center;
+    .login-heading {
+      color: white;
+      font-weight: lighter;
+    }
+  }
+  .login-custom-form {
+    color: white;
+    label {
+      font-weight: lighter;
+      font-family: $headers-font;
+    }
+  }
+  .login-custom-button {
+    input {
+      border-radius: 7px;
+    }
+  }
+  .devise-custom-shared-links {
+    padding-top: 35px;
+    a {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 30px;
+      font-family: $headers-font;
+      font-weight: lighter;
+    }
   }
   .provider-signup {
     display: flex;
 
     margin: 15px 0px;
     .provider-button {
-    width: 100%;
-    background-color: blue;
-    padding: 9px 27px;
-    border-radius: 7px;
-    background-color: rgb(59, 89, 152);
-    color: white;
+      text-align: center;
+      font-family: $body-font;
+      width: 100%;
+      background-color: blue;
+      padding: 9px 27px;
+      border-radius: 7px;
+      background-color: rgb(59, 89, 152);
+      color: white;
     }
   }
 }

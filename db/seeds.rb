@@ -150,7 +150,7 @@ random_length = [1, 1, 1, 1, 1.5, 1.5, 2]
 # today
 course_hash.each do |title, info|
   st = random_today.sample
-  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
   cour.studio = Studio.all.sample
   cour.instructor = cour.studio.instructors.sample
   cour.save
@@ -160,7 +160,7 @@ end
 (3..5).to_a.sample.times do
   course_hash.each do |title, info|
     st = random_today.sample + 1.day
-    cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+    cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
     cour.studio = Studio.all.sample
     cour.instructor = cour.studio.instructors.sample
     cour.save
@@ -170,7 +170,7 @@ end
 # next 7 days
 course_hash.each do |title, info|
   st = random_today.sample + (2..7).to_a.sample.day
-  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
   cour.studio = Studio.all.sample
   cour.instructor = cour.studio.instructors.sample
   cour.save
@@ -181,7 +181,7 @@ end
 # # old courses
 # course_hash.each do |title, info|
 #   st = random_today.sample - (1..7).to_a.sample.day
-#   cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (7..15).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+#   cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (6..14).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
 #   cour.studio = Studio.all.sample
 #   cour.instructor = cour.studio.instructors.sample
 #   cour.save
