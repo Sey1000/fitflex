@@ -3,16 +3,37 @@
     Meet your instructor
   </h4>
   <div class="instructor-content">
-    <%= cl_image_tag @course.instructor.cld_id, class: "profile-picture-medium " %>
     <div class="instructor-name">
       <%= @course.instructor.first_name %> (<%= @course.instructor.age %>)
-      <%= @course.instructor.description %>
-      <ul>
-        <% @course.instructor.area.each do |a| %>
-        <li><%= a %></li>
-        <% end %>
-      </ul>
-
+      <p class="find-out">Find out more about <%= @course.instructor.first_name %></p>
+      <div class="instructor-description hidden">
+        <%= @course.instructor.description %>
+        <ul>
+          <% @course.instructor.area.each do |a| %>
+          <li><%= a %></li>
+          <% end %>
+        </ul>
+      </div>
+      <p class="find-out hidden">Show less</p>
     </div>
+    <%= cl_image_tag @course.instructor.cld_id, class: "profile-picture-medium " %>
   </div>
 </div>
+
+
+<%content_for(:after_js) do %>
+<script>
+
+  $(function(){
+    $('.find-out').click(function(event){
+      $(this).siblings('.instructor-description').toggleClass('hidden');
+      $(this).toggleClass('hidden');
+      $(this).siblings('p').toggleClass('hidden');
+        // $(this).siblings('item-long').removeClass('hidden');
+        // $(this).siblings('hide-item').removeClass('hidden');
+      });
+  });
+
+
+</script>
+<% end %>
