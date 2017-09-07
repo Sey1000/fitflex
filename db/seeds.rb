@@ -43,11 +43,12 @@ studio_hash.each do |st_name, st_info|
   s.save
 end
 
-demo_studio = Studio.new(name: "Medical Fitness Academy", description: Faker::Lorem.paragraph, address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "goat yoga photo 21_2520January_2520Goat_2520Yoga_2520Kristen_2520Carter_2520Photography_xf548", distance: 4.0)
+demo_studio = Studio.new(name: "Medical Fitness Academy", description: Faker::Lorem.paragraph, address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "21_2520January_2520Goat_2520Yoga_2520Kristen_2520Carter_2520Photography_xf548p", distance: 4.0)
+demo_studio.save
 
 puts "Created Studios"
 
-# 2. Instructors =======================================================================================
+# 2. Instructors ================================================ =======================================
 
 ten_female_instructor_first_names = [
   'Ayla', 'Karsyn', 'Ellie', 'Dylan', 'Lea',
@@ -151,35 +152,13 @@ random_length = [1, 1, 1, 1, 1.5, 1.5, 2]
 # today
 course_hash.each do |title, info|
   st = random_today.sample
-  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (4..20).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
   cour.studio = Studio.all.sample
   cour.instructor = cour.studio.instructors.sample
   cour.save
 end
 
 # tomorrow
-
-3.times do
-  course_hash.each do |title, info|
-    st = random_today.sample + 1.day
-    cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
-    cour.studio = Studio.all.sample
-    cour.instructor = cour.studio.instructors.sample
-    cour.save
-  end
-end
-
-# next 7 days
-3.times do
-  course_hash.each do |title, info|
-    st = random_today.sample + (2..7).to_a.sample.day
-    cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
-    cour.studio = Studio.all.sample
-    cour.instructor = cour.studio.instructors.sample
-    cour.save
-  end
-end
-
 # morning goat yoga course tomorrow: for demo
 demo_goat_start_time = Time.now.beginning_of_day + 1.day + 8.hours
 demo_goat_course = Course.new(title: "Goat Yoga", category: "Yoga")
@@ -192,6 +171,46 @@ demo_goat_course.level = "Intermediate"
 demo_goat_course.studio = demo_studio
 demo_goat_course.instructor = demo_goat_course.studio.instructors.sample
 demo_goat_course.save
+
+2.times do
+  course_hash.each do |title, info|
+    st = random_today.sample + 1.day
+    cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (4..20).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+    cour.studio = Studio.all.sample
+    cour.instructor = cour.studio.instructors.sample
+    cour.save
+  end
+end
+
+# next 7 days
+
+# demo HIIT courses
+demo_hiit_first = Course.new(title: "Interval Training", category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions.")
+demo_hiit_first
+
+demo_hiit_second = Course.new(title: "Futuristic HIIT", category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions.")
+demo_hiit_second
+
+# Picking this one!
+demo_hiit_third = Course.new(title: "Power Cardio", category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions.")
+demo_hiit_third
+
+demo_hiit_fourth = Course.new(title: "Smash Your Goal", category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions.")
+demo_hiit_fourth
+
+demo_hiit_fifth = Course.new(title: "Intense Cycling", category: "HIIT", description: "HIIT is extremely popular because it provides both strength training and the calorie burning that comes with a cardio workout in intensely short sessions.")
+demo_hiit_fifth
+
+3.times do
+  course_hash.each do |title, info|
+    st = random_today.sample + (2..7).to_a.sample.day
+    cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (4..20).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+    cour.studio = Studio.all.sample
+    cour.instructor = cour.studio.instructors.sample
+    cour.save
+  end
+end
+
 
 puts "Created Courses"
 
@@ -259,12 +278,9 @@ end
 
 # demo_user = User.create(first_name: "Kris", last_name: "Espinosa", email: "demo@wagon.com", password: '123456', password_confirmation: '123456')
 
-puts "Created Users, still need to create demo user"
+puts "Created Users"
 
 # 6. Bookings ==========================================================================================
-
-puts "Need to create demo bookings"
-
 
 # 7. Reiviews ==========================================================================================
 
