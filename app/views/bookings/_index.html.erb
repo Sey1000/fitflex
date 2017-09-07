@@ -2,7 +2,7 @@
 
 <div class="col-xs-12 booking-wrap no-padding">
   <div class="booking-picture">
-     <%= cl_image_tag "twjchiqlm70j8zjkvk4l", class: "avatar avatar-xs" %>
+     <%= cl_image_tag(b.course.instructor.cld_id, class: "avatar avatar-medium") %>
   </div>
 
   <div class="booking-list-content">
@@ -16,7 +16,7 @@
   </div>
 
     <div class="booking-list-info">
-      <p><strong><%= b.course.title %></strong> <br>
+      <p><strong><%= b.course.title %></strong>  with <%= b.course.instructor.first_name  %><br>
         <span class="course-where"><%= b.course.studio.name %> <%= b.id %> </span></p>
       <% if b.course.start_time - Time.now > 0  %>
         <div class="booking-cancel btn-cancel">
