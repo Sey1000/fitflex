@@ -87,7 +87,7 @@
     <div id="distance-tab" class="tab-pane fade">
       <div class="distance-container">
       <p>0 km</p>
-        <input type="text" class="slider" id="distance-slider" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-selection="after" data-slider-tooltip="show">
+        <input type="text" class="slider" id="distance-slider" data-slider-min="0" data-slider-max="10" data-slider-value="10" data-slider-step="1" data-slider-selection="after" data-slider-tooltip="show">
         <p>10 km</p>
       </div>
     </div>
@@ -96,7 +96,7 @@
       <div class="price_cents-container">
         <% prices = ["€", "€€", "€€€"] %>
         <% prices.each do |price| %>
-          <button type="button" class="btn button-search-options button-price_cents" data-price= '<%= price %>' ><p><%= price %></p></button>
+          <button type="button" class="btn button-search-options button-price_cents" data-price_cents='<%= price %>' ><p><%= price %></p></button>
         <% end %>
       </div>
     </div>

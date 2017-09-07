@@ -12,7 +12,7 @@ $(document).ready(function(){
       }
     });
 
-  var buttonFilters = ['day', 'category', 'level', 'price_cents']
+  var buttonFilters = ['day', 'category', 'level', 'price_cents'];
 
   buttonFilters.forEach( function(filter){
     $(".button-" + filter).on("click", function() {
@@ -29,13 +29,14 @@ $(document).ready(function(){
   });
 
     $("#distance-slider").slider({
+      value: 10,
       formatter: function(value) {
         return value;
       }
     });
 
 
-  allFilters.forEach( function(filter) {
+  buttonFilters.forEach( function(filter) {
   // Remove chosen-filters on filter-click
     $("#chosen-" + filter).on("click", function() {
       $(this).html("");
@@ -45,5 +46,16 @@ $(document).ready(function(){
     $(".refresh-button").on("click", function() {
       $("#chosen-" + filter).html("");
     });
+
+    // Slider Filter
+    $("#chosen-distance").on("click", function() {
+      $(this).html("");
+    });
+
+  // Reset all filters
+    $(".refresh-button").on("click", function() {
+      $("#chosen-distance").html("");
+    });
+
   });
 });

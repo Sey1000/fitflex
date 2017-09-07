@@ -80,16 +80,17 @@ class CoursesController < ApplicationController
     distance = filter_params[:distance].to_i
 
     price_conversion = {
-      '€' => 10,
-      '€€' => 15,
-      '€€€' => 20
+      "" => 2000,
+      '€' => 1000,
+      '€€' => 1500,
+      '€€€' => 2000
     }
 
     @update_courses = filter_courses(day)
     @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
     @update_courses = @update_courses.where(level: level) unless level == ""
     @update_courses = @update_courses.where(category: category) unless category == ""
-    @update_courses = @update_courses.where("price_cents <= ?", price_conversion[price_cents])
+    @update_courses = @update_courses.where("price_cents <= #{price_conversion[price_cents]}")
 
     respond_to do |format|
       format.html { redirect_to courses_path }

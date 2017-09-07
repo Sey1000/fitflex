@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  var buttonFilters = ['day', 'category', 'level', 'price_cents'],
+  var buttonFilters = ['day', 'category', 'level', 'price_cents'];
 
     // filter search results for buttons
     buttonFilters.forEach( function(filter){
@@ -19,14 +19,14 @@ $(document).ready(function(){
   // Reset to default filter values when clicking on button-filter in filter-container
   buttonFilters.forEach( function(filter) {
     $("#chosen-" + filter).on("click", function() {
-      $("#search_courses_" + filter).attr('value', "Any " + filter);
+      $("#search_courses_" + filter).attr('value', "");
       $("#search_courses").submit();
     });
   });
 
   // Reset to default filter values when clicking on slider-filter in filter-container
     $("#chosen-distance").on("click", function() {
-      $("#slider-distance-form").attr('value', 10);
+      $("#slider-distance-form").attr('value', "");
       $("#search_courses").submit();
     });
 
@@ -40,7 +40,7 @@ $(document).ready(function(){
 
   // Reset slider-filters on reset-button click
     $(".refresh-button").on("click", function() {
-      $("#slider-distance-form").attr('value', 10);
+      $("#slider-distance-form").attr('value', "");
       $("#search_courses").submit();
     });
   });
