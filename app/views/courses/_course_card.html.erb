@@ -17,7 +17,7 @@
             <div class="distance">
               <i class="fa fa-map-marker"></i> <%= course.studio.distance %> km
             </div>
-            <p class="course-price"> <%= humanized_money_with_symbol(course.price) %></p>
+            <p class="course-price"> <strong> <%= humanized_money_with_symbol(course.price) %></strong></p>
             <h3 class="course-title"> <%= course.title %> </h3>
             <div class="studio-title">
               <h4 class="studio-card-title"><%= course.studio.name %></h4>
