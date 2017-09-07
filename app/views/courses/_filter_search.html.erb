@@ -94,9 +94,10 @@
 
     <div id="price_cents-tab" class="tab-pane fade">
       <div class="price_cents-container">
-      <p>0€</p>
-      <input type="text" class="slider" id="price_cents-slider" data-slider-value="1000" data-slider-min="0" data-slider-max="2000" data-slider-step="100" data-slider-selection="after" data-slider-tooltip="show">
-        <p>20€</p>
+        <% prices = ["€", "€€", "€€€"] %>
+        <% prices.each do |price| %>
+          <button type="button" class="btn button-search-options button-price_cents" data-price= '<%= price %>' ><p><%= price %></p></button>
+        <% end %>
       </div>
     </div>
   </div>

@@ -12,11 +12,7 @@ $(document).ready(function(){
       }
     });
 
-  var buttonFilters = ['day', 'category', 'level'],
-    sliderFilters = ['distance', 'price_cents'],
-    allFilters = buttonFilters.concat(sliderFilters);
-    // units = ["km", "€"],
-    // conversion = [1, 100];
+  var buttonFilters = ['day', 'category', 'level', 'price_cents']
 
   buttonFilters.forEach( function(filter){
     $(".button-" + filter).on("click", function() {
@@ -37,17 +33,6 @@ $(document).ready(function(){
         return value;
       }
     });
-
-  $("#price_cents-slider").change(function(){
-    $("#chosen-price_cents").html("<p class='chosen-item'>x    " + $(this).val()/100 + " €" + "</p>");
-    $(".chosen-filters-container").removeClass("hidden");
-  });
-
-  $("#price_cents-slider").slider({
-    formatter: function(value) {
-      return value/100 + "€";
-    }
-  });
 
 
   allFilters.forEach( function(filter) {
