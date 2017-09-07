@@ -30,18 +30,20 @@ studio_hash = {
   "Bodystreet" => { address: "Charlottenstr. 79, 10117 Berlin", telephone: "030 33846280", cld_id: "jnmth8rsvmvcbhi0hokx", distance: 0.2 },
   "Fitbox" => { address: "Rudi-Dutschke-Straße 1, 10969 Berlin", telephone: "030 98322747", cld_id: "hzgzwqyvcjxocjxrty4v", distance: 0.4 },
   "Urban Gladiator" => { address: "Wilhelmstraße 14, 10963 Berlin", telephone: "0176 55131262", cld_id: "sloh6uufvv8tvyqa8jwf", distance: 0.9 },
-  "Medical Fitness Academy" => { address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "gg69jatbm9zaegcdzafb", distance: 4.0 },
   "McFit" => { address: "Tauentzienstraße 8, 10789 Berlin", telephone: "030 25794520", cld_id: "tkzjagesfqt24rzkp1ib", distance: 4.5 },
   "Ladyline Loft" => { address: "Stromstraße 39, 10551 Berlin", telephone: "030 77906990", cld_id: "hdspljxylbtwbgcuaxab", distance: 6.1 },
   "Westhaften Studios" => { address: "Turmstraße 57, 10551 Berlin", telephone: "030 3959521", cld_id: "am3jqwown9tkbeshaian", distance: 6.0 },
   "Nautilus Fitnesscenter" => { address: "Manteuffelstraße 65, 12103 Berlin", telephone: "030 75702377", cld_id: "mwughpj2aqebnfheppf9", distance: 5.7 },
-  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre", distance: 6.4 }
+  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre", distance: 6.4 },
+  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
 }
 
 studio_hash.each do |st_name, st_info|
   s = Studio.new(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id], distance: st_info[:distance])
   s.save
 end
+
+demo_studio = Studio.new(name: "Medical Fitness Academy", description: Faker::Lorem.paragraph, address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "goat yoga photo 21_2520January_2520Goat_2520Yoga_2520Kristen_2520Carter_2520Photography_xf548", distance: 4.0)
 
 puts "Created Studios"
 
@@ -156,18 +158,6 @@ course_hash.each do |title, info|
 end
 
 # tomorrow
-# morning goat yoga course tomorrow: for demo
-demo_goat_start_time = Time.now.beginning_of_day + 1.day + 8.hours
-demo_goat_course = Course.new(title: "Goat Yoga", category: "Yoga")
-demo_goat_course.start_time = demo_goat_start_time
-demo_goat_course.end_time = demo_goat_start_time + 1.hour
-demo_goat_course.price = 13
-demo_goat_course.spots = 10
-demo_goat_course.description = "Breath-taking, smile-inducing fitness trend sweeping the world since 2016 where you do a standard yoga class with adorable goats."
-demo_goat_course.level = "Intermediate"
-demo_goat_course.studio = Studio.first
-demo_goat_course.instructor = demo_goat_course.studio.instructors.sample
-demo_goat_course.save
 
 3.times do
   course_hash.each do |title, info|
@@ -180,7 +170,7 @@ demo_goat_course.save
 end
 
 # next 7 days
-3.times.do
+3.times do
   course_hash.each do |title, info|
     st = random_today.sample + (2..7).to_a.sample.day
     cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: [6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 17, 20].sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
@@ -189,16 +179,19 @@ end
     cour.save
   end
 end
-# TODO: make past courses array and assign to demo user
 
-# # old courses
-# course_hash.each do |title, info|
-#   st = random_today.sample - (1..7).to_a.sample.day
-#   cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (6..14).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
-#   cour.studio = Studio.all.sample
-#   cour.instructor = cour.studio.instructors.sample
-#   cour.save
-# end
+# morning goat yoga course tomorrow: for demo
+demo_goat_start_time = Time.now.beginning_of_day + 1.day + 8.hours
+demo_goat_course = Course.new(title: "Goat Yoga", category: "Yoga")
+demo_goat_course.start_time = demo_goat_start_time
+demo_goat_course.end_time = demo_goat_start_time + 1.hour
+demo_goat_course.price = 13
+demo_goat_course.spots = 10
+demo_goat_course.description = "Breath-taking, smile-inducing fitness trend sweeping the world since 2016 where you do a standard yoga class with adorable goats."
+demo_goat_course.level = "Intermediate"
+demo_goat_course.studio = demo_studio
+demo_goat_course.instructor = demo_goat_course.studio.instructors.sample
+demo_goat_course.save
 
 puts "Created Courses"
 
@@ -307,14 +300,6 @@ end
 puts "Created reviews"
 
 # 8. Favorites =========================================================================================
-
-
-demo_studio = Studio.new(title: "Fitco Fitness", address: "Herzbergstraße 87-89, 10365 Berlin")
-  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
-
-
-
-
 
 
 
