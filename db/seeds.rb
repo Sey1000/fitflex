@@ -211,7 +211,7 @@ twenty_cld_id_women = [
   'women/random_u2d7lv', 'women/random_w5tmcr', 'women/random_wnztaq', 'women/random_zzl4wh',
   'women/random_rq9xbu', 'women/random_poo84f', 'women/random_ltuw8r', 'women/random_ijmrbw',
   'women/random_h9j7lr', 'women/random_gx2ffw', 'women/random_fpehkn', 'women/random_cuxthj',
-  'women/random_jc2nu7', 'women/random_eagdej', 'women/random_ilnlij',' women/random_u1otnj',
+  'women/random_jc2nu7', 'women/random_eagdej', 'women/random_ilnlij',' women/random_cuxthj',
 ]
 
 (0..19).to_a.each do |ind|
