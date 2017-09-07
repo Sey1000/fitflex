@@ -15,16 +15,32 @@
 }
 
 .course-instructor {
-  padding: 20px;
+  padding: 1px 5% 20px 5%;
+  // height: 180px;
 }
 
 .instructor-content {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
+  // position: relative;
 }
 
 .instructor-name {
+  // position: absolute;
+  // left: 132px;
+  // top: 12px;
+  padding-right: 20px;
+  color: black;
   font-weight: 500;
   font-size: 16px;
+}
+
+.instructor-description {
+  font-size: 12px;
+}
+
+.find-out {
+  font-size: 12px;
 }
 

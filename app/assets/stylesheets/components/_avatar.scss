@@ -24,6 +24,8 @@
 }
 
 .profile-picture-medium {
-  height: 200px;
-  border-radius: 2px;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906153252) do
+ActiveRecord::Schema.define(version: 20170906120158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,11 +51,10 @@ ActiveRecord::Schema.define(version: 20170906153252) do
     t.string   "category"
     t.string   "level"
     t.integer  "studio_id"
+    t.integer  "instructor_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "price_cents",   default: 0, null: false
-    t.integer  "instructor_id"
-    t.index ["instructor_id"], name: "index_courses_on_instructor_id", using: :btree
     t.index ["studio_id"], name: "index_courses_on_studio_id", using: :btree
   end
 
@@ -73,10 +72,10 @@ ActiveRecord::Schema.define(version: 20170906153252) do
     t.string   "last_name"
     t.string   "description"
     t.integer  "age"
-    t.string   "area"
+    t.string   "area",        default: [],              array: true
     t.integer  "studio_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "cld_id"
     t.index ["studio_id"], name: "index_instructors_on_studio_id", using: :btree
   end
@@ -136,7 +135,6 @@ ActiveRecord::Schema.define(version: 20170906153252) do
 
   add_foreign_key "bookings", "courses"
   add_foreign_key "bookings", "users"
-  add_foreign_key "courses", "instructors"
   add_foreign_key "courses", "studios"
   add_foreign_key "favorites", "courses"
   add_foreign_key "favorites", "users"
