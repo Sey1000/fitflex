@@ -1,10 +1,39 @@
-<h6>Our instructors</h6>
+<h4 class="classes-heading-small">Our instructors</h4>
 
 <div class="instructors">
   <% users.each do |user| %>
-    <div class="instr">
-      <%= cl_image_tag user.cld_id, class: "avatar avatar-xs" %>
-      <p><%= user.first_name %></p>
-    </div>
-  <% end %>
+  <div class="instr find-out">
+    <%= cl_image_tag user.cld_id, class: "avatar avatar-medium " %>
+    <p><%= user.first_name %></p>
   </div>
+
+  <div class="instructor-description hidden">
+    <div class="arrow-up"></div>
+    <%=user.description %>
+    <ul>
+      <% user.area.each do |a| %>
+      <li><%= a %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <% end %>
+</div>
+
+
+<%content_for(:after_js) do %>
+<script>
+
+  $(function(){
+    $('.find-out').click(function(event){
+      $(this).siblings('.instructor-description').toggleClass('hidden');
+      // $(this).toggleClass('hidden');
+      // $(this).siblings('p').toggleClass('hidden');
+        // $(this).siblings('item-long').removeClass('hidden');
+        // $(this).siblings('hide-item').removeClass('hidden');
+      });
+  });
+
+
+</script>
+<% end %>
