@@ -16,15 +16,11 @@
   </div>
 
     <div class="booking-list-info">
-      <p><strong><%= b.course.title %></strong>  with <%= b.course.instructor.first_name  %><br>
-        <span class="course-where"><%= b.course.studio.name %> <%= b.id %> </span></p>
-      <% if b.course.start_time - Time.now > 0  %>
-        <div class="booking-cancel btn-cancel">
-          <%= link_to booking_path(b), method: :delete, data: { confirm: "Are you sure you want to cancel the booking?" } do %>
-            <p><i class="fa fa-times" aria-hidden="true"></i> Cancel</p>
-          <% end %>
-        </div>
-      <% end %>
+      <p>
+        <strong><%= b.course.title %></strong>  with <%= b.course.instructor.first_name  %>
+        <br>
+        <span class="course-where"><%= b.course.studio.name %> <%= b.id %> </span>
+      </p>
     </div>
     <% if old %>
       <%= link_to new_course_review_path(course_id: b.course), class: "review-me" do %>
