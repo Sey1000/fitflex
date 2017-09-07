@@ -11,6 +11,8 @@
       <!-- Links when logged in -->
       <%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "About Us", about_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Favorites", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "All Courses", courses_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -72,6 +74,8 @@
         <div class="user-nav-links">
           <%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "About Us", about_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Favorites", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "All Courses", courses_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
         </div>
         <div class="nav-social-media">
