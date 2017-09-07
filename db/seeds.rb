@@ -6,13 +6,72 @@ puts "Start seeding.."
 Favorite.destroy_all
 Review.destroy_all
 Booking.destroy_all
-Course.destroy_all
-Instructor.destroy_all
 User.destroy_all
+Course.destroy_all
+Area.destroy_all
+Instructor.destroy_all
 Studio.destroy_all
 
-# Seed 10 Studios
+# Seed order (!!IMPORTANT!!)
+# 1. Studios
+# 2. Instructors
+# 3. Areas
+# 4. Courses
+# 5. Users
+# 6. Bookings
+# 7. Reviews
+# 8. Favorites
+
+# TODO: Demo preparation
+
+# 1. Studios
+studio_hash = {
+  "Bodystreet" => { address: "Charlottenstr. 79, 10117 Berlin", telephone: "030 33846280", cld_id: "jnmth8rsvmvcbhi0hokx", distance: 0.2 },
+  "Fitbox" => { address: "Rudi-Dutschke-Straße 1, 10969 Berlin", telephone: "030 98322747", cld_id: "hzgzwqyvcjxocjxrty4v", distance: 0.4 },
+  "Urban Gladiator" => { address: "Wilhelmstraße 14, 10963 Berlin", telephone: "0176 55131262", cld_id: "sloh6uufvv8tvyqa8jwf", distance: 0.9 },
+  "Medical Fitness Academy" => { address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "gg69jatbm9zaegcdzafb", distance: 4.0 },
+  "McFit" => { address: "Tauentzienstraße 8, 10789 Berlin", telephone: "030 25794520", cld_id: "tkzjagesfqt24rzkp1ib", distance: 4.5 },
+  "Ladyline Loft" => { address: "Stromstraße 39, 10551 Berlin", telephone: "030 77906990", cld_id: "hdspljxylbtwbgcuaxab", distance: 6.1 },
+  "Westhaften Studios" => { address: "Turmstraße 57, 10551 Berlin", telephone: "030 3959521", cld_id: "am3jqwown9tkbeshaian", distance: 6.0 },
+  "Nautilus Fitnesscenter" => { address: "Manteuffelstraße 65, 12103 Berlin", telephone: "030 75702377", cld_id: "mwughpj2aqebnfheppf9", distance: 5.7 },
+  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre", distance: 6.4 },
+  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
+}
+
+studio_hash.each do |st_name, st_info|
+  s = Studio.new(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id], distance: st_info[:distance])
+  s.save
+end
+
+# 2. Instructors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 puts "Created Studios"
+
 thirty_female_emails = [
   'Roselyn@wagon.com', 'Peyton@wagon.com', 'Alice@wagon.com', 'Aleah@wagon.com','Marilyn@gmail.com',
   'Madison@gmail.com', 'Elaine@gmail.com', 'Kenya@gmail.com', 'Lillian@gmail.com', 'Tamara@gmail.com',
@@ -117,23 +176,6 @@ male_instructors=[]
   male_instructors << u
 end
 
-studio_hash = {
-  "Bodystreet" => { address: "Charlottenstr. 79, 10117 Berlin", telephone: "030 33846280", cld_id: "jnmth8rsvmvcbhi0hokx", distance: 0.2 },
-  "Fitbox" => { address: "Rudi-Dutschke-Straße 1, 10969 Berlin", telephone: "030 98322747", cld_id: "hzgzwqyvcjxocjxrty4v", distance: 0.4 },
-  "Urban Gladiator" => { address: "Wilhelmstraße 14, 10963 Berlin", telephone: "0176 55131262", cld_id: "sloh6uufvv8tvyqa8jwf", distance: 0.9 },
-  "Medical Fitness Academy" => { address: "Kleiststraße 3-6, 10787 Berlin", telephone: "030 21913071", cld_id: "gg69jatbm9zaegcdzafb", distance: 4.0 },
-  "McFit" => { address: "Tauentzienstraße 8, 10789 Berlin", telephone: "030 25794520", cld_id: "tkzjagesfqt24rzkp1ib", distance: 4.5 },
-  "Ladyline Loft" => { address: "Stromstraße 39, 10551 Berlin", telephone: "030 77906990", cld_id: "hdspljxylbtwbgcuaxab", distance: 6.1 },
-  "Westhaften Studios" => { address: "Turmstraße 57, 10551 Berlin", telephone: "030 3959521", cld_id: "am3jqwown9tkbeshaian", distance: 6.0 },
-  "Nautilus Fitnesscenter" => { address: "Manteuffelstraße 65, 12103 Berlin", telephone: "030 75702377", cld_id: "mwughpj2aqebnfheppf9", distance: 5.7 },
-  "Zumba Fitness Berlin Tempelhof" => { address: "Viktoriastraße 10-18, 12105 Berlin", telephone: "0176 84016146", cld_id: "blsqctzk1r8h5cw7qrre", distance: 6.4 },
-  "Fitco Fitness" => { address: "Herzbergstraße 87-89, 10365 Berlin", telephone: "030 55263303", cld_id: "r5hmmxyb181qrj8efogs", distance: 9.6 }
-}
-
-studio_hash.each do |st_name, st_info|
-  s = Studio.new(name: st_name, description: Faker::Lorem.paragraph, address: st_info[:address], telephone: st_info[:telephone], cld_id: st_info[:cld_id], distance: st_info[:distance])
-  s.save
-end
 
 Studio.all.each_with_index do |s,i|
   female_instructors[i].update(studio: s)
