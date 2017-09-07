@@ -78,23 +78,33 @@ class CoursesController < ApplicationController
     else
       day = "Any day"
     end
+
+    unless filter_params[:price_cents] == ""
+      price_cents = filter_params[:price_cents]
+    else
+      price_cents = "Any price_cents"
+    end
     category = filter_params[:category]
     level = filter_params[:level]
-    price_cents = filter_params[:price_cents]
+    input_price = filter_params[:price_cents]
     distance = filter_params[:distance].to_i
 
-    price_conversion = {
-      "" => 2000,
-      '€' => 1000,
-      '€€' => 1500,
-      '€€€' => 2000
-    }
-
     @update_courses = filter_courses(day)
+
+    case input_price
+    when '€'
+      @update_courses = @update_courses.where("price_cents >= ? AND price_cents < ?", 0, 700)
+    when '€€'
+      @update_courses = @update_courses.where("price_cents >= ? AND price_cents < ?", 700, 1500)
+    when '€€€'
+      @update_courses = @update_courses.where("price_cents >= ?", 1500)
+    when ''
+      @update_courses
+    end
+
     @update_courses = @update_courses.joins(:studio).where("studios.distance < #{distance}")
     @update_courses = @update_courses.where(level: level) unless level == ""
     @update_courses = @update_courses.where(category: category) unless category == ""
-    @update_courses = @update_courses.where("price_cents <= #{price_conversion[price_cents]}")
 
     respond_to do |format|
       format.html { redirect_to courses_path }
