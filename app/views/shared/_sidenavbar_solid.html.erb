@@ -12,7 +12,6 @@
       <!-- Links when logged in -->
       <%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "About Us", about_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -36,11 +35,6 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".faq", default: "FAQ") %>
-              <% end %>
-            </li>
-            <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
@@ -51,7 +45,6 @@
     <% else %>
       <!-- Login link (when logged out) -->
     <%= link_to "About Us", about_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
@@ -83,7 +76,6 @@
         <div class="user-nav-links">
           <%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "About Us", about_path, class: "navbar-wagon-item navbar-wagon-link" %>
-          <%= link_to "FAQ", "#", class: "navbar-wagon-item navbar-wagon-link" %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
         </div>
         <div class="nav-social-media">
