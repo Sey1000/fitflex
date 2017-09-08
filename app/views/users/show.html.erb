@@ -17,7 +17,7 @@
 
     <div class="profile-content">
       <div class="tabs">
-        <a class="tab tab-one" href="#" data-target="#upcoming-bookings">
+        <a class="tab active tab-one" href="#" data-target="#upcoming-bookings">
           <% upcoming_bookings = @user.bookings.select { |b| b.course.start_time - Time.now > 0 } %>
           <h3><%= upcoming_bookings.count %></h3>
           <p>Upcoming</p>
@@ -27,14 +27,14 @@
           <h3><%= past_bookings.count %></h3>
           <p>History</p>
         </a>
-        <a class="tab active tab-three" href="#" data-target="#favorite-courses">
+        <a class="tab tab-three" href="#" data-target="#favorite-courses">
           <h3><%= @favorites.count %></h3>
           <p>Favorites</p>
         </a>
       </div>
 
       <div class="tabs-content">
-        <div class="tab-content hidden tab-one-content" id="upcoming-bookings">
+        <div class="tab-content tab-one-content" id="upcoming-bookings">
           <div class="row row-tab">
           <% if upcoming_bookings.length > 0 %>
             <% upcoming_bookings.each do |b| %>
@@ -56,7 +56,7 @@
           <% end %>
           </div>
         </div>
-        <div class="tab-content tab-three-content" id="favorite-courses">
+        <div class="tab-content hidden tab-three-content" id="favorite-courses">
           <div class="row row-tab">
             <!-- favorite index -->
             <% if @favorites.length > 0 %>
