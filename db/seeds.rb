@@ -194,9 +194,20 @@ t = Time.now.beginning_of_day
 random_today = [t + (8..15).to_a.sample.hour, t + (19..21).to_a.sample.hour]
 random_length = [1, 1, 1, 1, 1.5, 1.5, 2]
 
-# Tomorrow courses
-
 other_courses = []
+
+# Old courses
+
+course_hash.each do |title, info|
+  st = random_today.sample - [2, 3, 4, 5].sample.day
+  cour = Course.new(title: title, category: info[:category], start_time: st, end_time: st + random_length.sample.hours, price: (4..20).to_a.sample, spots: (4..10).to_a.sample, description: info[:description], level: course_levels.sample)
+  cour.studio = other_studios.sample
+  cour.instructor = cour.studio.instructors[0]
+  cour.save
+  other_courses << cour
+end
+
+# Tomorrow courses
 
 course_hash.each do |title, info|
   st = random_today.sample + 1.day
@@ -323,7 +334,7 @@ hiit_course_intermediate_hash.each do |title, info|
   other_courses << cour
 end
 
-puts "Created Courses + 2 demo courses, no courses today"
+puts "Created Courses + 2 demo courses"
 
 # 5. Users ===========================================================================================
 
