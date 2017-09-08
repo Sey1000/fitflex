@@ -9,12 +9,16 @@
 </div>
 
 <% if @existing_booking %>
-  <%= link_to 'View Your Booking', user_path(current_user), class: 'new-booking-button'  %>
+  <%= link_to user_path(current_user) do %>
+    <button class="new-booking-button text-center">
+      <h3 class="new-booking-heading">View Your Booking</h3>
+    </button>
+  <% end %>
 <% else %>
   <div class="payment">
     <%= simple_form_for @booking, remote: true do |f| %>
       <%= f.input :course_id, input_html: {value:  @course.id}, as: :hidden %>
-      <%= f.button :submit, "Join", class: 'new-booking-button' %>
+      <%= f.button :submit, "Join", class: 'new-booking-button new-booking-button-join' %>
     <% end %>
   </div>
 <% end %>
