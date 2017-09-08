@@ -1,8 +1,12 @@
 <% if current_user %>
-  <button class="new-booking-button" data-toggle="modal" data-target="#bookingLoginModal">
-    <h3 class="text-center">Join</h3>
+  <button class="new-booking-button text-center" data-toggle="modal" data-target="#bookingLoginModal">
+    <h3 class="new-booking-heading">Join</h3>
   </button>
 <% else %>
-  <%= link_to t(".sign_in", default: "Login To Book"), new_user_session_path, class: "new-booking-button" %>
+  <%= link_to new_user_session_path do %>
+    <button class="new-booking-button text-center">
+      <h3 class="new-booking-heading">Login To Book</h3>
+    </button>
+  <% end %>
 <% end %>
 
